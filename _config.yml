@@ -1,6 +1,6 @@
 title: Yuri Marca's Homepage
 url: "https://yurimarca.github.io/"
-baseurl: ""
+# baseurl: ""
 
 markdown: kramdown
 

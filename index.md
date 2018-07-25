@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Yuri Marca's Webpage
 ---
 
 ## About Me
