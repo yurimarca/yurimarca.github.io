@@ -25,3 +25,4 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 
 * E-mail: yurimarca [at] gmail . com
 * [Google Scholar](https://scholar.google.com/citations?user=YBoCAToAAAAJ&hl=en)
+* [LinkedIn](https://www.linkedin.com/in/yurimarca/) 
