@@ -10,7 +10,7 @@ title: Yuri Marca's Homepage
   * Shinshu University, Japan
 * Aug 2012 ~ Aug 2013 -- Exchange Student, Electrical Engineering
   * Concordia University, Canada
-* Jan 2010 ~ Jan 2016 -- Bachelor of Engineering in Electronics
+* Jan 2010 ~ Dec 2015 -- Bachelor of Engineering in Electronics
   * Federal University of Technology - Parana (UTFPR), Brazil
 
 ## Experience

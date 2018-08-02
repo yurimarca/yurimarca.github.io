@@ -4,7 +4,7 @@ url: "https://yurimarca.github.io/"
 
 markdown: kramdown
 
-tracking_id: #
+tracking_id: UA-76569933-2
 
 sass:
     style: compressed
