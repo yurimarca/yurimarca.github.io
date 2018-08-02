@@ -5,7 +5,7 @@ title: Yuri Marca's Webpage
 
 ## About Me
 
-<img class="profile-picture" src="YuriGECCO.png">
+<img class="profile-picture" src="profile-pic.png">
 
 I'm a Master student in Electronic and Information Engineering at Shinshu University, Japan. I earned my B.S. degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil in 2016. During my graduation, I studied one year at Concordia University, Canada as a participant of Science Without Borders program. My research interests include evolutionary computation, multi- and many-objectives optimization, artificial intelligence.  
 
