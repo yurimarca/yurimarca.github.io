@@ -1,5 +1,5 @@
 - name: "Publication"
-  link: "/publication"
+  link: "publication"
 
 - name: "Home"
   link: "/"
