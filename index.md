@@ -19,4 +19,4 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 
 ## Publications
 
-*  Yuri Marca, Hernán Aguirre, Saúl Zapotecas, Arnaud Liefooghe, Bilel Derbel, Sébastien Verel, and Kiyoshi Tanaka. 2018. **Pareto dominance-based MOEAs on problems with difficult pareto set topologies**. In Proceedings of the Genetic and Evolutionary Computation Conference Companion (GECCO '18). ACM, New York, NY, USA, 189-190. DOI: https://doi.org/10.1145/3205651.3205746
+*  Y. Marca, H Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka. **Pareto dominance-based MOEAs on problems with difficult pareto set topologies**. In Proceedings of the Genetic and Evolutionary Computation Conference Companion (GECCO '18). ACM, New York, NY, USA, 189-190. [DOI](https://doi.org/10.1145/3205651.3205746).
