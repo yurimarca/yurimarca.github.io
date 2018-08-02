@@ -14,6 +14,6 @@ title: Yuri Marca's Homepage
 
 *	Y. P. Marca, S. Scholze. **Proposta de Substituição da Comunicação GSM em Smart Grids por Rádios de Longo Alcance**. XXXIII Simpósio Brasileiro de Telecomunicações, 2015, Juiz de Fora, MG. Anais Completo da Programação Técnica, 2015.
 
-* Y. P. Marca, C. E. A. L. Rocha, B. Schneider Jr , F. K. Schneider. **Plataforma de Apoio ao Processo Decisório em Pesquisa e Desenvolvimento Tecnológico em Saúde**. Congresso Brasileiro de Engenharia Biomédica, 2012, Porto de Galinhas. ANAIS - CBEB 2012, 2012.
+* Y. P. Marca, C. E. A. L. Rocha, B. Schneider Jr , F. K. Schneider. **Plataforma de Apoio ao Processo Decisório em Pesquisa e Desenvolvimento Tecnológico em Saúde**. Congresso Brasileiro de Engenharia Biomédica, 2012, Porto de Galinhas. ANAIS - CBEB 2012, 2012. [(pdf)](pdf/XXIIICBEB2012Vol3.pdf)
 
 * M. P. Krause, D. M. Nakato, Y. P. Marca, F. K. Schneider. **Gerenciamento do Controle da Glicemia Utilizando um Aplicativo para Celular**. Congresso Brasileiro de Engenharia Biomédica, 2012, Porto de Galinhas. ANAIS - CBEB 2012, 2012.
