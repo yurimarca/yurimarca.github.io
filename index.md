@@ -11,7 +11,8 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 
 ## News
 
-* 2018 July: I gave a presentation entitled "Multi-objective Optimization Problems with a Complex Topology" at (1st International Workshop on Computational Intelligence for Massive Optimization)[https://sites.google.com/view/cimo-workshop] (CIMO 2018)
+* 2018 July: I attended [SIGEvo Summer School 2018](https://sigevo-summer-school-2018.github.io/) in Osaka, Japan.
+* 2018 July: I gave a presentation entitled "Multi-objective Optimization Problems with a Complex Topology" at [1st International Workshop on Computational Intelligence for Massive Optimization](https://sites.google.com/view/cimo-workshop) (CIMO 2018).
 
 ## Publications
 
