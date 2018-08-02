@@ -7,7 +7,7 @@ title: Yuri Marca's Webpage
 
 <img class="profile-picture" src="profile-pic.png">
 
-I'm a Master student in Electronic and Information Engineering at Shinshu University, Japan. I earned my B.S. degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil in 2016. During my graduation, I studied one year at Concordia University, Canada as a participant of Science Without Borders program. My research interests include evolutionary computation, multi- and many-objectives optimization, artificial intelligence.  
+I'm a Master student in Electronic and Information Engineering at Shinshu University, Japan. I earned my B.S. degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil in 2016. During my graduation, I studied one year at Concordia University, Canada as a participant of Science Without Borders program. My research interests include evolutionary computation, multi- and many-objectives optimization, artificial intelligence.
 
 ## NEWS
 
@@ -20,3 +20,8 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 ## Publications
 
 *  Y. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka. **Pareto dominance-based MOEAs on problems with difficult pareto set topologies**. In Proceedings of the Genetic and Evolutionary Computation Conference Companion (GECCO '18). ACM, New York, NY, USA, 189-190. [DOI](https://doi.org/10.1145/3205651.3205746).
+
+## Contact
+
+* E-mail: yurimarca [at] gmail . com
+* [Google Scholar](https://scholar.google.com/citations?user=YBoCAToAAAAJ&hl=en)
