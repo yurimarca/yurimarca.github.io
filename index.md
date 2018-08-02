@@ -19,30 +19,4 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 
 ## Publications
 
-1. F.Bar, J.Doe: Effects of having a placeholder of a name
-2. S.Holmes, J.Watson: Consequences of living with a sociopath in London
-
-## Typography
-
-This is a [link](http://google.com). Something *italics* and something **bold**.
-
-Here is a table
-
-Year | Award | Category
------|-------|--------
-2014 | Emmy  | Won Outstanding Lead Actor in a miniseries or a movie
-2015 | BAFTA | Nominated for Best Leading Actor for Sherlock
-2014 | Satellite | Won Best Actor miniseries or television film
-
-Here is a horizontal rule
-
----
-
-Here is a blockquote
-
-> To a great mind, nothing is little
-
-## References
-
-* Foo Bar: Head of Department, Placeholder Names, Lorem
-* John Doe: Associate Professor, Department of Computer Science, Ipsum
+*  Yuri Marca, Hernán Aguirre, Saúl Zapotecas, Arnaud Liefooghe, Bilel Derbel, Sébastien Verel, and Kiyoshi Tanaka. 2018. **Pareto dominance-based MOEAs on problems with difficult pareto set topologies**. In Proceedings of the Genetic and Evolutionary Computation Conference Companion (GECCO '18). ACM, New York, NY, USA, 189-190. DOI: https://doi.org/10.1145/3205651.3205746
