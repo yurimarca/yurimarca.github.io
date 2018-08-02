@@ -52,6 +52,9 @@
     {% else %}
         <meta name="twitter:image" content="{{ site.profile_picture }}">
     {% endif %}
+{% if site.google_analytics and jekyll.environment == 'production' %}
+{% include analytics.html %}
+{% endif %}
 </head>
 <body>
     <div class="wrapper">
@@ -82,7 +85,8 @@
                 {{ content }}
             </div>
         {% endif %}
-</div>    {% if site.tracking_id %}
+      </div>
+      {% if site.tracking_id %}
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -92,9 +96,9 @@
           ga('send', 'pageview');
         </script>
     {% endif %}
+    <footer>
+      <div class="container">
+        <p class="center-text"> Powered by <a href="https://jekyllrb.com">jekyll</a> using the <a href="http://jekyllthemes.org/themes/researcher">Researcher</a> theme.</p>
+      </div>
+    </footer>
 </body>
-<footer>
-  <div class="container">
-    <p class="center-text"> Powered by <a href="https://jekyllrb.com">jekyll</a> using the <a href="http://jekyllthemes.org/themes/researcher">Researcher</a> theme.</p>
-  </div>
-</footer>

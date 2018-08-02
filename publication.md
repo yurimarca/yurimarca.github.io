@@ -10,7 +10,6 @@ title: Yuri Marca's Homepage
 
 * C. E. A. L. Rocha, Y. P. Marca, F. K. Schneider. **Support Platform for Decision-Making in Research and Technological Development in Public Health**. ESPACIOS (CARACAS), v. 39, p. 14-26, 2018. [(link)](http://www.revistaespacios.com/a18v39n06/18390614.html)
 
-
 ## Publications in Portuguese
 
 *	Y. P. Marca, S. Scholze. **Proposta de Substituição da Comunicação GSM em Smart Grids por Rádios de Longo Alcance**. XXXIII Simpósio Brasileiro de Telecomunicações, 2015, Juiz de Fora, MG. Anais Completo da Programação Técnica, 2015.
