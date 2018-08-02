@@ -17,8 +17,13 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 * 2018 April: Our paper has been accepted to [GECCO](http://gecco-2018.sigevo.org/) as poster.
   * Y. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, K. Tanaka: Pareto dominance-based MOEAs on problems with difficult pareto set topologies.
 
-## Contact and Social
+## Contact
 
 * E-mail: yurimarca [at] gmail . com
+* Phone: +81 70 4370 2791
+
+## Online CVs
+
 * [Google Scholar](https://scholar.google.com/citations?user=YBoCAToAAAAJ&hl=en)
 * [LinkedIn](https://www.linkedin.com/in/yurimarca/)
+* [Lattes Platform](http://lattes.cnpq.br/3992305361737583) -- *Brazilian government's research registry*
