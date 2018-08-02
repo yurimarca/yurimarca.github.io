@@ -9,9 +9,9 @@ title: Yuri Marca's Webpage
 
 I'm a Master student in Electronic and Information Engineering at Shinshu University, Japan. I earned my B.S. degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil in 2016. During my graduation, I studied one year at Concordia University, Canada as a participant of Science Without Borders program. My research interests include evolutionary computation, multi- and many-objectives optimization, artificial intelligence.  
 
-## Research Interest
+## News
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam finibus ipsum ac erat aliquam dapibus. Vestibulum vehicula placerat ex, a consectetur odio pharetra quis. Mauris id urna ante. Fusce pharetra diam ac nisi aliquet, vel egestas ex iaculis. Pellentesque laoreet cursus tellus sed pellentesque. Praesent a rhoncus elit. Nunc ipsum nisl, consequat sit amet pretium quis, gravida id ipsum.
+* 2018 July: I gave a presentation entitled "Multi-objective Optimization Problems with a Complex Topology" at (1st International Workshop on Computational Intelligence for Massive Optimization)[https://sites.google.com/view/cimo-workshop] (CIMO 2018)
 
 ## Publications
 
