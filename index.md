@@ -20,7 +20,7 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 
 ## Contact
 
-* E-mail: yurimarca [at] gmail . com
+* yurimarca [at] g m a i l [dot] c o m
 * Phone: +81 70 4370 2791
 
 ## Online CVs
