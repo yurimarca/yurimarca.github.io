@@ -34,6 +34,6 @@ title: Yuri Marca's Homepage
 
 ## Technical Expertise
 
-**Programming Languages:** Assembly, C, C++, Java
+**Programming Languages:** Assembly, C, C++, Java, Bash
 
 **Environment Tools:** MATLAB, R Studio, Android Studio, OrCAD, Quartus II
