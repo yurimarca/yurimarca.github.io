@@ -18,7 +18,7 @@ title: Yuri Marca's Homepage
 ## Research Experience
 
 * Apr 2017 ~ Present -- Shinshu University, Japan
-  * Study the effects of multi-objective evolutionary algorithms’ (MOEA) working mecha on problems with difficult Pareto set topologies, and proposal of a new method to increase MOEA’s performance on such problems.
+  * Study the effects of multi-objective evolutionary algorithms’ (MOEA) working mechanisms on problems with difficult Pareto set topologies, and proposal of a new method to enhance MOEA’s performance on such problems.
 
 * May 2013 ~ Aug 2013 -- Concordia University, Canada
   * Short research on optimization of software filters to decrease signal interferences from eyes and muscles in electroencephalography.
