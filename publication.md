@@ -6,6 +6,8 @@ title: Yuri Marca's Homepage
 
 ## Publications
 
+* _Y. Marca_, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka. **MOEAs on Problems with Difficult Pareto Set Topologies**. IEICE Shin-etsu Branch IEEE Session, Niigata University, 2018, p. 169. [(pdf)](pdf/shinestu2018.pdf) **★Young Research Paper Award★**
+
 *  _Y. Marca_, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka. **Pareto dominance-based MOEAs on problems with difficult pareto set topologies**. In Proceedings of the Genetic and Evolutionary Computation Conference Companion (GECCO '18). ACM, New York, NY, USA, 189-190. [DOI](https://doi.org/10.1145/3205651.3205746).
 
 * C. E. A. L. Rocha, _Y. P. Marca_, F. K. Schneider. **Support Platform for Decision-Making in Research and Technological Development in Public Health**. ESPACIOS (CARACAS), v. 39, p. 14-26, 2018. [(link)](http://www.revistaespacios.com/a18v39n06/18390614.html)
