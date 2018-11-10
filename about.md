@@ -21,9 +21,10 @@ title: Yuri Marca's Homepage
   * Study the impact of difficult Pareto set topologies on the performance of multi-objective evolutionary algorithms (MOEA), and proposal of a new method to improve MOEA's performance on such problems.
 
 * May 2013 ~ Aug 2013 -- Concordia University, Canada
-  * Short research on optimization of software filters to decrease signal interferences from eyes and muscles in electroencephalography.
+  * Short research on the use of software filters to decrease signal interferences from eyes and muscles in electroencephalography.
 
 * Apr 2011 ~ Aug 2012 -- Federal University of Technology - Parana (UTFPR), Brazil
+  * Supported a master's student in business administration on the development of a Windows application that implemented the proposed method of his thesis.
   * Support to a medical research group on the development of an Android OS application for monitoring patients with diabetes.
 
 ## Industry Experience
@@ -34,6 +35,6 @@ title: Yuri Marca's Homepage
 
 ## Technical Expertise
 
-**Programming Languages:** Assembly, C, C++, Java, Bash
+**Programming Languages:** Assembly, C, C++, Java, Bash (Unix Shell)
 
 **Environment Tools:** MATLAB, R Studio, Android Studio, OrCAD, Quartus II
