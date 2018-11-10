@@ -3,7 +3,7 @@ layout: default
 title: Yuri Marca's Homepage
 ---
 
-## About Me
+## SUMMARY
 
 <img class="profile-picture" src="profile-pic.png">
 
