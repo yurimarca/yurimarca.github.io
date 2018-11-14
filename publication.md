@@ -6,7 +6,7 @@ title: Yuri Marca's Homepage
 
 ## Publications
 
-* _Y. Marca_, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka. **Approximating Pareto set topology by cubic interpolation on bi-objective problems**. 10th International Conference on Evolutionary Multi-Criterion Optimization (EMO 2019), Lecture Notes in Computer Science (LNCS), East Lansing, Michigan, USA (accepted)
+* _Y. Marca_, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka. **Approximating Pareto set topology by cubic interpolation on bi-objective problems**. 10th International Conference on Evolutionary Multi-Criterion Optimization (EMO 2019), Lecture Notes in Computer Science (LNCS), East Lansing, Michigan, USA (to appear)
 
 * _Y. Marca_, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka. **MOEAs on Problems with Difficult Pareto Set Topologies**. IEICE Shin-etsu Branch IEEE Session, Niigata University, 2018, p. 169. [(pdf)](pdf/shinestu2018.pdf) **★Young Research Paper Award★**
 
