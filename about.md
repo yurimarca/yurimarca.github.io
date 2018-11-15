@@ -13,7 +13,7 @@ title: Yuri Marca's Homepage
   * Exchange Student, Electrical Engineering
 
 * Jan 2010 ~ Dec 2015 -- Federal University of Technology - Parana (UTFPR), Brazil
-  * Bachelor of Engineering in Electronics
+  * Bachelor of Engineering in Electronics and Telecommunication
 
 ## Research Experience
 
