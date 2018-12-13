@@ -33,6 +33,12 @@ title: Yuri Marca's Homepage
 * Jan 2016 ~ Aug 2016 -- R&D Engineer at SSE Gridtech, Brazil
   * Embedded system development for long-distance communication radio as part of a smart metering solution.
 
+## Award and Recognition
+
+* Young Research Paper Award, IEICE Shin-etsu 2018 Branch IEEE Session.
+* Young Researcher Award, IEEE Computational Intelligence Society Japan Chapter, Japanese Symposium on Evolutionary Computation 2018.
+
+
 ## Technical Expertise
 
 **Programming Languages:** Assembly, C, C++, Java, Bash (Unix Shell)
