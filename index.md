@@ -11,7 +11,7 @@ I'm a Master student in Electronic and Information Engineering at Shinshu Univer
 
 ## NEWS
 
-* 2018 December: I received the [Young Researcher Award](pdf/yra_symposium2018.pdf) from [JPNSEC 2018 Symposium on Evolutionary Computation](http://www.jpnsec.org/symposium201803.html) for the paper:
+* 2018 December: I received the [Young Researcher Award](http://www.ieee-jp.org/section/tokyo/chapter/CIS-11/index.php?TopPage-J%2FYRA-J%2F2018#v11d4fc5) from [JPNSEC 2018 Symposium on Evolutionary Computation](http://www.jpnsec.org/symposium201803.html) for the paper:
   * Y. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, and K. Tanaka.: NSGA-II with Spline Interpolation on Bi-objective Problems with Difficult Pareto Set Topology.
 * 2018 November: Our paper has been accepted to [EMO2019](https://www.emo2019.org/).
   * Y. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, K. Tanaka: Approximating Pareto set topology by cubic interpolation on bi-objective problems.
