@@ -12,7 +12,7 @@ title: Yuri Marca's Homepage
 * Sept 2012 ~ Aug 2013 -- Concordia University, Canada
   * Exchange Student, Electrical Engineering
 
-* Jan 2010 ~ Dec 2015 -- Federal University of Technology - Parana (UTFPR), Brazil
+* Jan 2010 ~ Jul 2016 -- Federal University of Technology - Parana (UTFPR), Brazil
   * Bachelor of Engineering in Electronics
 
 ## Research Experience
