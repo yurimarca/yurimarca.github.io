@@ -30,7 +30,6 @@ I earned my Master degree in Electronic and Information Engineering at Shinshu U
 ## Contact
 
 * yurimarca [at] g m a i l [dot] c o m
-* Phone: +81 70 4370 2791
 
 ## Online CVs
 

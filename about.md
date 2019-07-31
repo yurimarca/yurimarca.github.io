@@ -35,8 +35,9 @@ title: Yuri Marca's Homepage
 
 ## Award and Recognition
 
-* Young Research Paper Award, IEICE Shin-etsu 2018 Branch IEEE Session.
+* Best Student Paper Award, International Conference on Evolutionary Multi-Criterion Optimization (EMO) 2019.
 * Young Researcher Award, IEEE Computational Intelligence Society Japan Chapter, Japanese Symposium on Evolutionary Computation 2018.
+* Young Research Paper Award, IEICE Shin-etsu 2018 Branch IEEE Session.
 
 
 ## Technical Expertise
