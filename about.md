@@ -6,7 +6,7 @@ title: Yuri Marca's Homepage
 
 ## Education
 
-* Apr 2017 ~ Present -- Shinshu University, Japan
+* Apr 2017 ~ Mar 2019 -- Shinshu University, Japan
   * Master of Engineering in Electronics and Information System
 
 * Sept 2012 ~ Aug 2013 -- Concordia University, Canada
@@ -17,7 +17,7 @@ title: Yuri Marca's Homepage
 
 ## Research Experience
 
-* Apr 2017 ~ Present -- Shinshu University, Japan
+* Apr 2017 ~ Mar 2019 -- Shinshu University, Japan
   * Study the impact of difficult Pareto set topologies on the performance of multi-objective evolutionary algorithms (MOEA), and proposal of a new method to improve MOEA's performance on such problems.
 
 * May 2013 ~ Aug 2013 -- Concordia University, Canada
