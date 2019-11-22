@@ -7,12 +7,12 @@ title: Yuri Marca's Homepage
 
 <img class="profile-picture" src="profile-pic.png">
 
-I earned my Master degree in Electronic and Information Engineering from Shinshu University, Japan and my Bachelor degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil in 2016. During my graduation, I studied one year at Concordia University, Canada as an exchange student participant of the program Science Without Borders. My research interests include evolutionary computation, multi- and many-objectives optimization, deep learning.
+I am a PhD Student in the Operational Research group of Warwick Business School, U.K. I have earned my Master degree in Electronic and Information Engineering from Shinshu University, Japan and my Bachelor degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil. During my undergraduate studies, I studied one year at Concordia University, Canada as an exchange student participant of the program Science Without Borders. My research interests include Evolutionary Computation, Multi-objectives Optimization, and Operational Research.
 
 ## NEWS
 
 * 2019 November: Participant of the [COST Action Training school CA15140](https://imappnio.dcs.aber.ac.uk/training-school-2019/training-school-2019) at University of Coimbra, Portugal.
-* 2019 October: I have started the PhD course at [Warwick Business School](https://www.wbs.ac.uk/courses/doctoral/phd/) under the supervision of Prof. Juergen Branke.
+* 2019 October: I have started the PhD course at [Warwick Business School](https://www.wbs.ac.uk/courses/doctoral/phd/), United Kingdom.
 * 2019 July: Our paper has been accepted to be published on Japan Evolutionary Computation Society's Journal.
   * Y. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, K. Tanaka: MOEA with Cubic Interpolation on Bi-objective Problems with Difficult Pareto Set Topology
 * 2019 March: I have graduated from Shinshu University, Japan.
