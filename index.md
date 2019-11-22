@@ -11,9 +11,11 @@ I earned my Master degree in Electronic and Information Engineering from Shinshu
 
 ## NEWS
 
+* 2019 November: Participant of the [COST Action Training school CA15140](https://imappnio.dcs.aber.ac.uk/training-school-2019/training-school-2019) at University of Coimbra, Portugal.
+* 2019 October: I have started the PhD course at [Warwick Business School](https://www.wbs.ac.uk/courses/doctoral/phd/) under the supervision of Prof. Juergen Branke.
 * 2019 July: Our paper has been accepted to be published on Japan Evolutionary Computation Society's Journal.
   * Y. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, K. Tanaka: MOEA with Cubic Interpolation on Bi-objective Problems with Difficult Pareto Set Topology
-* 2019 March: I have graduated from Shinshu University, Japan. 
+* 2019 March: I have graduated from Shinshu University, Japan.
   * Thesis' title: Interpolation Model Based Evolutionary Algorithm to Solve Multi-objective Optimization Problems with Difficult Pareto Set Topology.
 * 2019 March: I received the Best Student Paper Award at [EMO2019](https://www.emo2019.org/) for the paper:
   * Y. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, K. Tanaka: Approximating Pareto set topology by cubic interpolation on bi-objective problems.

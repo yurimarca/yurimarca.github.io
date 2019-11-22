@@ -6,6 +6,9 @@ title: Yuri Marca's Homepage
 
 ## Education
 
+* Oct 2019 ~ Present -- Warwick Business School, United Kingdom
+  * Doctor of Philosophy in Business and Management
+
 * Apr 2017 ~ Mar 2019 -- Shinshu University, Japan
   * Master of Engineering in Electronics and Information System
 
@@ -42,6 +45,6 @@ title: Yuri Marca's Homepage
 
 ## Technical Expertise
 
-**Programming Languages:** Assembly, C, C++, Java, Bash (Unix Shell)
+**Programming Languages:** Python, Assembly, C, C++, Java, Bash (Unix Shell)
 
 **Environment Tools:** MATLAB, R Studio, Android Studio, OrCAD, Quartus II
