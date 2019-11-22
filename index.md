@@ -7,7 +7,7 @@ title: Yuri Marca's Homepage
 
 <img class="profile-picture" src="profile-pic.png">
 
-I am a PhD Student in the Operational Research group of Warwick Business School, U.K. I have earned my Master degree in Electronic and Information Engineering from Shinshu University, Japan and my Bachelor degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil. During my undergraduate studies, I studied one year at Concordia University, Canada as an exchange student participant of the program Science Without Borders. My research interests include Evolutionary Computation, Multi-objectives Optimization, and Operational Research.
+I am a PhD Student in the Operational Research group of Warwick Business School, U.K. I have earned my Master degree in Electronic and Information Engineering from Shinshu University, Japan, and my Bachelor degree in Electronic Engineering from Federal University of Technology – Paraná (UTFPR), Brazil. During my undergraduate studies, I studied one year at Concordia University, Canada as an exchange student participant of the program Science Without Borders. My research interests include Evolutionary Computation, Multi-objective Optimization, and Operational Research.
 
 ## NEWS
 
