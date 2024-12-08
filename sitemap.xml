@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yurimarca.github.io/old_content/index.html</loc>
-    <lastmod>2024-12-08T20:59:40.598Z</lastmod>
+    <lastmod>2024-12-08T21:11:54.327Z</lastmod>
   </url>
   <url>
     <loc>https://yurimarca.github.io/old_content/about.html</loc>
-    <lastmod>2024-12-08T20:59:40.598Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yurimarca.github.io/about.html</loc>
-    <lastmod>2024-12-08T20:59:40.598Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yurimarca.github.io/blog/post1.html</loc>
-    <lastmod>2024-12-08T20:59:40.598Z</lastmod>
+    <lastmod>2024-12-08T21:11:54.327Z</lastmod>
   </url>
   <url>
     <loc>https://yurimarca.github.io/index.html</loc>
-    <lastmod>2024-12-08T20:59:40.598Z</lastmod>
+    <lastmod>2024-12-08T21:11:54.327Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yurimarca.github.io/blog/post1.html</loc>
+    <lastmod>2024-12-08T21:11:54.327Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yurimarca.github.io/about.html</loc>
+    <lastmod>2024-12-08T21:11:54.323Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yurimarca.github.io/posts/template-post/index.html</loc>
+    <lastmod>2024-12-08T21:11:54.327Z</lastmod>
   </url>
   <url>
     <loc>https://yurimarca.github.io/old_content/publication.html</loc>
-    <lastmod>2024-12-08T20:59:40.598Z</lastmod>
+    <lastmod>2024-12-08T21:11:54.327Z</lastmod>
   </url>
 </urlset>
