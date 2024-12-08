@@ -3,16 +3,21 @@ title: "About"
 image: profile.jpg
 about:
   template: jolla
+  image-width: 20em
+  image-shape: round
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/yurimarca/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/yurimarca
 ---
 
-About this blog
+I am a Data Scientist with a Bachelor's in Electronic Engineering and a Master's in Information Systems, boasting extensive international academic experience, including studies in Japan, the United Kingdom, and Canada. My academic journey has equipped me with a diverse knowledge base, allowing me to develop projects in various programming languages.
+
+My industry experience has further honed my technical skills, critical thinking, and ability to solve complex problems in a structured and effective manner. I am flexible, proactive, and collaborative, capable of adapting to new challenges and contributing to shared objectives.
+
+My professional interests primarily revolve around Deep Learning, IoT, and Multi-objective Problems. I possess robust skills in programming languages such as C, C++, Bash (Unix), and Python, alongside proficiency in Machine Learning frameworks like scikit-learn, PyTorch, and FastAI. I am familiar with databases like PostgreSQL and InfluxDB, and the software version control tool Git.
+
+I am eager to establish new connections and explore collaboration opportunities with fellow professionals and organizations. Should you be interested in discussing potential projects or research opportunities, I would be delighted to connect and contribute to the development of innovative solutions.
