@@ -6,13 +6,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: projects.qmd
-        text: Projects
-      - href: resume.qmd
-        text: Resume
-    
+
     right:
-      - about.qmd
+      - href: about.qmd
+        text: About
       - icon: github
         href: https://github.com/yurimarca
       - icon: linkedin
