@@ -77,25 +77,11 @@
     "text": "Technical Expertise\nProgramming Languages: Python, Assembly, C, C++, Java, Bash (Unix Shell)\nEnvironment Tools: MATLAB, R Studio, Android Studio, OrCAD, Quartus II"
   },
   {
-    "objectID": "posts/template-post/index.html",
-    "href": "posts/template-post/index.html",
-    "title": "Test Post",
-    "section": "",
-    "text": "In this post, …"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I am a Data Scientist with a Bachelor’s in Electronic Engineering and a Master’s in Information Systems, boasting extensive international academic experience, including studies in Japan, the United Kingdom, and Canada. My academic journey has equipped me with a diverse knowledge base, allowing me to develop projects in various programming languages.\nMy industry experience has further honed my technical skills, critical thinking, and ability to solve complex problems in a structured and effective manner. I am flexible, proactive, and collaborative, capable of adapting to new challenges and contributing to shared objectives.\nMy professional interests primarily revolve around Deep Learning, IoT, and Multi-objective Problems. I possess robust skills in programming languages such as C, C++, Bash (Unix), and Python, alongside proficiency in Machine Learning frameworks like scikit-learn, PyTorch, and FastAI. I am familiar with databases like PostgreSQL and InfluxDB, and the software version control tool Git.\nI am eager to establish new connections and explore collaboration opportunities with fellow professionals and organizations. Should you be interested in discussing potential projects or research opportunities, I would be delighted to connect and contribute to the development of innovative solutions."
-  },
-  {
-    "objectID": "blog/post1.html",
-    "href": "blog/post1.html",
+    "objectID": "posts/first-blog-post.html",
+    "href": "posts/first-blog-post.html",
     "title": "My First Blog Post",
     "section": "",
-    "text": "This is my first blog post using Quarto. I can embed code and visualizations:\n```python import pandas as pd print(“Hello, Quarto!”)"
+    "text": "Welcome to My Blog\nThis is a sample post written in Quarto Markdown. You can write content here, include code snippets, and even embed Jupyter Notebook outputs.\nFor example, here is a Python code snippet:\nprint(\"Hello, World!\")\nStay tuned for more updates!"
   },
   {
     "objectID": "index.html",
@@ -117,6 +103,27 @@
     "title": "Welcome to My Portfolio",
     "section": "",
     "text": "Capstone AWS DeepRacer: Implementing reinforcement learning for autonomous racing.\nTic-Tac-Toe MCTS: Monte Carlo Tree Search agent for Tic-Tac-Toe.\nStock Analysis: Stock market analysis for shared earnings.\n\nFeel free to check out my GitHub for more projects!"
+  },
+  {
+    "objectID": "blog/post1.html",
+    "href": "blog/post1.html",
+    "title": "My First Blog Post",
+    "section": "",
+    "text": "This is my first blog post using Quarto. I can embed code and visualizations:\n```python import pandas as pd print(“Hello, Quarto!”)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am a Data Scientist with a Bachelor’s in Electronic Engineering and a Master’s in Information Systems, boasting extensive international academic experience, including studies in Japan, the United Kingdom, and Canada. My academic journey has equipped me with a diverse knowledge base, allowing me to develop projects in various programming languages.\nMy industry experience has further honed my technical skills, critical thinking, and ability to solve complex problems in a structured and effective manner. I am flexible, proactive, and collaborative, capable of adapting to new challenges and contributing to shared objectives.\nMy professional interests primarily revolve around Deep Learning, IoT, and Multi-objective Problems. I possess robust skills in programming languages such as C, C++, Bash (Unix), and Python, alongside proficiency in Machine Learning frameworks like scikit-learn, PyTorch, and FastAI. I am familiar with databases like PostgreSQL and InfluxDB, and the software version control tool Git.\nI am eager to establish new connections and explore collaboration opportunities with fellow professionals and organizations. Should you be interested in discussing potential projects or research opportunities, I would be delighted to connect and contribute to the development of innovative solutions."
+  },
+  {
+    "objectID": "posts/template-post/index.html",
+    "href": "posts/template-post/index.html",
+    "title": "Test Post",
+    "section": "",
+    "text": "In this post, …"
   },
   {
     "objectID": "blog.html",
