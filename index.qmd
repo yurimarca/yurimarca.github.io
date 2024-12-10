@@ -1,12 +1,30 @@
+
 ---
-title: "Yuri Marca - Data Scientist"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+title: "Welcome to My Portfolio"
+format: html
 ---
+
+# Welcome to My Personal Website
+
+I'm **Yuri Marca**, a data scientist passionate about machine learning, MLOps, and optimization.  
+Here you'll find my projects, blog posts, and more.
+
+---
+
+## Recent Blog Posts
+
+```{{< listing >}}
+type: default
+sort: "date desc"
+count: 3
+```
+
+---
+
+## Projects
+
+- [**Capstone AWS DeepRacer**](https://github.com/yurimarca/Capstone_AWS_DeepRacer): Implementing reinforcement learning for autonomous racing.
+- [**Tic-Tac-Toe MCTS**](https://github.com/yurimarca/tic-tac-toe-mcts): Monte Carlo Tree Search agent for Tic-Tac-Toe.
+- [**Stock Analysis**](https://github.com/yurimarca/stock-analysis): Stock market analysis for shared earnings.
+
+Feel free to check out my [GitHub](https://github.com/yurimarca) for more projects!
