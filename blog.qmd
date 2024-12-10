@@ -1,0 +1,13 @@
+
+---
+title: "Blog"
+description: "A collection of my blog posts written in Jupyter Notebooks."
+format: html
+---
+
+# Blog Posts
+
+```{{< listing >}}
+type: default
+sort: "date desc"
+```
