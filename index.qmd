@@ -1,6 +1,5 @@
-
 ---
-title: "Welcome to My Portfolio"
+title: ""
 format: html
 ---
 
@@ -11,20 +10,9 @@ Here you'll find my projects, blog posts, and more.
 
 ---
 
-## Recent Blog Posts
-
-```{{< listing >}}
-type: default
-sort: "date desc"
-count: 3
-```
-
----
 
 ## Projects
 
-- [**Capstone AWS DeepRacer**](https://github.com/yurimarca/Capstone_AWS_DeepRacer): Implementing reinforcement learning for autonomous racing.
-- [**Tic-Tac-Toe MCTS**](https://github.com/yurimarca/tic-tac-toe-mcts): Monte Carlo Tree Search agent for Tic-Tac-Toe.
-- [**Stock Analysis**](https://github.com/yurimarca/stock-analysis): Stock market analysis for shared earnings.
+- [**Tic-Tac-Toe MCTS**](https://github.com/yurimarca/ocba-mcts): Monte Carlo Tree Search agent for Tic-Tac-Toe.
 
 Feel free to check out my [GitHub](https://github.com/yurimarca) for more projects!
