@@ -105,6 +105,41 @@
     "text": "I am a Data Scientist with a Bachelor’s in Electronic Engineering and a Master’s in Information Systems, boasting extensive international academic experience, including studies in Japan, the United Kingdom, and Canada. My academic journey has equipped me with a diverse knowledge base, allowing me to develop projects in various programming languages.\nMy industry experience has further honed my technical skills, critical thinking, and ability to solve complex problems in a structured and effective manner. I am flexible, proactive, and collaborative, capable of adapting to new challenges and contributing to shared objectives.\nMy professional interests primarily revolve around Deep Learning, IoT, and Multi-objective Problems. I possess robust skills in programming languages such as C, C++, Bash (Unix), and Python, alongside proficiency in Machine Learning frameworks like scikit-learn, PyTorch, and FastAI. I am familiar with databases like PostgreSQL and InfluxDB, and the software version control tool Git.\nI am eager to establish new connections and explore collaboration opportunities with fellow professionals and organizations. Should you be interested in discussing potential projects or research opportunities, I would be delighted to connect and contribute to the development of innovative solutions."
   },
   {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\n\nSept 2012 ~ Aug 2013 – Concordia University, Canada\n\nExchange Student, Electrical Engineering\n\nJan 2010 ~ Jul 2016 – Federal University of Technology - Parana (UTFPR), Brazil\n\nBachelor of Engineering in Electronics"
+  },
+  {
+    "objectID": "about.html#research-experience",
+    "href": "about.html#research-experience",
+    "title": "About",
+    "section": "Research Experience",
+    "text": "Research Experience\n\nApr 2017 ~ Mar 2019 – Shinshu University, Japan\n\nStudy the impact of difficult Pareto set topologies on the performance of multi-objective evolutionary algorithms (MOEA), and proposal of a new method to improve MOEA’s performance on such problems.\n\nMay 2013 ~ Aug 2013 – Concordia University, Canada\n\nShort research on the use of software filters to decrease signal interferences from eyes and muscles in electroencephalography.\n\nApr 2011 ~ Aug 2012 – Federal University of Technology - Parana (UTFPR), Brazil\n\nSupported a master’s student in business administration on the development of a Windows application that implemented the proposed method of his thesis.\nSupport to a medical research group on the development of an Android OS application for monitoring patients with diabetes."
+  },
+  {
+    "objectID": "about.html#industry-experience",
+    "href": "about.html#industry-experience",
+    "title": "About",
+    "section": "Industry Experience",
+    "text": "Industry Experience\n\nOct 2014 ~ Dec 2015 – Internship at SSE Gridtech, Brazil\nJan 2016 ~ Aug 2016 – R&D Engineer at SSE Gridtech, Brazil\n\nEmbedded system development for long-distance communication radio as part of a smart metering solution."
+  },
+  {
+    "objectID": "about.html#award-and-recognition",
+    "href": "about.html#award-and-recognition",
+    "title": "About",
+    "section": "Award and Recognition",
+    "text": "Award and Recognition\n\nBest Student Paper Award, International Conference on Evolutionary Multi-Criterion Optimization (EMO) 2019.\nYoung Researcher Award, IEEE Computational Intelligence Society Japan Chapter, Japanese Symposium on Evolutionary Computation 2018.\nYoung Research Paper Award, IEICE Shin-etsu 2018 Branch IEEE Session."
+  },
+  {
+    "objectID": "about.html#technical-expertise",
+    "href": "about.html#technical-expertise",
+    "title": "About",
+    "section": "Technical Expertise",
+    "text": "Technical Expertise\nProgramming Languages: Python, Assembly, C, C++, Java, Bash (Unix Shell)\nEnvironment Tools: MATLAB, R Studio, Android Studio, OrCAD, Quartus II"
+  },
+  {
     "objectID": "blog/post1.html",
     "href": "blog/post1.html",
     "title": "My First Blog Post",
@@ -114,23 +149,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Welcome to My Portfolio",
+    "title": "Welcome to My Personal Website",
     "section": "",
-    "text": "I’m Yuri Marca, a data scientist passionate about machine learning, MLOps, and optimization.\nHere you’ll find my projects, blog posts, and more.\n\n\n\ntype: default\nsort: \"date desc\"\ncount: 3\n\n\n\n\n\nCapstone AWS DeepRacer: Implementing reinforcement learning for autonomous racing.\nTic-Tac-Toe MCTS: Monte Carlo Tree Search agent for Tic-Tac-Toe.\nStock Analysis: Stock market analysis for shared earnings.\n\nFeel free to check out my GitHub for more projects!"
-  },
-  {
-    "objectID": "index.html#recent-blog-posts",
-    "href": "index.html#recent-blog-posts",
-    "title": "Welcome to My Portfolio",
-    "section": "",
-    "text": "type: default\nsort: \"date desc\"\ncount: 3"
+    "text": "I’m Yuri Marca, a data scientist passionate about machine learning, MLOps, and optimization.\nHere you’ll find my projects, blog posts, and more.\n\n\n\n\nTic-Tac-Toe MCTS: Monte Carlo Tree Search agent for Tic-Tac-Toe.\n\nFeel free to check out my GitHub for more projects!"
   },
   {
     "objectID": "index.html#projects",
     "href": "index.html#projects",
-    "title": "Welcome to My Portfolio",
+    "title": "Welcome to My Personal Website",
     "section": "",
-    "text": "Capstone AWS DeepRacer: Implementing reinforcement learning for autonomous racing.\nTic-Tac-Toe MCTS: Monte Carlo Tree Search agent for Tic-Tac-Toe.\nStock Analysis: Stock market analysis for shared earnings.\n\nFeel free to check out my GitHub for more projects!"
+    "text": "Tic-Tac-Toe MCTS: Monte Carlo Tree Search agent for Tic-Tac-Toe.\n\nFeel free to check out my GitHub for more projects!"
   },
   {
     "objectID": "posts/template-post/index.html",
