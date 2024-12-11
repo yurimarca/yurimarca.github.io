@@ -3,9 +3,9 @@ project:
   type: website
 
 website:
-  title: "My Portfolio and Blog"
+  title: "Yuri Marca - Data Scientist"
   site-url: "https://yurimarca.github.io"
-  description: "A personal website showcasing projects and blog posts."
+  description: "A personal website showcasing projects and studies posts."
   twitter-card: true
   open-graph: true
   navbar:
@@ -21,12 +21,8 @@ website:
         href: https://github.com/yurimarca
       - icon: linkedin
         href: https://www.linkedin.com/in/yourprofile/
-  page-footer:
-    left: "© 2024 Yuri Marca. All rights reserved."
-    right: "Built with [Quarto](https://quarto.org/)."
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: flatly
     toc: true
