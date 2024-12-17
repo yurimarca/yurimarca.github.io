@@ -2,7 +2,7 @@
 title: "About"
 image: profile.jpg
 about:
-  template: jolla
+  template: marquee
   image-width: 20em
   image-shape: round
   links:
