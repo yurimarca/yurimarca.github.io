@@ -14,5 +14,6 @@ Here you'll find my projects, blog posts, and more.
 ## Projects
 
 - [**Tic-Tac-Toe MCTS**](https://github.com/yurimarca/ocba-mcts): Monte Carlo Tree Search agent for Tic-Tac-Toe.
+- [**End-to-end ML Pipeline**](https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices): Project for Udacity MLOps course on building an end-to-end reproducible machine learning pipeline.
 
 Feel free to check out my [GitHub](https://github.com/yurimarca) for more projects!
