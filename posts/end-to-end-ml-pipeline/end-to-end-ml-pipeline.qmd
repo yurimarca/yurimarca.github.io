@@ -1,0 +1,160 @@
+---
+title: "Building an End-to-End ML Pipeline"
+date: 2025-02-09
+description: "Project development is part of the MLOps course from Udacity"
+categories: [ml pipelines, reproducible experiments, mlflow, wandb, hydra, python]
+---
+
+# Building an End-to-End Machine Learning Pipeline for Short-Term Rental Price Prediction
+
+In the dynamic world of short-term property rentals, accurately predicting rental prices is crucial for maximizing occupancy and revenue. To address this challenge, I developed a comprehensive, reproducible Machine Learning (ML) pipeline tailored for short-term rental price prediction in New York City (NYC). This project emphasizes modularity, scalability, and ease of retraining to accommodate the ever-evolving rental market.
+
+## Project Overview
+
+The primary goal of this project is to construct an end-to-end ML pipeline capable of:
+
+- **Data Ingestion**: Collecting and storing raw rental data.
+- **Data Cleaning**: Processing the data to handle missing values, outliers, and inconsistencies.
+- **Exploratory Data Analysis (EDA)**: Gaining insights into data distributions and relationships.
+- **Data Validation**: Ensuring data quality and integrity.
+- **Data Splitting**: Partitioning data into training, validation, and test sets.
+- **Model Training**: Building a predictive model using algorithms like Random Forest.
+- **Hyperparameter Optimization**: Fine-tuning model parameters for optimal performance.
+- **Model Evaluation**: Assessing model accuracy and generalization capabilities.
+- **Deployment**: Preparing the model for production use.
+
+## Repository Structure
+
+The project is organized as follows:
+
+```
+.
+├── components/                  # Reusable pipeline components
+│   ├── get_data/                # Data ingestion module
+│   ├── test_regression_model/   # Model testing module
+│   └── train_val_test_split/    # Data splitting module
+├── src/                         # Source code for main pipeline steps
+│   ├── basic_cleaning/          # Data cleaning scripts
+│   ├── data_check/              # Data validation scripts
+│   ├── eda/                     # Exploratory Data Analysis scripts
+│   └── train_random_forest/     # Model training scripts
+├── images/                      # Visual assets for documentation
+├── .github/workflows/           # GitHub Actions for CI/CD
+├── cookie-mlflow-step/          # Template for creating new pipeline steps
+├── conda.yml                    # Conda environment configuration
+├── config.yaml                  # Pipeline configuration settings
+├── environment.yml              # Alternative environment configuration
+├── main.py                      # Main script to run the pipeline
+├── MLproject                    # MLflow project specification
+└── README.md                    # Project documentation
+```
+
+## Key Components
+
+### 1. Data Ingestion (`get_data`)
+
+This module handles the retrieval of raw data, ensuring it's stored in a structured format suitable for downstream processing. It interfaces with data sources, downloads datasets, and logs them as artifacts for version control.
+
+### 2. Data Cleaning (`basic_cleaning`)
+
+Data cleaning involves:
+
+- Removing duplicates and irrelevant entries.
+- Handling missing values through imputation or removal.
+- Correcting data types and formatting issues.
+- Addressing outliers to prevent skewed model training.
+
+### 3. Exploratory Data Analysis (`eda`)
+
+EDA provides insights into the dataset through:
+
+- Statistical summaries of features.
+- Visualizations to identify patterns and correlations.
+- Detection of anomalies or unexpected distributions.
+
+### 4. Data Validation (`data_check`)
+
+Before model training, data validation checks are performed to ensure:
+
+- Consistency in data formats and ranges.
+- Integrity constraints are maintained.
+- Alignment with expected distributions to prevent data drift.
+
+### 5. Data Splitting (`train_val_test_split`)
+
+The dataset is partitioned into:
+
+- **Training Set**: For model learning.
+- **Validation Set**: For hyperparameter tuning and model selection.
+- **Test Set**: For final evaluation of model performance.
+
+### 6. Model Training (`train_random_forest`)
+
+Utilizing the Random Forest algorithm, this step involves:
+
+- Training the model on the prepared dataset.
+- Logging training parameters and metrics.
+- Saving the trained model artifact for evaluation and deployment.
+
+### 7. Hyperparameter Optimization
+
+To enhance model performance, hyperparameters are fine-tuned using techniques such as grid search or random search, aiming to identify the optimal parameter combinations.
+
+### 8. Model Evaluation (`test_regression_model`)
+
+The trained model undergoes rigorous evaluation to assess:
+
+- Predictive accuracy on unseen data.
+- Generalization capabilities.
+- Potential overfitting or underfitting issues.
+
+## Tools and Technologies
+
+The project leverages several tools to ensure robustness and reproducibility:
+
+- **MLflow**: Manages the ML lifecycle, including experimentation, reproducibility, and deployment.
+- **Weights & Biases (W&B)**: Tracks experiments, visualizes performance metrics, and manages artifacts.
+- **Hydra**: Handles configuration management, enabling dynamic parameter tuning.
+- **Conda**: Manages project environments and dependencies.
+- **Scikit-Learn**: Provides machine learning algorithms and utilities.
+- **Pandas**: Facilitates data manipulation and analysis.
+
+## Running the Pipeline
+
+To execute the pipeline:
+
+1. **Set Up the Environment**:
+   - Create and activate the conda environment:
+     ```bash
+     conda env create -f environment.yml
+     conda activate nyc_airbnb_dev
+     ```
+
+2. **Configure Weights & Biases**:
+   - Log in to W&B:
+     ```bash
+     wandb login YOUR_API_KEY
+     ```
+
+3. **Run the Pipeline**:
+   - Execute the entire pipeline:
+     ```bash
+     mlflow run .
+     ```
+   - To run specific steps:
+     ```bash
+     mlflow run . -P steps=download,basic_cleaning
+     ```
+   - Override configuration parameters as needed:
+     ```bash
+     mlflow run . -P hydra_options="modeling.random_forest.n_estimators=100 etl.min_price=50"
+     ```
+
+## Conclusion
+
+This project demonstrates the development of a scalable and reproducible ML pipeline for predicting short-term rental prices in NYC. By modularizing each step and leveraging robust tools, the pipeline ensures efficient retraining and deployment, accommodating the dynamic nature of the rental market.
+
+For a detailed walkthrough and access to the codebase, visit the [GitHub repository](https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices).
+
+*Note: This project was developed as part of the Udacity MLOps Nanodegree program.*
+
