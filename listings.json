@@ -2,8 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/end-to-end-ml-pipeline/end-to-end-ml-pipeline.html",
       "/posts/template-post/index.html",
-      "/posts/first-post/first-blog-post.html",
       "/posts/juno-post/juno-post.html"
     ]
   }
