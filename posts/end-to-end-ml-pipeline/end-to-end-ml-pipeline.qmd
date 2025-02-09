@@ -1,5 +1,6 @@
 ---
 title: "Building an End-to-End ML Pipeline"
+author: Yuri Marca
 date: 2025-02-09
 description: "Project development is part of the MLOps course from Udacity"
 categories: [ml pipelines, reproducible experiments, mlflow, wandb, hydra, python]
