@@ -45,8 +45,7 @@ With a strong statistical analysis and optimization foundation, I am particularl
 
 - **MLOps & Deployment Tools:**
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height="20px"> Docker,
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Mlflow_logo.png" height="20px"> MLflow,
-  <img src="https://raw.githubusercontent.com/facebookresearch/hydra/main/website/static/img/hydra_head_color_small.png" height="20px"> Hydra,
+  MLflow, Hydra,
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="20px"> Git,
   <img src="https://cdn-icons-png.flaticon.com/512/6062/6062646.png" height="20px"> CI/CD (GitLab, GitHub Actions), 
   <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" height="20px"> **FastAPI**.
