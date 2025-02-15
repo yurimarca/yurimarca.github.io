@@ -3,7 +3,7 @@ project:
   type: website
 
 website:
-  title: "Yuri Marca - Data Scientist"
+  title: "Yuri's Personal Website"
   site-url: "https://yurimarca.github.io"
   description: "A personal website showcasing projects and studies posts."
   twitter-card: true
