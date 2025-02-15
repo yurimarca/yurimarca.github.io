@@ -2,7 +2,7 @@
 title: "Hello World!"
 image: profile.jpg
 about:
-  template: solana
+  template: jolla
   image-width: 20em
   image-shape: round
   links:
