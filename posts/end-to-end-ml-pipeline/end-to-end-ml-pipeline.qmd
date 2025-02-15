@@ -8,21 +8,20 @@ categories: [ml pipelines, reproducible experiments, mlflow, wandb, hydra, pytho
 
 # Building an End-to-End Machine Learning Pipeline for Short-Term Rental Price Prediction
 
-In the dynamic world of short-term property rentals, accurately predicting rental prices is crucial for maximizing occupancy and revenue. To address this challenge, I developed a comprehensive, reproducible Machine Learning (ML) pipeline tailored for short-term rental price prediction in New York City (NYC). This project emphasizes modularity, scalability, and ease of retraining to accommodate the ever-evolving rental market.
+In the dynamic world of short-term property rentals, accurately predicting rental prices is crucial for maximizing occupancy and revenue. To address this challenge, I developed a comprehensive, reproducible Machine Learning (ML) pipeline tailored for short-term rental price prediction in New York City (NYC) based on Airbnb data. We walk through data collection, cleaning, validation, splitting, training a random forest model, testing the model, and logging every artifact and result in a reproducible manner. This blog post focus on the usage of **MLflow**, **Weights & Biases (W&B)**, and **Hydra** for orchestration, tracking, and hyperparameter optimization, as these are taught in the Udacity MLOps Nanodegree program.
+
+
 
 ## Project Overview
 
-The primary goal of this project is to construct an end-to-end ML pipeline capable of:
+Short-term rental platforms like Airbnb collect vast amounts of data from hosts and guests. A host often asks: _What price should I set for my listing to optimize occupancy and revenue?_ This project aims to solve that by building an end-to-end ML pipeline to predict a short-term rental’s price given various features such as location, room type, and number of reviews.
 
-- **Data Ingestion**: Collecting and storing raw rental data.
-- **Data Cleaning**: Processing the data to handle missing values, outliers, and inconsistencies.
-- **Exploratory Data Analysis (EDA)**: Gaining insights into data distributions and relationships.
-- **Data Validation**: Ensuring data quality and integrity.
-- **Data Splitting**: Partitioning data into training, validation, and test sets.
-- **Model Training**: Building a predictive model using algorithms like Random Forest.
-- **Hyperparameter Optimization**: Fine-tuning model parameters for optimal performance.
-- **Model Evaluation**: Assessing model accuracy and generalization capabilities.
-- **Deployment**: Preparing the model for production use.
+- **Focus**: Clean, reproducible, and easily re-runnable pipeline.
+- **Tools**: MLflow for orchestration, Hydra for configuration, Weights & Biases to log artifacts and metrics, and scikit-learn for model training.
+- **Additional**: ydata-profiling for EDA, custom data checks to prevent “data drift,” and a templated approach to add new steps using a cookiecutter MLflow step.
+
+The entire pipeline is tracked under a W&B project to enable experiment tracking and artifact storage. [Here](https://wandb.ai/yurimarca-ai/nyc_airbnb/) is the link for the completed project in W&B.
+
 
 ## Repository Structure
 
@@ -50,7 +49,16 @@ The project is organized as follows:
 └── README.md                    # Project documentation
 ```
 
-## Key Components
+Key folders:
+
+- **`components/`**: Reusable MLflow components for tasks like data downloading, data splitting, and model testing.  
+- **`src/`**: Specific pipeline steps, including EDA (`eda`), data cleaning (`basic_cleaning`), data checks (`data_check`), and training a random forest (`train_random_forest`).  
+- **`cookie-mlflow-step/`**: A cookiecutter template that quickly scaffolds new MLflow pipeline steps.  
+- **`main.py`**: The orchestrator that references each step through Hydra configuration.  
+- **`MLproject`**: Defines how MLflow runs the pipeline, specifying entry points and environment details.
+
+
+## Pipeline Components
 
 ### 1. Data Ingestion (`get_data`)
 
@@ -97,9 +105,6 @@ Utilizing the Random Forest algorithm, this step involves:
 - Logging training parameters and metrics.
 - Saving the trained model artifact for evaluation and deployment.
 
-### 7. Hyperparameter Optimization
-
-To enhance model performance, hyperparameters are fine-tuned using techniques such as grid search or random search, aiming to identify the optimal parameter combinations.
 
 ### 8. Model Evaluation (`test_regression_model`)
 
@@ -109,51 +114,327 @@ The trained model undergoes rigorous evaluation to assess:
 - Generalization capabilities.
 - Potential overfitting or underfitting issues.
 
-## Tools and Technologies
 
-The project leverages several tools to ensure robustness and reproducibility:
+---
 
-- **MLflow**: Manages the ML lifecycle, including experimentation, reproducibility, and deployment.
-- **Weights & Biases (W&B)**: Tracks experiments, visualizes performance metrics, and manages artifacts.
-- **Hydra**: Handles configuration management, enabling dynamic parameter tuning.
-- **Conda**: Manages project environments and dependencies.
-- **Scikit-Learn**: Provides machine learning algorithms and utilities.
-- **Pandas**: Facilitates data manipulation and analysis.
+## Setting Up the Environment
 
-## Running the Pipeline
+We rely on two environment files:
 
-To execute the pipeline:
+1. **`environment.yml`**: Sets up the main environment (`nyc_airbnb_dev`) with Python 3.10, Hydra, Jupyter, and crucial Python packages (MLflow, W&B, ydata-profiling, etc.).  
+2. **`conda.yml`** (in various subfolders): Each step can be run in a mini environment with the dependencies it needs.
 
-1. **Set Up the Environment**:
-   - Create and activate the conda environment:
-     ```bash
-     conda env create -f environment.yml
-     conda activate nyc_airbnb_dev
-     ```
+**To install**:
 
-2. **Configure Weights & Biases**:
-   - Log in to W&B:
-     ```bash
-     wandb login YOUR_API_KEY
-     ```
+```bash
+conda env create -f environment.yml
+conda activate nyc_airbnb_dev
+wandb login [your_API_key]
+```
 
-3. **Run the Pipeline**:
-   - Execute the entire pipeline:
-     ```bash
-     mlflow run .
-     ```
-   - To run specific steps:
-     ```bash
-     mlflow run . -P steps=download,basic_cleaning
-     ```
-   - Override configuration parameters as needed:
-     ```bash
-     mlflow run . -P hydra_options="modeling.random_forest.n_estimators=100 etl.min_price=50"
-     ```
+After this, you can run:
+
+```bash
+mlflow run . 
+```
+
+MLflow will pick up the `MLproject` file in the root directory and execute `main.py`.
+
+---
+
+## Pipeline Steps
+
+### Step 1: Downloading the Data
+
+The code for **downloading data** is stored in `components/get_data`. We keep a couple of sample CSVs in `data/` that stand in for a real-world dataset. This step simply logs an artifact to W&B.
+
+**Code Snippet** from `components/get_data/run.py`
+
+```python
+def go(args):
+    run = wandb.init(job_type="download_file")
+    run.config.update(args)
+
+    log_artifact(
+        args.artifact_name,
+        args.artifact_type,
+        args.artifact_description,
+        os.path.join("data", args.sample),
+        run,
+    )
+```
+
+To run just the download step:
+
+```bash
+mlflow run . -P steps=download
+```
+
+### Step 2: Exploratory Data Analysis
+
+We have an **EDA** folder (`src/eda`). It contains a `EDA.ipynb` notebook, which uses **ydata-profiling** for generating a quick profile report of the dataset. The snippet below shows how we generate an HTML report and log it to W&B.
+
+**Code Snippet** from `src/eda/EDA.ipynb`
+
+```python
+import ydata_profiling
+profile = ydata_profiling.ProfileReport(df)
+profile.to_file("profile-report.html")
+artifact = wandb.Artifact(
+    name="profile-report.html", 
+    type="analysis", 
+    description="Report from ydata-profiling"
+)
+artifact.add_file("profile-report.html")
+run.log_artifact(artifact)
+```
+
+We also create various plots (like price distribution) and attempt to remove obvious outliers (price `<10` or `>350`) to get a more reasonable dataset.  
+
+**Key Observations**:  
+- **Some columns** like `last_review` and `reviews_per_month` can have many missing values.  
+- The distribution of `price` is highly skewed.  
+- We remove out-of-bound lat/long values that are not within the known NYC boundaries.  
+
+### Step 3: Basic Data Cleaning
+
+A dedicated step in `src/basic_cleaning/` cleans the data after EDA reveals certain constraints.
+
+We used **Cookiecutter** to generate the skeleton for this step and then filled in the logic. The `run.py` file:
+
+```bash
+mlflow run . -P steps=basic_cleaning
+```
+
+**Core snippet** from `src/basic_cleaning/run.py`:
+
+```python
+df = df.drop_duplicates().reset_index(drop=True)
+idx = df['price'].between(args.min_price, args.max_price)
+df = df[idx].copy()
+idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+df = df[idx].copy()
+
+# Log the cleaned CSV as W&B artifact
+artifact = wandb.Artifact(
+    name=args.output_artifact,
+    type=args.output_type,
+    description=args.output_description,
+)
+artifact.add_file(fp.name)
+run.log_artifact(artifact)
+```
+
+It:  
+1. Drops duplicates.  
+2. Filters out out-of-range prices.  
+3. Ensures lat/long within valid NYC boundary.  
+4. Logs the cleaned dataset to W&B.
+
+### Step 4: Data Tests & Validation
+
+We follow the concept of **Data Testing** to guard against “data pipeline rot.” The step is in `src/data_check/`. It uses `pytest` tests to verify that the cleaned data:
+
+- Has valid column names.
+- Falls within expected lat/long boundaries.
+- Contains only known neighborhoods.
+- Distributes similarly to a reference dataset (via KL divergence).
+- Respects a minimum and maximum price range.
+
+A snippet of the test suite from `src/data_check/test_data.py`:
+
+```python
+def test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_threshold: float):
+    dist1 = data['neighbourhood_group'].value_counts().sort_index()
+    dist2 = ref_data['neighbourhood_group'].value_counts().sort_index()
+    assert scipy.stats.entropy(dist1, dist2, base=2) < kl_threshold
+```
+
+**To run**:
+
+```bash
+mlflow run . -P steps=data_check
+```
+
+Any mismatches or anomalies raise an exception that stops the pipeline, keeping you from training on “bad” data.
+
+### Step 5: Train-Validation-Test Split
+
+We then **split** our dataset into training, validation, and test sets (the last set is strictly for final model testing). The relevant code is in `components/train_val_test_split/`.
+
+**Code Snippet** from `components/train_val_test_split/run.py`
+
+```python
+trainval, test = train_test_split(
+    df,
+    test_size=args.test_size,
+    random_state=args.random_seed,
+    stratify=df[args.stratify_by] if args.stratify_by != 'none' else None,
+)
+```
+
+Both the **training/validation** split (“trainval_data.csv”) and the **test** split (“test_data.csv”) are then logged to W&B.
+
+### Step 6: Model Training with Random Forest
+
+With a clean train-validation dataset, we build a random forest pipeline in `src/train_random_forest/run.py`. This step is heavily reliant on Hydra for configuration. We define parameters like `max_depth`, `n_estimators`, etc., in `config.yaml`.
+
+Here’s a highlight from `run.py`:
+
+```python
+def get_inference_pipeline(rf_config, max_tfidf_features):
+    ordinal_categorical = ["room_type"]
+    non_ordinal_categorical = ["neighbourhood_group"]
+    
+    ordinal_categorical_preproc = OrdinalEncoder()
+    non_ordinal_categorical_preproc = Pipeline([
+        ("impute", SimpleImputer(strategy="most_frequent")),
+        ("encode", OneHotEncoder())
+    ])
+    ...
+    random_forest = RandomForestRegressor(**rf_config)
+    sk_pipe = Pipeline([
+        ("preprocessor", preprocessor),
+        ("random_forest", random_forest),
+    ])
+    return sk_pipe, processed_features
+```
+
+In this pipeline, we handle:  
+- **Categorical** columns (`OrdinalEncoder` or `OneHotEncoder`).  
+- **Numerical** columns (imputation for missing values).  
+- **NLP** on the `name` field using a TF-IDF vectorizer.  
+
+We train and evaluate on a *validation set*, logging all metrics (MAE, R^2) to W&B. Finally, the pipeline (preprocessing + model) is saved to MLflow format and uploaded to W&B as an artifact:
+
+```python
+mlflow.sklearn.save_model(
+    sk_pipe,
+    export_path,
+    serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,
+    signature=sig,
+    input_example=X_val[processed_features].iloc[:2]
+)
+```
+
+By storing the entire pipeline, we can apply transformations consistently at inference time.
+
+To run the model training step:
+
+```bash
+mlflow run . -P steps=train_random_forest
+```
+
+### Step 7: Model Testing & Promotion
+
+Lastly, we evaluate our finalized model against the **test set**. The code is in `components/test_regression_model/run.py`. It:
+
+1. Downloads the `prod` model artifact from W&B.  
+2. Loads the test dataset.  
+3. Generates predictions and calculates R^2 and MAE.  
+4. Logs test performance to W&B.
+
+```python
+def go(args):
+    sk_pipe = mlflow.sklearn.load_model(model_local_path)
+    y_pred = sk_pipe.predict(X_test)
+    r_squared = sk_pipe.score(X_test, y_test)
+    mae = mean_absolute_error(y_test, y_pred)
+
+    run.summary['r2'] = r_squared
+    run.summary['mae'] = mae
+```
+
+You only run this step **after** a model has been tagged for production, ensuring it has proven to be stable in dev/validation.
+
+---
+
+## Putting It All Together: `main.py`
+
+The **`main.py`** script orchestrates the entire flow. It reads **`config.yaml`** via Hydra and decides which steps to run based on a comma-separated list. A minimal snippet:
+
+```python
+_steps = [
+    "download",
+    "basic_cleaning",
+    "data_check",
+    "data_split",
+    "train_random_forest",
+    # "test_regression_model" is triggered separately
+]
+
+@hydra.main(config_name='config')
+def go(config: DictConfig):
+
+    steps_par = config['main']['steps']
+    active_steps = steps_par.split(",") if steps_par != "all" else _steps
+
+    if "download" in active_steps:
+        mlflow.run(
+            f"{config['main']['components_repository']}/get_data",
+            ...
+        )
+
+    if "basic_cleaning" in active_steps:
+        mlflow.run(
+            os.path.join(hydra.utils.get_original_cwd(), "src", "basic_cleaning"),
+            ...
+        )
+
+    ...
+```
+
+To execute the entire pipeline:
+
+```bash
+mlflow run . 
+```
+
+Or pick and choose steps:
+
+```bash
+mlflow run . -P steps=download,basic_cleaning,data_check
+```
+
+---
+
+## Using Cookiecutter for Quick Pipeline Steps
+
+One of the repository’s highlights is the **`cookie-mlflow-step`** folder, which speeds up adding new steps to the pipeline:
+
+```bash
+cookiecutter cookie-mlflow-step -o src
+```
+
+It scaffolds a new directory structure containing an `MLproject`, `conda.yml`, and a `run.py` pre-populated with arguments. This is helpful for consistent, standardized pipeline steps where each step is an MLflow project.
+
+---
+
+## Deployment and Workflow
+
+- **CI/CD**: The `.github/workflows/manual.yml` shows how a manual GH Action can create Jira tickets for new Pull Requests.  
+- **Release**: Tagging your repo with a version number (e.g., `1.0.0`) allows you to run the pipeline from a specific commit. For instance:
+  ```bash
+  mlflow run https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices.git \
+    -v 1.0.0 \
+    -P hydra_options="etl.sample='sample2.csv'"
+  ```
+- **Artifact Logging**: W&B captures every CSV and model artifact, so future steps or collaborators can trace lineage and retrieve them easily.
+
+---
 
 ## Conclusion
 
-This project demonstrates the development of a scalable and reproducible ML pipeline for predicting short-term rental prices in NYC. By modularizing each step and leveraging robust tools, the pipeline ensures efficient retraining and deployment, accommodating the dynamic nature of the rental market.
+This repository combines **Hydra** for flexible configuration, **MLflow** for pipeline orchestration, and **Weights & Biases** for experiment tracking to create a fully reproducible short-term rental price prediction pipeline in NYC. 
+
+**Key Takeaways**:
+
+- **Data integrity**: By integrating data validation tests, the pipeline can fail early if data is incorrect.  
+- **Reproducible training**: Using Hydra, MLflow, and environment files ensures consistent environments and parameter definitions.  
+- **Full pipeline tracking**: From EDA to final test, each artifact is logged to W&B, making it easy to revert or compare different runs.  
+- **Extensibility**: The cookiecutter approach helps you quickly add new pipeline steps or replicate the same pipeline structure in other projects.
+
+Feel free to explore the code base, and don’t hesitate to experiment by customizing steps or hyperparameters. By following this pipeline, you can keep your machine learning workflow tidy, versioned, and production-ready.
 
 For a detailed walkthrough and access to the codebase, visit the [GitHub repository](https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices).
 
