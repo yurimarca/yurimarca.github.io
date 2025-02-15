@@ -2,7 +2,7 @@
 title: "👋 Hi there, I'm Yuri Marca"
 image: profile.jpg
 about:
-  template: solana
+  template: jolla
   image-width: 20em
   image-shape: round
   links:
@@ -27,23 +27,23 @@ With a strong statistical analysis and optimization foundation, I am particularl
 ## 🛠️ Technical Expertise
 
 
-- **Operating Systems:** 
+- **Operating Systems:**
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="20px"> Linux (Fedora, Ubuntu),
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" height="20px"> Windows.
 
 
-- **Programming Languages**: 
+- **Programming Languages**:
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="20px"> Python,
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" height="20px"> C,
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" height="20px"> C++,
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-plain.svg" height="20px"> Bash (Unix Shell).
 
-- **Machine Learning Frameworks:** 
+- **Machine Learning Frameworks:**
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" height="20px"> PyTorch,
   <img src="https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/doc/logos/scikit-learn-logo-small.png" height="20px"> scikit-learn,
   <img src="https://raw.githubusercontent.com/dmlc/dmlc.github.io/master/img/logo-m/xgboost.png" height="20px"> XGBoost, FastAI.
 
-- **MLOps & Deployment Tools:** 
+- **MLOps & Deployment Tools:**
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height="20px"> Docker,
   <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Mlflow_logo.png" height="20px"> MLflow,
   <img src="https://raw.githubusercontent.com/facebookresearch/hydra/main/website/static/img/hydra_head_color_small.png" height="20px"> Hydra,
@@ -51,12 +51,12 @@ With a strong statistical analysis and optimization foundation, I am particularl
   <img src="https://cdn-icons-png.flaticon.com/512/6062/6062646.png" height="20px"> CI/CD (GitLab, GitHub Actions), 
   <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" height="20px"> **FastAPI**.
 
-- **Data Engineering & Pipelines:** 
+- **Data Engineering & Pipelines:**
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" height="20px"> NumPy,
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" height="20px"> Pandas,<img src="https://docs.dask.org/en/stable/_images/dask_horizontal.svg" height="20px"> Dask, 
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="20px"> PostgreSQL, Redshift, InfluxDB.
 
-- **Cloud Platforms:** 
+- **Cloud Platforms:**
   <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="20px"> **AWS**,
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" height="20px"> DigitalOcean.
 
