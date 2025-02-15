@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Yuri Marca">
 <meta name="dcterms.date" content="2025-02-09">
 <meta name="description" content="Project development is part of the MLOps course from Udacity">
 
@@ -74,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-df418981c34360f9120995b3f214f13a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c37a40b267d3139d93432c283e34c257.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -173,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project Overview</a></li>
   <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure">Repository Structure</a></li>
-  <li><a href="#key-components" id="toc-key-components" class="nav-link" data-scroll-target="#key-components">Key Components</a>
+  <li><a href="#pipeline-components" id="toc-pipeline-components" class="nav-link" data-scroll-target="#pipeline-components">Pipeline Components</a>
   <ul class="collapse">
   <li><a href="#data-ingestion-get_data" id="toc-data-ingestion-get_data" class="nav-link" data-scroll-target="#data-ingestion-get_data">1. Data Ingestion (<code>get_data</code>)</a></li>
   <li><a href="#data-cleaning-basic_cleaning" id="toc-data-cleaning-basic_cleaning" class="nav-link" data-scroll-target="#data-cleaning-basic_cleaning">2. Data Cleaning (<code>basic_cleaning</code>)</a></li>
@@ -181,11 +182,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-validation-data_check" id="toc-data-validation-data_check" class="nav-link" data-scroll-target="#data-validation-data_check">4. Data Validation (<code>data_check</code>)</a></li>
   <li><a href="#data-splitting-train_val_test_split" id="toc-data-splitting-train_val_test_split" class="nav-link" data-scroll-target="#data-splitting-train_val_test_split">5. Data Splitting (<code>train_val_test_split</code>)</a></li>
   <li><a href="#model-training-train_random_forest" id="toc-model-training-train_random_forest" class="nav-link" data-scroll-target="#model-training-train_random_forest">6. Model Training (<code>train_random_forest</code>)</a></li>
-  <li><a href="#hyperparameter-optimization" id="toc-hyperparameter-optimization" class="nav-link" data-scroll-target="#hyperparameter-optimization">7. Hyperparameter Optimization</a></li>
   <li><a href="#model-evaluation-test_regression_model" id="toc-model-evaluation-test_regression_model" class="nav-link" data-scroll-target="#model-evaluation-test_regression_model">8. Model Evaluation (<code>test_regression_model</code>)</a></li>
   </ul></li>
-  <li><a href="#tools-and-technologies" id="toc-tools-and-technologies" class="nav-link" data-scroll-target="#tools-and-technologies">Tools and Technologies</a></li>
-  <li><a href="#running-the-pipeline" id="toc-running-the-pipeline" class="nav-link" data-scroll-target="#running-the-pipeline">Running the Pipeline</a></li>
+  <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link" data-scroll-target="#setting-up-the-environment">Setting Up the Environment</a></li>
+  <li><a href="#pipeline-steps" id="toc-pipeline-steps" class="nav-link" data-scroll-target="#pipeline-steps">Pipeline Steps</a>
+  <ul class="collapse">
+  <li><a href="#step-1-downloading-the-data" id="toc-step-1-downloading-the-data" class="nav-link" data-scroll-target="#step-1-downloading-the-data">Step 1: Downloading the Data</a></li>
+  <li><a href="#step-2-exploratory-data-analysis" id="toc-step-2-exploratory-data-analysis" class="nav-link" data-scroll-target="#step-2-exploratory-data-analysis">Step 2: Exploratory Data Analysis</a></li>
+  <li><a href="#step-3-basic-data-cleaning" id="toc-step-3-basic-data-cleaning" class="nav-link" data-scroll-target="#step-3-basic-data-cleaning">Step 3: Basic Data Cleaning</a></li>
+  <li><a href="#step-4-data-tests-validation" id="toc-step-4-data-tests-validation" class="nav-link" data-scroll-target="#step-4-data-tests-validation">Step 4: Data Tests &amp; Validation</a></li>
+  <li><a href="#step-5-train-validation-test-split" id="toc-step-5-train-validation-test-split" class="nav-link" data-scroll-target="#step-5-train-validation-test-split">Step 5: Train-Validation-Test Split</a></li>
+  <li><a href="#step-6-model-training-with-random-forest" id="toc-step-6-model-training-with-random-forest" class="nav-link" data-scroll-target="#step-6-model-training-with-random-forest">Step 6: Model Training with Random Forest</a></li>
+  <li><a href="#step-7-model-testing-promotion" id="toc-step-7-model-testing-promotion" class="nav-link" data-scroll-target="#step-7-model-testing-promotion">Step 7: Model Testing &amp; Promotion</a></li>
+  </ul></li>
+  <li><a href="#putting-it-all-together-main.py" id="toc-putting-it-all-together-main.py" class="nav-link" data-scroll-target="#putting-it-all-together-main.py">Putting It All Together: <code>main.py</code></a></li>
+  <li><a href="#using-cookiecutter-for-quick-pipeline-steps" id="toc-using-cookiecutter-for-quick-pipeline-steps" class="nav-link" data-scroll-target="#using-cookiecutter-for-quick-pipeline-steps">Using Cookiecutter for Quick Pipeline Steps</a></li>
+  <li><a href="#deployment-and-workflow" id="toc-deployment-and-workflow" class="nav-link" data-scroll-target="#deployment-and-workflow">Deployment and Workflow</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
@@ -216,6 +228,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yuri Marca </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -234,21 +252,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="building-an-end-to-end-machine-learning-pipeline-for-short-term-rental-price-prediction" class="level1">
 <h1>Building an End-to-End Machine Learning Pipeline for Short-Term Rental Price Prediction</h1>
-<p>In the dynamic world of short-term property rentals, accurately predicting rental prices is crucial for maximizing occupancy and revenue. To address this challenge, I developed a comprehensive, reproducible Machine Learning (ML) pipeline tailored for short-term rental price prediction in New York City (NYC). This project emphasizes modularity, scalability, and ease of retraining to accommodate the ever-evolving rental market.</p>
+<p>In the dynamic world of short-term property rentals, accurately predicting rental prices is crucial for maximizing occupancy and revenue. To address this challenge, I developed a comprehensive, reproducible Machine Learning (ML) pipeline tailored for short-term rental price prediction in New York City (NYC) based on Airbnb data. We walk through data collection, cleaning, validation, splitting, training a random forest model, testing the model, and logging every artifact and result in a reproducible manner. This blog post focus on the usage of <strong>MLflow</strong>, <strong>Weights &amp; Biases (W&amp;B)</strong>, and <strong>Hydra</strong> for orchestration, tracking, and hyperparameter optimization, as these are taught in the Udacity MLOps Nanodegree program.</p>
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>The primary goal of this project is to construct an end-to-end ML pipeline capable of:</p>
+<p>Short-term rental platforms like Airbnb collect vast amounts of data from hosts and guests. A host often asks: <em>What price should I set for my listing to optimize occupancy and revenue?</em> This project aims to solve that by building an end-to-end ML pipeline to predict a short-term rental’s price given various features such as location, room type, and number of reviews.</p>
 <ul>
-<li><strong>Data Ingestion</strong>: Collecting and storing raw rental data.</li>
-<li><strong>Data Cleaning</strong>: Processing the data to handle missing values, outliers, and inconsistencies.</li>
-<li><strong>Exploratory Data Analysis (EDA)</strong>: Gaining insights into data distributions and relationships.</li>
-<li><strong>Data Validation</strong>: Ensuring data quality and integrity.</li>
-<li><strong>Data Splitting</strong>: Partitioning data into training, validation, and test sets.</li>
-<li><strong>Model Training</strong>: Building a predictive model using algorithms like Random Forest.</li>
-<li><strong>Hyperparameter Optimization</strong>: Fine-tuning model parameters for optimal performance.</li>
-<li><strong>Model Evaluation</strong>: Assessing model accuracy and generalization capabilities.</li>
-<li><strong>Deployment</strong>: Preparing the model for production use.</li>
+<li><strong>Focus</strong>: Clean, reproducible, and easily re-runnable pipeline.</li>
+<li><strong>Tools</strong>: MLflow for orchestration, Hydra for configuration, Weights &amp; Biases to log artifacts and metrics, and scikit-learn for model training.</li>
+<li><strong>Additional</strong>: ydata-profiling for EDA, custom data checks to prevent “data drift,” and a templated approach to add new steps using a cookiecutter MLflow step.</li>
 </ul>
+<p>The entire pipeline is tracked under a W&amp;B project to enable experiment tracking and artifact storage. <a href="https://wandb.ai/yurimarca-ai/nyc_airbnb/">Here</a> is the link for the completed project in W&amp;B.</p>
 </section>
 <section id="repository-structure" class="level2">
 <h2 class="anchored" data-anchor-id="repository-structure">Repository Structure</h2>
@@ -272,9 +285,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── main.py                      # Main script to run the pipeline
 ├── MLproject                    # MLflow project specification
 └── README.md                    # Project documentation</code></pre>
+<p>Key folders:</p>
+<ul>
+<li><strong><code>components/</code></strong>: Reusable MLflow components for tasks like data downloading, data splitting, and model testing.<br>
+</li>
+<li><strong><code>src/</code></strong>: Specific pipeline steps, including EDA (<code>eda</code>), data cleaning (<code>basic_cleaning</code>), data checks (<code>data_check</code>), and training a random forest (<code>train_random_forest</code>).<br>
+</li>
+<li><strong><code>cookie-mlflow-step/</code></strong>: A cookiecutter template that quickly scaffolds new MLflow pipeline steps.<br>
+</li>
+<li><strong><code>main.py</code></strong>: The orchestrator that references each step through Hydra configuration.<br>
+</li>
+<li><strong><code>MLproject</code></strong>: Defines how MLflow runs the pipeline, specifying entry points and environment details.</li>
+</ul>
 </section>
-<section id="key-components" class="level2">
-<h2 class="anchored" data-anchor-id="key-components">Key Components</h2>
+<section id="pipeline-components" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-components">Pipeline Components</h2>
 <section id="data-ingestion-get_data" class="level3">
 <h3 class="anchored" data-anchor-id="data-ingestion-get_data">1. Data Ingestion (<code>get_data</code>)</h3>
 <p>This module handles the retrieval of raw data, ensuring it’s stored in a structured format suitable for downstream processing. It interfaces with data sources, downloads datasets, and logs them as artifacts for version control.</p>
@@ -325,10 +350,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Saving the trained model artifact for evaluation and deployment.</li>
 </ul>
 </section>
-<section id="hyperparameter-optimization" class="level3">
-<h3 class="anchored" data-anchor-id="hyperparameter-optimization">7. Hyperparameter Optimization</h3>
-<p>To enhance model performance, hyperparameters are fine-tuned using techniques such as grid search or random search, aiming to identify the optimal parameter combinations.</p>
-</section>
 <section id="model-evaluation-test_regression_model" class="level3">
 <h3 class="anchored" data-anchor-id="model-evaluation-test_regression_model">8. Model Evaluation (<code>test_regression_model</code>)</h3>
 <p>The trained model undergoes rigorous evaluation to assess:</p>
@@ -337,49 +358,254 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Generalization capabilities.</li>
 <li>Potential overfitting or underfitting issues.</li>
 </ul>
+<hr>
 </section>
 </section>
-<section id="tools-and-technologies" class="level2">
-<h2 class="anchored" data-anchor-id="tools-and-technologies">Tools and Technologies</h2>
-<p>The project leverages several tools to ensure robustness and reproducibility:</p>
-<ul>
-<li><strong>MLflow</strong>: Manages the ML lifecycle, including experimentation, reproducibility, and deployment.</li>
-<li><strong>Weights &amp; Biases (W&amp;B)</strong>: Tracks experiments, visualizes performance metrics, and manages artifacts.</li>
-<li><strong>Hydra</strong>: Handles configuration management, enabling dynamic parameter tuning.</li>
-<li><strong>Conda</strong>: Manages project environments and dependencies.</li>
-<li><strong>Scikit-Learn</strong>: Provides machine learning algorithms and utilities.</li>
-<li><strong>Pandas</strong>: Facilitates data manipulation and analysis.</li>
-</ul>
-</section>
-<section id="running-the-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="running-the-pipeline">Running the Pipeline</h2>
-<p>To execute the pipeline:</p>
+<section id="setting-up-the-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-environment">Setting Up the Environment</h2>
+<p>We rely on two environment files:</p>
 <ol type="1">
-<li><strong>Set Up the Environment</strong>:
-<ul>
-<li><p>Create and activate the conda environment:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate nyc_airbnb_dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
-<li><strong>Configure Weights &amp; Biases</strong>:
-<ul>
-<li><p>Log in to W&amp;B:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wandb</span> login YOUR_API_KEY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
-<li><strong>Run the Pipeline</strong>:
-<ul>
-<li><p>Execute the entire pipeline:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>To run specific steps:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . <span class="at">-P</span> steps=download,basic_cleaning</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Override configuration parameters as needed:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . <span class="at">-P</span> hydra_options=<span class="st">"modeling.random_forest.n_estimators=100 etl.min_price=50"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
+<li><strong><code>environment.yml</code></strong>: Sets up the main environment (<code>nyc_airbnb_dev</code>) with Python 3.10, Hydra, Jupyter, and crucial Python packages (MLflow, W&amp;B, ydata-profiling, etc.).<br>
+</li>
+<li><strong><code>conda.yml</code></strong> (in various subfolders): Each step can be run in a mini environment with the dependencies it needs.</li>
 </ol>
+<p><strong>To install</strong>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate nyc_airbnb_dev</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">wandb</span> login <span class="pp">[</span><span class="ss">your_API_key</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After this, you can run:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>MLflow will pick up the <code>MLproject</code> file in the root directory and execute <code>main.py</code>.</p>
+<hr>
+</section>
+<section id="pipeline-steps" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-steps">Pipeline Steps</h2>
+<section id="step-1-downloading-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-downloading-the-data">Step 1: Downloading the Data</h3>
+<p>The code for <strong>downloading data</strong> is stored in <code>components/get_data</code>. We keep a couple of sample CSVs in <code>data/</code> that stand in for a real-world dataset. This step simply logs an artifact to W&amp;B.</p>
+<p><strong>Code Snippet</strong> from <code>components/get_data/run.py</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> go(args):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    run <span class="op">=</span> wandb.init(job_type<span class="op">=</span><span class="st">"download_file"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    run.config.update(args)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    log_artifact(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        args.artifact_name,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        args.artifact_type,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        args.artifact_description,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        os.path.join(<span class="st">"data"</span>, args.sample),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        run,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To run just the download step:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . <span class="at">-P</span> steps=download</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-2-exploratory-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-exploratory-data-analysis">Step 2: Exploratory Data Analysis</h3>
+<p>We have an <strong>EDA</strong> folder (<code>src/eda</code>). It contains a <code>EDA.ipynb</code> notebook, which uses <strong>ydata-profiling</strong> for generating a quick profile report of the dataset. The snippet below shows how we generate an HTML report and log it to W&amp;B.</p>
+<p><strong>Code Snippet</strong> from <code>src/eda/EDA.ipynb</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ydata_profiling</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> ydata_profiling.ProfileReport(df)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>profile.to_file(<span class="st">"profile-report.html"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>artifact <span class="op">=</span> wandb.Artifact(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"profile-report.html"</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">type</span><span class="op">=</span><span class="st">"analysis"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"Report from ydata-profiling"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>artifact.add_file(<span class="st">"profile-report.html"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>run.log_artifact(artifact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We also create various plots (like price distribution) and attempt to remove obvious outliers (price <code>&lt;10</code> or <code>&gt;350</code>) to get a more reasonable dataset.</p>
+<p><strong>Key Observations</strong>:<br>
+- <strong>Some columns</strong> like <code>last_review</code> and <code>reviews_per_month</code> can have many missing values.<br>
+- The distribution of <code>price</code> is highly skewed.<br>
+- We remove out-of-bound lat/long values that are not within the known NYC boundaries.</p>
+</section>
+<section id="step-3-basic-data-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-basic-data-cleaning">Step 3: Basic Data Cleaning</h3>
+<p>A dedicated step in <code>src/basic_cleaning/</code> cleans the data after EDA reveals certain constraints.</p>
+<p>We used <strong>Cookiecutter</strong> to generate the skeleton for this step and then filled in the logic. The <code>run.py</code> file:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . <span class="at">-P</span> steps=basic_cleaning</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Core snippet</strong> from <code>src/basic_cleaning/run.py</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop_duplicates().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> df[<span class="st">'price'</span>].between(args.min_price, args.max_price)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[idx].copy()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> df[<span class="st">'longitude'</span>].between(<span class="op">-</span><span class="fl">74.25</span>, <span class="op">-</span><span class="fl">73.50</span>) <span class="op">&amp;</span> df[<span class="st">'latitude'</span>].between(<span class="fl">40.5</span>, <span class="fl">41.2</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[idx].copy()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Log the cleaned CSV as W&amp;B artifact</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>artifact <span class="op">=</span> wandb.Artifact(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span>args.output_artifact,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">type</span><span class="op">=</span>args.output_type,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span>args.output_description,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>artifact.add_file(fp.name)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>run.log_artifact(artifact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It:<br>
+1. Drops duplicates.<br>
+2. Filters out out-of-range prices.<br>
+3. Ensures lat/long within valid NYC boundary.<br>
+4. Logs the cleaned dataset to W&amp;B.</p>
+</section>
+<section id="step-4-data-tests-validation" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-data-tests-validation">Step 4: Data Tests &amp; Validation</h3>
+<p>We follow the concept of <strong>Data Testing</strong> to guard against “data pipeline rot.” The step is in <code>src/data_check/</code>. It uses <code>pytest</code> tests to verify that the cleaned data:</p>
+<ul>
+<li>Has valid column names.</li>
+<li>Falls within expected lat/long boundaries.</li>
+<li>Contains only known neighborhoods.</li>
+<li>Distributes similarly to a reference dataset (via KL divergence).</li>
+<li>Respects a minimum and maximum price range.</li>
+</ul>
+<p>A snippet of the test suite from <code>src/data_check/test_data.py</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_threshold: <span class="bu">float</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    dist1 <span class="op">=</span> data[<span class="st">'neighbourhood_group'</span>].value_counts().sort_index()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    dist2 <span class="op">=</span> ref_data[<span class="st">'neighbourhood_group'</span>].value_counts().sort_index()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> scipy.stats.entropy(dist1, dist2, base<span class="op">=</span><span class="dv">2</span>) <span class="op">&lt;</span> kl_threshold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>To run</strong>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . <span class="at">-P</span> steps=data_check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Any mismatches or anomalies raise an exception that stops the pipeline, keeping you from training on “bad” data.</p>
+</section>
+<section id="step-5-train-validation-test-split" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-train-validation-test-split">Step 5: Train-Validation-Test Split</h3>
+<p>We then <strong>split</strong> our dataset into training, validation, and test sets (the last set is strictly for final model testing). The relevant code is in <code>components/train_val_test_split/</code>.</p>
+<p><strong>Code Snippet</strong> from <code>components/train_val_test_split/run.py</code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>trainval, test <span class="op">=</span> train_test_split(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    df,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    test_size<span class="op">=</span>args.test_size,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span>args.random_seed,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    stratify<span class="op">=</span>df[args.stratify_by] <span class="cf">if</span> args.stratify_by <span class="op">!=</span> <span class="st">'none'</span> <span class="cf">else</span> <span class="va">None</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Both the <strong>training/validation</strong> split (“trainval_data.csv”) and the <strong>test</strong> split (“test_data.csv”) are then logged to W&amp;B.</p>
+</section>
+<section id="step-6-model-training-with-random-forest" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-model-training-with-random-forest">Step 6: Model Training with Random Forest</h3>
+<p>With a clean train-validation dataset, we build a random forest pipeline in <code>src/train_random_forest/run.py</code>. This step is heavily reliant on Hydra for configuration. We define parameters like <code>max_depth</code>, <code>n_estimators</code>, etc., in <code>config.yaml</code>.</p>
+<p>Here’s a highlight from <code>run.py</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_inference_pipeline(rf_config, max_tfidf_features):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ordinal_categorical <span class="op">=</span> [<span class="st">"room_type"</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    non_ordinal_categorical <span class="op">=</span> [<span class="st">"neighbourhood_group"</span>]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    ordinal_categorical_preproc <span class="op">=</span> OrdinalEncoder()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    non_ordinal_categorical_preproc <span class="op">=</span> Pipeline([</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">"most_frequent"</span>)),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"encode"</span>, OneHotEncoder())</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    random_forest <span class="op">=</span> RandomForestRegressor(<span class="op">**</span>rf_config)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    sk_pipe <span class="op">=</span> Pipeline([</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"preprocessor"</span>, preprocessor),</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"random_forest"</span>, random_forest),</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sk_pipe, processed_features</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this pipeline, we handle:<br>
+- <strong>Categorical</strong> columns (<code>OrdinalEncoder</code> or <code>OneHotEncoder</code>).<br>
+- <strong>Numerical</strong> columns (imputation for missing values).<br>
+- <strong>NLP</strong> on the <code>name</code> field using a TF-IDF vectorizer.</p>
+<p>We train and evaluate on a <em>validation set</em>, logging all metrics (MAE, R^2) to W&amp;B. Finally, the pipeline (preprocessing + model) is saved to MLflow format and uploaded to W&amp;B as an artifact:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mlflow.sklearn.save_model(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    sk_pipe,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    export_path,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    serialization_format<span class="op">=</span>mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    signature<span class="op">=</span>sig,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    input_example<span class="op">=</span>X_val[processed_features].iloc[:<span class="dv">2</span>]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By storing the entire pipeline, we can apply transformations consistently at inference time.</p>
+<p>To run the model training step:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . <span class="at">-P</span> steps=train_random_forest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-7-model-testing-promotion" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-model-testing-promotion">Step 7: Model Testing &amp; Promotion</h3>
+<p>Lastly, we evaluate our finalized model against the <strong>test set</strong>. The code is in <code>components/test_regression_model/run.py</code>. It:</p>
+<ol type="1">
+<li>Downloads the <code>prod</code> model artifact from W&amp;B.<br>
+</li>
+<li>Loads the test dataset.<br>
+</li>
+<li>Generates predictions and calculates R^2 and MAE.<br>
+</li>
+<li>Logs test performance to W&amp;B.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> go(args):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    sk_pipe <span class="op">=</span> mlflow.sklearn.load_model(model_local_path)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> sk_pipe.predict(X_test)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    r_squared <span class="op">=</span> sk_pipe.score(X_test, y_test)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    mae <span class="op">=</span> mean_absolute_error(y_test, y_pred)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    run.summary[<span class="st">'r2'</span>] <span class="op">=</span> r_squared</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    run.summary[<span class="st">'mae'</span>] <span class="op">=</span> mae</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You only run this step <strong>after</strong> a model has been tagged for production, ensuring it has proven to be stable in dev/validation.</p>
+<hr>
+</section>
+</section>
+<section id="putting-it-all-together-main.py" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-all-together-main.py">Putting It All Together: <code>main.py</code></h2>
+<p>The <strong><code>main.py</code></strong> script orchestrates the entire flow. It reads <strong><code>config.yaml</code></strong> via Hydra and decides which steps to run based on a comma-separated list. A minimal snippet:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>_steps <span class="op">=</span> [</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"download"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"basic_cleaning"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data_check"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data_split"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"train_random_forest"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "test_regression_model" is triggered separately</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="at">@hydra.main</span>(config_name<span class="op">=</span><span class="st">'config'</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> go(config: DictConfig):</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    steps_par <span class="op">=</span> config[<span class="st">'main'</span>][<span class="st">'steps'</span>]</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    active_steps <span class="op">=</span> steps_par.split(<span class="st">","</span>) <span class="cf">if</span> steps_par <span class="op">!=</span> <span class="st">"all"</span> <span class="cf">else</span> _steps</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"download"</span> <span class="kw">in</span> active_steps:</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        mlflow.run(</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"</span><span class="sc">{</span>config[<span class="st">'main'</span>][<span class="st">'components_repository'</span>]<span class="sc">}</span><span class="ss">/get_data"</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>            ...</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"basic_cleaning"</span> <span class="kw">in</span> active_steps:</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>        mlflow.run(</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>            os.path.join(hydra.utils.get_original_cwd(), <span class="st">"src"</span>, <span class="st">"basic_cleaning"</span>),</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>            ...</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To execute the entire pipeline:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or pick and choose steps:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run . <span class="at">-P</span> steps=download,basic_cleaning,data_check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="using-cookiecutter-for-quick-pipeline-steps" class="level2">
+<h2 class="anchored" data-anchor-id="using-cookiecutter-for-quick-pipeline-steps">Using Cookiecutter for Quick Pipeline Steps</h2>
+<p>One of the repository’s highlights is the <strong><code>cookie-mlflow-step</code></strong> folder, which speeds up adding new steps to the pipeline:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> cookie-mlflow-step <span class="at">-o</span> src</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It scaffolds a new directory structure containing an <code>MLproject</code>, <code>conda.yml</code>, and a <code>run.py</code> pre-populated with arguments. This is helpful for consistent, standardized pipeline steps where each step is an MLflow project.</p>
+<hr>
+</section>
+<section id="deployment-and-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-and-workflow">Deployment and Workflow</h2>
+<ul>
+<li><p><strong>CI/CD</strong>: The <code>.github/workflows/manual.yml</code> shows how a manual GH Action can create Jira tickets for new Pull Requests.<br>
+</p></li>
+<li><p><strong>Release</strong>: Tagging your repo with a version number (e.g., <code>1.0.0</code>) allows you to run the pipeline from a specific commit. For instance:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> run https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices.git <span class="dt">\</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-v</span> 1.0.0 <span class="dt">\</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-P</span> hydra_options=<span class="st">"etl.sample='sample2.csv'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Artifact Logging</strong>: W&amp;B captures every CSV and model artifact, so future steps or collaborators can trace lineage and retrieve them easily.</p></li>
+</ul>
+<hr>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>This project demonstrates the development of a scalable and reproducible ML pipeline for predicting short-term rental prices in NYC. By modularizing each step and leveraging robust tools, the pipeline ensures efficient retraining and deployment, accommodating the dynamic nature of the rental market.</p>
+<p>This repository combines <strong>Hydra</strong> for flexible configuration, <strong>MLflow</strong> for pipeline orchestration, and <strong>Weights &amp; Biases</strong> for experiment tracking to create a fully reproducible short-term rental price prediction pipeline in NYC.</p>
+<p><strong>Key Takeaways</strong>:</p>
+<ul>
+<li><strong>Data integrity</strong>: By integrating data validation tests, the pipeline can fail early if data is incorrect.<br>
+</li>
+<li><strong>Reproducible training</strong>: Using Hydra, MLflow, and environment files ensures consistent environments and parameter definitions.<br>
+</li>
+<li><strong>Full pipeline tracking</strong>: From EDA to final test, each artifact is logged to W&amp;B, making it easy to revert or compare different runs.<br>
+</li>
+<li><strong>Extensibility</strong>: The cookiecutter approach helps you quickly add new pipeline steps or replicate the same pipeline structure in other projects.</li>
+</ul>
+<p>Feel free to explore the code base, and don’t hesitate to experiment by customizing steps or hyperparameters. By following this pipeline, you can keep your machine learning workflow tidy, versioned, and production-ready.</p>
 <p>For a detailed walkthrough and access to the codebase, visit the <a href="https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices">GitHub repository</a>.</p>
 <p><em>Note: This project was developed as part of the Udacity MLOps Nanodegree program.</em></p>
 
