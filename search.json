@@ -200,7 +200,7 @@
     "href": "index.html#technical-expertise",
     "title": "👋 Hi there, I’m Yuri Marca",
     "section": "🛠️ Technical Expertise",
-    "text": "🛠️ Technical Expertise\n\nOperating Systems:  Linux (Fedora, Ubuntu),  Windows.\nProgramming Languages:  Python,  C,  C++,  Bash (Unix Shell).\nMachine Learning Frameworks:  PyTorch,  scikit-learn,  XGBoost, FastAI.\nMLOps & Deployment Tools:  Docker,  MLflow,  Hydra,  Git,  CI/CD (GitLab, GitHub Actions),  FastAPI.\nData Engineering & Pipelines:  NumPy,  Pandas, Dask,  PostgreSQL, Redshift, InfluxDB.\nCloud Platforms:  AWS,  DigitalOcean.\nOptimization: Bayesian Optimization, Multi-objective Evolutionary Algorithms."
+    "text": "🛠️ Technical Expertise\n\nOperating Systems:  Linux (Fedora, Ubuntu),  Windows.\nProgramming Languages:  Python,  C,  C++,  Bash (Unix Shell).\nMachine Learning Frameworks:  PyTorch,  scikit-learn,  XGBoost, FastAI.\nMLOps & Deployment Tools:  Docker, MLflow, Hydra,  Git,  CI/CD (GitLab, GitHub Actions),  FastAPI.\nData Engineering & Pipelines:  NumPy,  Pandas, Dask,  PostgreSQL, Redshift, InfluxDB.\nCloud Platforms:  AWS,  DigitalOcean.\nOptimization: Bayesian Optimization, Multi-objective Evolutionary Algorithms."
   },
   {
     "objectID": "index.html#projects",
