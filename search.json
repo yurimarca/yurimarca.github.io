@@ -95,7 +95,7 @@
     "href": "about.html#technical-expertise",
     "title": "About",
     "section": "Technical Expertise",
-    "text": "Technical Expertise\nProgramming Languages: Python, C, C++, R, Bash (Unix Shell)"
+    "text": "Technical Expertise\n\nOperating Systems:\n Linux (Fedora, Ubuntu),  Windows.\n\n\n\nProgramming Languages:\n Python,  C,  C++,  Bash (Unix Shell).\n\n\n\nMachine Learning Frameworks:\n PyTorch,  scikit-learn,  XGBoost, FastAI.\n\n\n\nMLOps & Deployment Tools:\n Docker,  MLflow,  Hydra,  Git,  CI/CD (GitLab, GitHub Actions),  FastAPI.\n\n\n\nData Engineering & Pipelines:\n NumPy,  Pandas, Dask,  PostgreSQL, Redshift, InfluxDB.\n\n\n\nCloud Platforms:\n AWS,  DigitalOcean.\n\n\n\nOptimization:\nBayesian Optimization, Multi-objective Evolutionary Algorithms."
   },
   {
     "objectID": "posts/end-to-end-ml-pipeline/end-to-end-ml-pipeline.html",
@@ -191,15 +191,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Welcome to My Personal Website",
+    "title": "Hello World!",
     "section": "",
-    "text": "I’m Yuri Marca, a data scientist passionate about machine learning, MLOps, and optimization.\nHere you’ll find my projects, blog posts, and more.\n\n\n\n\nTic-Tac-Toe MCTS: Monte Carlo Tree Search agent for Tic-Tac-Toe.\nEnd-to-end ML Pipeline: Project for Udacity MLOps course on building an end-to-end reproducible machine learning pipeline.\n\nFeel free to check out my GitHub for more projects!"
+    "text": "I am a Data Scientist with a strong background in machine learning, optimization, and MLOps, focused on developing scalable AI solutions and deploying models into production. I hold a Bachelor’s in Electronic Engineering and a Master’s in Information Systems, with international academic experience across Japan, the United Kingdom, and Canada. This diverse background has equipped me with strong analytical skills, the ability to quickly understand and implement state-of-the-art research, and a scientific approach to solving complex industry challenges.\nIn my industry experience, I have worked extensively with machine learning and deep learning frameworks to train and fine-tune models for predictive modeling, anomaly detection, and computer vision. My expertise in MLOps enables me to design and implement end-to-end pipelines that ensure reproducibility and scalability. Leveraging tools like MLflow, Docker, and cloud platforms like AWS and DigitalOcean, I have successfully deployed machine learning models and integrated them into production via API services.\nWith a strong statistical analysis and optimization foundation, I am particularly interested in Generative AI and LLMs, actively exploring their potential in real-world applications. I am eager to contribute to cutting-edge AI solutions and look forward to collaborating with professionals and organizations driving AI innovation in production environments.\n\n\n\n\nOperating Systems:  Linux (Fedora, Ubuntu),  Windows.\nProgramming Languages:  Python,  C,  C++,  Bash (Unix Shell).\nMachine Learning Frameworks:  PyTorch,  scikit-learn,  XGBoost, FastAI.\nMLOps & Deployment Tools:  Docker,  MLflow,  Hydra,  Git,  CI/CD (GitLab, GitHub Actions),  FastAPI.\nData Engineering & Pipelines:  NumPy,  Pandas, Dask,  PostgreSQL, Redshift, InfluxDB.\nCloud Platforms:  AWS,  DigitalOcean.\nOptimization: Bayesian Optimization, Multi-objective Evolutionary Algorithms.\n\n\n\n\n\n\nMusic Genre Classification: Built a machine learning model to classify music genres based on audio features.\nML Pipeline for Short-Term Rental Prices: Designed and implemented a full ML pipeline to predict short-term rental prices, integrating data ingestion, preprocessing, model training, and deployment using industry best practices.\nImage Description using OpenAI: Developed an image captioning model leveraging OpenAI’s API to generate meaningful descriptions for images.\nOCBA-MCTS: Reproduced results from the OCBA-MCTS paper, focusing on optimization in Monte Carlo Tree Search through Optimal Computing Budget Allocation algorithm."
+  },
+  {
+    "objectID": "index.html#technical-expertise",
+    "href": "index.html#technical-expertise",
+    "title": "Hello World!",
+    "section": "",
+    "text": "Operating Systems:  Linux (Fedora, Ubuntu),  Windows.\nProgramming Languages:  Python,  C,  C++,  Bash (Unix Shell).\nMachine Learning Frameworks:  PyTorch,  scikit-learn,  XGBoost, FastAI.\nMLOps & Deployment Tools:  Docker,  MLflow,  Hydra,  Git,  CI/CD (GitLab, GitHub Actions),  FastAPI.\nData Engineering & Pipelines:  NumPy,  Pandas, Dask,  PostgreSQL, Redshift, InfluxDB.\nCloud Platforms:  AWS,  DigitalOcean.\nOptimization: Bayesian Optimization, Multi-objective Evolutionary Algorithms."
   },
   {
     "objectID": "index.html#projects",
     "href": "index.html#projects",
-    "title": "Welcome to My Personal Website",
+    "title": "Hello World!",
     "section": "",
-    "text": "Tic-Tac-Toe MCTS: Monte Carlo Tree Search agent for Tic-Tac-Toe.\nEnd-to-end ML Pipeline: Project for Udacity MLOps course on building an end-to-end reproducible machine learning pipeline.\n\nFeel free to check out my GitHub for more projects!"
+    "text": "Music Genre Classification: Built a machine learning model to classify music genres based on audio features.\nML Pipeline for Short-Term Rental Prices: Designed and implemented a full ML pipeline to predict short-term rental prices, integrating data ingestion, preprocessing, model training, and deployment using industry best practices.\nImage Description using OpenAI: Developed an image captioning model leveraging OpenAI’s API to generate meaningful descriptions for images.\nOCBA-MCTS: Reproduced results from the OCBA-MCTS paper, focusing on optimization in Monte Carlo Tree Search through Optimal Computing Budget Allocation algorithm."
   }
 ]
