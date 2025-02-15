@@ -14,13 +14,12 @@ website:
         text: Home
       - href: blog.qmd
         text: Blog
-      - href: about.qmd
-        text: About
+
     right:
       - icon: github
         href: https://github.com/yurimarca
       - icon: linkedin
-        href: https://www.linkedin.com/in/yourprofile/
+        href: https://www.linkedin.com/in/yurimarca/
 
 format:
   html:

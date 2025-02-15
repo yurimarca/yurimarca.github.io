@@ -1,19 +1,74 @@
 ---
-title: ""
-format: html
+title: "Hello World!"
+image: profile.jpg
+about:
+  template: solana
+  image-width: 20em
+  image-shape: round
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/yurimarca/
+    - icon: github
+      text: Github
+      href: https://github.com/yurimarca
 ---
 
-# Welcome to My Personal Website
+# 👋 Hi there, I'm Yuri Marca
 
-I'm **Yuri Marca**, a data scientist passionate about machine learning, MLOps, and optimization.  
-Here you'll find my projects, blog posts, and more.
+I am a Data Scientist with a strong background in machine learning, optimization, and MLOps, focused on developing scalable AI solutions and deploying models into production. I hold a Bachelor’s in Electronic Engineering and a Master’s in Information Systems, with international academic experience across Japan, the United Kingdom, and Canada. This diverse background has equipped me with strong analytical skills, the ability to quickly understand and implement state-of-the-art research, and a scientific approach to solving complex industry challenges.
+
+In my industry experience, I have worked extensively with machine learning and deep learning frameworks to train and fine-tune models for predictive modeling, anomaly detection, and computer vision. My expertise in MLOps enables me to design and implement end-to-end pipelines that ensure reproducibility and scalability. Leveraging tools like MLflow, Docker, and cloud platforms like AWS and DigitalOcean, I have successfully deployed machine learning models and integrated them into production via API services.
+
+With a strong statistical analysis and optimization foundation, I am particularly interested in Generative AI and LLMs, actively exploring their potential in real-world applications. I am eager to contribute to cutting-edge AI solutions and look forward to collaborating with professionals and organizations driving AI innovation in production environments.
+
+---
+
+## 🛠️ Technical Expertise
+
+
+- **Operating Systems:** 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="20px"> Linux (Fedora, Ubuntu),
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" height="20px"> Windows.
+
+
+- **Programming Languages**: 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="20px"> Python,
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" height="20px"> C,
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" height="20px"> C++,
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-plain.svg" height="20px"> Bash (Unix Shell).
+
+- **Machine Learning Frameworks:** 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" height="20px"> PyTorch,
+  <img src="https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/doc/logos/scikit-learn-logo-small.png" height="20px"> scikit-learn,
+  <img src="https://raw.githubusercontent.com/dmlc/dmlc.github.io/master/img/logo-m/xgboost.png" height="20px"> XGBoost, FastAI.
+
+- **MLOps & Deployment Tools:** 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height="20px"> Docker,
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Mlflow_logo.png" height="20px"> MLflow,
+  <img src="https://raw.githubusercontent.com/facebookresearch/hydra/main/website/static/img/hydra_head_color_small.png" height="20px"> Hydra,
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="20px"> Git,
+  <img src="https://cdn-icons-png.flaticon.com/512/6062/6062646.png" height="20px"> CI/CD (GitLab, GitHub Actions), 
+  <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" height="20px"> **FastAPI**.
+
+- **Data Engineering & Pipelines:** 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" height="20px"> NumPy,
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" height="20px"> Pandas,<img src="https://docs.dask.org/en/stable/_images/dask_horizontal.svg" height="20px"> Dask, 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="20px"> PostgreSQL, Redshift, InfluxDB.
+
+- **Cloud Platforms:** 
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="20px"> **AWS**,
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" height="20px"> DigitalOcean.
+
+- **Optimization:**
+  Bayesian Optimization,  Multi-objective Evolutionary Algorithms.
 
 ---
 
 
-## Projects
+## 🌟 Projects
 
-- [**Tic-Tac-Toe MCTS**](https://github.com/yurimarca/ocba-mcts): Monte Carlo Tree Search agent for Tic-Tac-Toe.
-- [**End-to-end ML Pipeline**](https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices): Project for Udacity MLOps course on building an end-to-end reproducible machine learning pipeline.
-
-Feel free to check out my [GitHub](https://github.com/yurimarca) for more projects!
+- **[Music Genre Classification](https://github.com/yurimarca/music_genre_classification)**: Built a machine learning model to classify music genres based on audio features.
+- **[ML Pipeline for Short-Term Rental Prices](https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices)**: Designed and implemented a full ML pipeline to predict short-term rental prices, integrating data ingestion, preprocessing, model training, and deployment using industry best practices.
+- **[Image Description using OpenAI](https://github.com/yurimarca/image-description-openai)**: Developed an image captioning model leveraging OpenAI's API to generate meaningful descriptions for images.
+- **[OCBA-MCTS](https://github.com/yurimarca/ocba-mcts)**: Reproduced results from the OCBA-MCTS paper, focusing on optimization in Monte Carlo Tree Search through Optimal Computing Budget Allocation algorithm.
