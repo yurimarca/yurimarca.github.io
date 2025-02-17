@@ -107,10 +107,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Classify Time-Series Faults with Pytorch – Yuri’s Personal Website">
 <meta property="og:description" content="Preprocessing and MLP training to binary classification">
+<meta property="og:image" content="https://yurimarca.github.io/posts/classify-time-series-faults-pytorch/figures/ts-normal.png">
 <meta property="og:site_name" content="Yuri's Personal Website">
+<meta property="og:image:height" content="789">
+<meta property="og:image:width" content="1189">
 <meta name="twitter:title" content="Classify Time-Series Faults with Pytorch – Yuri’s Personal Website">
 <meta name="twitter:description" content="Preprocessing and MLP training to binary classification">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yurimarca.github.io/posts/classify-time-series-faults-pytorch/figures/ts-normal.png">
+<meta name="twitter:image-height" content="789">
+<meta name="twitter:image-width" content="1189">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -307,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate HTML report (ydata-profiling)</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> ProfileReport(normal_df, title<span class="op">=</span><span class="st">"Normal Data"</span>)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>profile.to_file(<span class="st">"normal_data_report.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The generated report (<code>normal_data_report.html</code>) quickly reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that <code>microphone</code> and <code>underhang_radiale</code> have high correlation, which could inform feature selection later.</p>
+<p>The generated report <a href="normal_data_report.html"><code>normal_data_report.html</code></a> quickly reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that <code>microphone</code> and <code>underhang_radiale</code> have high correlation, which could inform feature selection later.</p>
 </section>
 <section id="visualizing-time-series" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-time-series">Visualizing Time-Series</h3>
@@ -322,6 +328,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plot_timeseries(normal_df, columns<span class="op">=</span>normal_df.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/ts-normal.png" class="img-fluid figure-img"></p>
+<figcaption>ts-normal</figcaption>
+</figure>
+</div>
 <p>Observing a few thousand samples reveals distinct behaviors between normal and imbalance signals—often manifested in amplitude changes or new frequency components.</p>
 <hr>
 </section>
@@ -356,6 +368,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage:</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>normal_df <span class="op">=</span> downSampler(normal_df, <span class="dv">2500</span>)</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>normal_df <span class="op">=</span> rolling_mean_data(normal_df, window_size<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/ts-normal-rollingwindow.png" class="img-fluid figure-img"></p>
+<figcaption>ts-normal</figcaption>
+</figure>
+</div>
 <section id="t-sne-visualization-for-feature-separability" class="level3">
 <h3 class="anchored" data-anchor-id="t-sne-visualization-for-feature-separability">t-SNE Visualization for Feature Separability</h3>
 <p>After feature transformations, we often test whether the classes (normal vs.&nbsp;imbalance) are more distinguishable in a compressed 2D space using <strong>t-SNE</strong>. If t-SNE shows two visually separate clusters, it’s a good sign that your features are linearly or nonlinearly separable:</p>
@@ -374,7 +392,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    plt.scatter(tsne_results[:, <span class="dv">0</span>], tsne_results[:, <span class="dv">1</span>], c<span class="op">=</span>df[label_column], cmap<span class="op">=</span><span class="st">"viridis"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"t-SNE Visualization"</span>)</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The result is typically a scatter plot showing two distinct regions for normal vs.&nbsp;fault signals.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/t-sne.png" class="img-fluid figure-img"></p>
+<figcaption>ts-normal</figcaption>
+</figure>
+</div>
 <hr>
 </section>
 </section>
@@ -579,12 +602,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>metric<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>A typical output might look like:</p>
-<pre><code>Accuracy: 0.98
-F1-score: 0.97
-Precision: 0.99
-Recall: 0.95
-AUC-ROC: 0.98</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/evaluation_plot.png" class="img-fluid figure-img"></p>
+<figcaption>ts-normal</figcaption>
+</figure>
+</div>
 <p>Excellent performance, which suggests that even a relatively straightforward MLP can separate normal vs.&nbsp;imbalance classes well, thanks to feature engineering (downsampling + rolling mean).</p>
 <hr>
 </section>
