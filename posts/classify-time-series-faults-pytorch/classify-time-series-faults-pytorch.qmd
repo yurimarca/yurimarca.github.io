@@ -78,7 +78,7 @@ profile = ProfileReport(normal_df, title="Normal Data")
 profile.to_file("normal_data_report.html")
 ```
 
-The generated report (`normal_data_report.html`) quickly reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that `microphone` and `underhang_radiale` have high correlation, which could inform feature selection later.
+The generated report [`normal_data_report.html`](normal_data_report.html) quickly reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that `microphone` and `underhang_radiale` have high correlation, which could inform feature selection later.
 
 ### Visualizing Time-Series
 
@@ -96,6 +96,8 @@ def plot_timeseries(df, columns, n_samples=50000):
 
 plot_timeseries(normal_df, columns=normal_df.columns)
 ```
+
+![ts-normal](figures/ts-normal.png)
 
 Observing a few thousand samples reveals distinct behaviors between normal and imbalance signals—often manifested in amplitude changes or new frequency components.
 
@@ -134,6 +136,8 @@ normal_df = downSampler(normal_df, 2500)
 normal_df = rolling_mean_data(normal_df, window_size=100)
 ```
 
+![ts-normal](figures/ts-normal-rollingwindow.png)
+
 ### t-SNE Visualization for Feature Separability
 
 After feature transformations, we often test whether the classes (normal vs. imbalance) are more distinguishable in a compressed 2D space using **t-SNE**. If t-SNE shows two visually separate clusters, it’s a good sign that your features are linearly or nonlinearly separable:
@@ -156,7 +160,7 @@ def plot_tsne(df, label_column='label'):
     plt.show()
 ```
 
-The result is typically a scatter plot showing two distinct regions for normal vs. fault signals.
+![ts-normal](figures/t-sne.png)
 
 ---
 
@@ -377,15 +381,7 @@ def evaluate_model(model, test_loader, threshold=0.5):
     return metrics
 ```
 
-A typical output might look like:
-
-```
-Accuracy: 0.98
-F1-score: 0.97
-Precision: 0.99
-Recall: 0.95
-AUC-ROC: 0.98
-```
+![ts-normal](figures/evaluation_plot.png)
 
 Excellent performance, which suggests that even a relatively straightforward MLP can separate normal vs. imbalance classes well, thanks to feature engineering (downsampling + rolling mean).
 
