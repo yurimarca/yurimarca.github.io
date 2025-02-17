@@ -8,7 +8,7 @@
 
 <meta name="author" content="Yuri Marca">
 <meta name="dcterms.date" content="2025-02-16">
-<meta name="description" content="Preprocessing and MLP training to binary classification">
+<meta name="description" content="Preprocessing and MLP training to time-series data classification">
 
 <title>Classify Time-Series Faults with Pytorch – Yuri’s Personal Website</title>
 <style>
@@ -106,16 +106,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta property="og:title" content="Classify Time-Series Faults with Pytorch – Yuri’s Personal Website">
-<meta property="og:description" content="Preprocessing and MLP training to binary classification">
-<meta property="og:image" content="https://yurimarca.github.io/posts/classify-time-series-faults-pytorch/figures/ts-normal.png">
+<meta property="og:description" content="Preprocessing and MLP training to time-series data classification">
+<meta property="og:image" content="https://yurimarca.github.io/posts/classify-time-series-faults-pytorch/figures/mlp.png">
 <meta property="og:site_name" content="Yuri's Personal Website">
-<meta property="og:image:height" content="789">
-<meta property="og:image:width" content="1189">
+<meta property="og:image:height" content="656">
+<meta property="og:image:width" content="1028">
 <meta name="twitter:title" content="Classify Time-Series Faults with Pytorch – Yuri’s Personal Website">
-<meta name="twitter:description" content="Preprocessing and MLP training to binary classification">
-<meta name="twitter:image" content="https://yurimarca.github.io/posts/classify-time-series-faults-pytorch/figures/ts-normal.png">
-<meta name="twitter:image-height" content="789">
-<meta name="twitter:image-width" content="1189">
+<meta name="twitter:description" content="Preprocessing and MLP training to time-series data classification">
+<meta name="twitter:image" content="https://yurimarca.github.io/posts/classify-time-series-faults-pytorch/figures/mlp.png">
+<meta name="twitter:image-height" content="656">
+<meta name="twitter:image-width" content="1028">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -172,7 +172,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link active" data-scroll-target="#exploratory-data-analysis-eda">1. Exploratory Data Analysis (EDA)</a>
+  <li><a href="#classifying-time-series-faults-with-pytorch" id="toc-classifying-time-series-faults-with-pytorch" class="nav-link active" data-scroll-target="#classifying-time-series-faults-with-pytorch">Classifying Time-Series Faults with PyTorch</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda">1. Exploratory Data Analysis (EDA)</a>
   <ul class="collapse">
   <li><a href="#understanding-the-data" id="toc-understanding-the-data" class="nav-link" data-scroll-target="#understanding-the-data">Understanding the Data</a></li>
   <li><a href="#visualizing-time-series" id="toc-visualizing-time-series" class="nav-link" data-scroll-target="#visualizing-time-series">Visualizing Time-Series</a></li>
@@ -187,14 +189,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mlp-model-architecture" id="toc-mlp-model-architecture" class="nav-link" data-scroll-target="#mlp-model-architecture">3.2 MLP Model Architecture</a></li>
   <li><a href="#training-loop" id="toc-training-loop" class="nav-link" data-scroll-target="#training-loop">3.3 Training Loop</a></li>
   </ul></li>
-  <li><a href="#putting-it-all-together-in-main.py" id="toc-putting-it-all-together-in-main.py" class="nav-link" data-scroll-target="#putting-it-all-together-in-main.py">4. Putting It All Together in <code>main.py</code></a>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">4. Putting It All Together</a>
   <ul class="collapse">
   <li><a href="#evaluation-metrics" id="toc-evaluation-metrics" class="nav-link" data-scroll-target="#evaluation-metrics">Evaluation &amp; Metrics</a></li>
   </ul></li>
   <li><a href="#next-steps-enhancements" id="toc-next-steps-enhancements" class="nav-link" data-scroll-target="#next-steps-enhancements">5. Next Steps &amp; Enhancements</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
-  <ul class="collapse">
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -206,17 +206,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title">
 <h1 class="title">Classify Time-Series Faults with Pytorch</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">pytorch</div>
-    <div class="quarto-category">MLP</div>
+    <div class="quarto-category">PyTorch</div>
+    <div class="quarto-category">Multilayer Perceptron</div>
     <div class="quarto-category">Neural Networks</div>
-    <div class="quarto-category">preprocessing</div>
+    <div class="quarto-category">Preprocessing</div>
+    <div class="quarto-category">Deep Learning</div>
     <div class="quarto-category">python</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Preprocessing and MLP training to binary classification
+    Preprocessing and MLP training to time-series data classification
   </div>
 </div>
 
@@ -245,38 +246,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Classifying Machinery Faults with PyTorch: A Complete End-to-End Workflow</strong></p>
-<p>Predictive maintenance and fault detection are critical in industrial applications to avoid costly downtime and ensure worker safety. This blog post walks you through an entire pipeline for classifying mechanical faults using multivariate time-series data from the <a href="https://www.kaggle.com/datasets/uysalserkan/fault-induction-motor-dataset/data">MAFAULDA dataset</a>. We’ll cover every step in the workflow:</p>
+<section id="classifying-time-series-faults-with-pytorch" class="level1">
+<h1>Classifying Time-Series Faults with PyTorch</h1>
+<p>Predictive maintenance and fault detection are critical in industrial applications to prevent severe equipment damage, reduce costly downtime, and ensure worker safety. This blog post explores how to preprocess time-series data and train a Multilayer Perceptron (MLP) using PyTorch to classify faults efficiently. For this project, we used the <a href="https://www.kaggle.com/datasets/uysalserkan/fault-induction-motor-dataset/data">MAFAULDA dataset</a>, which is composed of multivariate time-series acquired by sensors on a Machinery Fault Simulator (MFS). All the code presented in this post is accessible in <a href="https://github.com/yurimarca/machinery-fault-classification/">my github repository</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/mlp.png" class="img-fluid figure-img"></p>
+<figcaption>Multilayer Perceptron (MLP) illustration</figcaption>
+</figure>
+</div>
+<p>These are the steps covered in the project:</p>
 <ol type="1">
 <li><strong>Exploratory Data Analysis (EDA)</strong></li>
-<li><strong>Feature Engineering</strong>
+<li><strong>Preprocessing/Feature Engineering</strong>
 <ul>
-<li>Downsampling &amp; Rolling Mean<br>
-</li>
-<li>Data Transformation &amp; Visualization (t-SNE)<br>
-</li>
+<li>Downsampling &amp; Rolling Mean</li>
+<li>Data Transformation &amp; Visualization (t-SNE)</li>
 </ul></li>
 <li><strong>Building a Multi-Layer Perceptron (MLP) with PyTorch</strong>
 <ul>
-<li>Custom Dataset Class<br>
-</li>
-<li>Model Architecture &amp; Training<br>
-</li>
+<li>Custom Dataset Class</li>
+<li>Model Architecture &amp; Training</li>
 </ul></li>
 <li><strong>Evaluation Metrics</strong> (Accuracy, F1-score, Precision, Recall, AUC-ROC)</li>
 </ol>
-<p>Throughout this tutorial, you’ll see real code snippets (in Python) drawn from the repository structure below:</p>
-<pre><code>yurimarca-machinery-fault-classification/
-├── README.md
-├── environment.yml
-├── figures/
-├── notebooks/
-│   ├── EDA.ipynb
-│   ├── FeatureEngineering.ipynb
-│   ├── MLP_Training.ipynb
-│   └── normal_data_report.html
-└── src/
-    └── main.py</code></pre>
 <p>Let’s dive in!</p>
 <hr>
 <section id="exploratory-data-analysis-eda" class="level2">
@@ -286,7 +279,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We are dealing with vibration and microphone signals recorded from a motor simulator under two conditions:<br>
 1. <strong>Normal</strong><br>
 2. <strong>Imbalance (faulty)</strong></p>
-<p>Each recording is ~5 seconds at a 50 kHz sampling rate, resulting in 250,000 samples per sensor. The dataset includes eight features:</p>
+<p>There are other types of faulty data present in the <a href="https://www02.smt.ufrj.br/~offshore/mfs/page_01.html">MAFAULDA’s website</a>, but we only consider normal and imbalance (6g) datasets. After donwloading the data, we have this folder structure:</p>
+<pre><code>data
+├── imbalance
+│   └── imbalance
+│       ├── 10g
+│       ├── 15g
+│       ├── 20g
+│       ├── 25g
+│       ├── 30g
+│       ├── 35g
+│       └── 6g
+└── normal
+    └── normal</code></pre>
+<p>At each labeled folder presented above, there are multiple recordings stored in CSV files. Each recording is about 5 seconds at a 50 kHz sampling rate, resulting in 250,000 samples per sensor. The dataset includes eight features:</p>
 <ul>
 <li><code>tachometer</code></li>
 <li><code>underhang_axial</code></li>
@@ -297,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>overhang_tangential</code></li>
 <li><code>microphone</code></li>
 </ul>
-<p>The first step is to get a sense of data distributions, missing values, basic statistics, etc. In <code>EDA.ipynb</code>, you’ll see code like:</p>
+<p>The first step is to get a sense of data distributions, missing values, basic statistics, etc. In <code>EDA.ipynb</code>, we use <code>ydata-profiling</code> package for a quickly review of how data looklike:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -313,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate HTML report (ydata-profiling)</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> ProfileReport(normal_df, title<span class="op">=</span><span class="st">"Normal Data"</span>)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>profile.to_file(<span class="st">"normal_data_report.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The generated report <a href="normal_data_report.html"><code>normal_data_report.html</code></a> quickly reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that <code>microphone</code> and <code>underhang_radiale</code> have high correlation, which could inform feature selection later.</p>
+<p>The generated report <a href="normal_data_report.html"><code>normal_data_report.html</code></a> reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that <code>microphone</code> and <code>underhang_radiale</code> have high correlation, which could inform feature selection later. Also, we noticed how the features are normally distributed, which could be lead to a smoother convergence when training models using Gradient descent. Besides being normally distributed, standardizing features (zero mean, unit variance) remains an important aspect of preprocessing.</p>
 </section>
 <section id="visualizing-time-series" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-time-series">Visualizing Time-Series</h3>
@@ -331,10 +337,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/ts-normal.png" class="img-fluid figure-img"></p>
-<figcaption>ts-normal</figcaption>
+<figcaption>Normal machinery dataset</figcaption>
 </figure>
 </div>
-<p>Observing a few thousand samples reveals distinct behaviors between normal and imbalance signals—often manifested in amplitude changes or new frequency components.</p>
 <hr>
 </section>
 </section>
@@ -368,22 +373,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage:</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>normal_df <span class="op">=</span> downSampler(normal_df, <span class="dv">2500</span>)</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>normal_df <span class="op">=</span> rolling_mean_data(normal_df, window_size<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After applying both transformation, the behaviour of each feature across the time is presented below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/ts-normal-rollingwindow.png" class="img-fluid figure-img"></p>
-<figcaption>ts-normal</figcaption>
+<figcaption>Normal data after feature engineering transformations</figcaption>
 </figure>
 </div>
 <section id="t-sne-visualization-for-feature-separability" class="level3">
 <h3 class="anchored" data-anchor-id="t-sne-visualization-for-feature-separability">t-SNE Visualization for Feature Separability</h3>
-<p>After feature transformations, we often test whether the classes (normal vs.&nbsp;imbalance) are more distinguishable in a compressed 2D space using <strong>t-SNE</strong>. If t-SNE shows two visually separate clusters, it’s a good sign that your features are linearly or nonlinearly separable:</p>
+<p>After feature transformations, we often test whether the classes (normal vs.&nbsp;imbalance) are more distinguishable, and we can visually check this using dimensionality reduction methods such as <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">Principal component analysis</a> for linear transformation or <a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html">t-distributed Stochastic Neighbor Embedding</a> for non-linear transformation. In this case, we apply t-SNE as it is capable of dealing with non-linear transformation.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_tsne(df, label_column<span class="op">=</span><span class="st">'label'</span>):</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    features <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number]).drop(columns<span class="op">=</span>[label_column], errors<span class="op">=</span><span class="st">'ignore'</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    features_scaled <span class="op">=</span> StandardScaler().fit_transform(features)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>   </span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">30</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    tsne_results <span class="op">=</span> tsne.fit_transform(features_scaled)</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -392,10 +398,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    plt.scatter(tsne_results[:, <span class="dv">0</span>], tsne_results[:, <span class="dv">1</span>], c<span class="op">=</span>df[label_column], cmap<span class="op">=</span><span class="st">"viridis"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"t-SNE Visualization"</span>)</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The following t-SNE plot clearly shows how both classes can be distinguished visually. This visualization gives us confidence that there is a non-linear transformation capable of producing a rule that will correctly classify the binary time-series dataset.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/t-sne.png" class="img-fluid figure-img"></p>
-<figcaption>ts-normal</figcaption>
+<figcaption>t-SNE for visualizing distribution of binary classes</figcaption>
 </figure>
 </div>
 <hr>
@@ -403,7 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="building-training-a-multi-layer-perceptron-mlp-in-pytorch" class="level2">
 <h2 class="anchored" data-anchor-id="building-training-a-multi-layer-perceptron-mlp-in-pytorch">3. Building &amp; Training a Multi-Layer Perceptron (MLP) in PyTorch</h2>
-<p>While more sophisticated sequence models (e.g., LSTM, 1D CNNs) can be used for time-series data, a <strong>Multi-Layer Perceptron</strong> often suffices when you’ve already introduced basic temporal smoothing in your features.</p>
+<p>While more sophisticated sequence models (e.g., LSTM, 1D CNNs) are more relevant for time-series data, a <strong>Multi-Layer Perceptron</strong> is a basic architecture that does not intrinsically include temporal dependencies. Since we have applied feature engineering capable of introducing basic temporal effects to features, the MLP might be sufficient for correctly classify this dataset. In general, if sequential dependencies matter, alternatives like <strong>RNN, LSTM, 1-D CNN, or Transformers</strong> may perform better, whereas MLP is effective for feature-based classification when raw time series is converted into useful representations through feature engineering.</p>
 <section id="the-dataset-dataloader" class="level3">
 <h3 class="anchored" data-anchor-id="the-dataset-dataloader">3.1 The Dataset &amp; DataLoader</h3>
 <p>In PyTorch, we create a custom <code>Dataset</code> class to handle how features and labels are fed to the model:</p>
@@ -412,12 +419,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MachineryDataset(Dataset):</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, label_column<span class="op">=</span><span class="st">'label'</span>):</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.labels <span class="op">=</span> data[label_column].values</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.features <span class="op">=</span> data.drop(columns<span class="op">=</span>[label_column, <span class="st">'time'</span>], errors<span class="op">=</span><span class="st">'ignore'</span>).values.astype(<span class="st">'float32'</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.labels <span class="op">=</span> data[label_column].values.astype(np.float32)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.features <span class="op">=</span> data.drop(columns<span class="op">=</span>[label_column, <span class="st">'time'</span>], errors<span class="op">=</span><span class="st">'ignore'</span>).values.astype(np.float32)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       </span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.features)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>   </span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.features[idx]</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> <span class="va">self</span>.labels[idx]</span>
@@ -436,71 +443,121 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TimeSeriesMLP(nn.Module):</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, hidden_dim<span class="op">=</span><span class="dv">64</span>, num_classes<span class="op">=</span><span class="dv">2</span>):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, hidden_dim, n_layers, dropout_prob<span class="op">=</span><span class="fl">0.3</span>):</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(TimeSeriesMLP, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.net <span class="op">=</span> nn.Sequential(</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            nn.Linear(input_dim, hidden_dim),</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            nn.ReLU(),</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            nn.Linear(hidden_dim, hidden_dim),</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            nn.ReLU(),</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            nn.Linear(hidden_dim, num_classes)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.net(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        layers <span class="op">=</span> []</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        layers.append(nn.Linear(input_dim, hidden_dim))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        layers.append(nn.ReLU())</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        layers.append(nn.Dropout(dropout_prob))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_layers <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            layers.append(nn.Linear(hidden_dim, hidden_dim))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            layers.append(nn.ReLU())</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            layers.append(nn.Dropout(dropout_prob))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        layers.append(nn.Linear(hidden_dim, <span class="dv">1</span>))</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        layers.append(nn.Sigmoid())</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.net <span class="op">=</span> nn.Sequential(<span class="op">*</span>layers)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.net(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>We accept <code>input_dim</code> as the number of features (after downsampling &amp; rolling mean).<br>
-</li>
-<li>We use two hidden layers with ReLU activation.<br>
-</li>
-<li>The final layer maps to <code>num_classes=2</code> (binary classification: normal vs.&nbsp;imbalance).</li>
+<li><p><strong>Hidden Layers and Activation</strong>:</p></li>
+<li><p>The model consists of <code>n_layers</code> hidden layers, each applying a linear transformation (<code>nn.Linear</code>), followed by ReLU activation (<code>nn.ReLU()</code>).</p></li>
+<li><p>ReLU (Rectified Linear Unit) is used because it helps mitigate the vanishing gradient problem and accelerates training.</p></li>
+<li><p><strong>Dropout Regularization</strong>:</p></li>
+<li><p>A dropout layer (<code>nn.Dropout(dropout_prob)</code>) is applied after each hidden layer to reduce overfitting.</p></li>
+<li><p>Dropout randomly disables a fraction of neurons during training, forcing the model to learn more robust features.</p></li>
+<li><p><strong>Output Layer and Activation</strong>:</p></li>
+<li><p>The final layer maps the last hidden representation to a single output neuron using <code>nn.Linear(hidden_dim, 1)</code>.</p></li>
+<li><p>Sigmoid activation (<code>nn.Sigmoid()</code>) is applied to ensure the output is in the range [0, 1], making it suitable for binary classification.</p></li>
 </ul>
 </section>
 <section id="training-loop" class="level3">
 <h3 class="anchored" data-anchor-id="training-loop">3.3 Training Loop</h3>
-<p>PyTorch training typically involves: 1. <strong>Forward Pass</strong>: Pass input through the model to get predictions.<br>
-2. <strong>Loss Calculation</strong>: Compute the discrepancy between predictions and labels (e.g., <code>CrossEntropyLoss</code> for classification).<br>
-3. <strong>Backward Pass &amp; Optimization</strong>: Update weights using gradient descent (e.g., <code>optimizer.step()</code>).</p>
-<p>In <code>MLP_Training.ipynb</code>, a training loop might look like:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_model(model, train_loader, criterion, optimizer, epochs<span class="op">=</span><span class="dv">10</span>, device<span class="op">=</span><span class="st">'cpu'</span>):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    model.to(device)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        model.train()</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        running_loss <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        correct <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        total <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> X, y <span class="kw">in</span> train_loader:</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            X, y <span class="op">=</span> X.to(device), y.<span class="bu">long</span>().to(device)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            optimizer.zero_grad()</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            outputs <span class="op">=</span> model(X)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            loss <span class="op">=</span> criterion(outputs, y)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            loss.backward()</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>            optimizer.step()</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            running_loss <span class="op">+=</span> loss.item() <span class="op">*</span> X.size(<span class="dv">0</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate training accuracy</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            _, predicted <span class="op">=</span> torch.<span class="bu">max</span>(outputs, <span class="dv">1</span>)</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            correct <span class="op">+=</span> (predicted <span class="op">==</span> y).<span class="bu">sum</span>().item()</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>            total <span class="op">+=</span> y.size(<span class="dv">0</span>)</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        epoch_loss <span class="op">=</span> running_loss <span class="op">/</span> <span class="bu">len</span>(train_loader.dataset)</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        epoch_acc <span class="op">=</span> correct <span class="op">/</span> total</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch [</span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>epochs<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>epoch_loss<span class="sc">:.4f}</span><span class="ss">, Accuracy: </span><span class="sc">{</span>epoch_acc<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>train_model</code> function in <code>src/main.py</code> file trains the MLP using a <strong>binary classification approach</strong>, tracking both <strong>loss</strong> and <strong>accuracy</strong>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_model(model, train_loader, val_loader, epochs<span class="op">=</span><span class="dv">50</span>, lr<span class="op">=</span><span class="fl">0.0005</span>):</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    criterion <span class="op">=</span> nn.BCELoss()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> optim.Adam(model.parameters(), lr<span class="op">=</span>lr)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    history <span class="op">=</span> {</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'train_loss'</span>: [], <span class="st">'val_loss'</span>: [], <span class="st">'train_acc'</span>: [], <span class="st">'val_acc'</span>: []</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        model.train()  <span class="co"># Enable training mode</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        epoch_train_loss <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        correct_train <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        total_train <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> inputs, targets <span class="kw">in</span> train_loader:</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            optimizer.zero_grad()</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>            outputs <span class="op">=</span> model(inputs).squeeze()  <span class="co"># Forward pass</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            loss <span class="op">=</span> criterion(outputs, targets)  <span class="co"># Compute loss</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            loss.backward()  <span class="co"># Backpropagation</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            optimizer.step()  <span class="co"># Update weights</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>            epoch_train_loss <span class="op">+=</span> loss.item()</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>            preds <span class="op">=</span> (outputs <span class="op">&gt;</span> <span class="fl">0.5</span>).<span class="bu">float</span>()  <span class="co"># Convert probabilities to binary predictions</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>            correct_train <span class="op">+=</span> (preds <span class="op">==</span> targets).<span class="bu">sum</span>().item()</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>            total_train <span class="op">+=</span> targets.size(<span class="dv">0</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        train_accuracy <span class="op">=</span> correct_train <span class="op">/</span> total_train  <span class="co"># Compute training accuracy</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">eval</span>()  <span class="co"># Enable evaluation mode</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        epoch_val_loss <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>        correct_val <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        total_val <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> inputs, targets <span class="kw">in</span> val_loader:</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>                outputs <span class="op">=</span> model(inputs).squeeze()</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>                val_loss <span class="op">=</span> criterion(outputs, targets)</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                epoch_val_loss <span class="op">+=</span> val_loss.item()</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>                preds <span class="op">=</span> (outputs <span class="op">&gt;</span> <span class="fl">0.5</span>).<span class="bu">float</span>()</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>                correct_val <span class="op">+=</span> (preds <span class="op">==</span> targets).<span class="bu">sum</span>().item()</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>                total_val <span class="op">+=</span> targets.size(<span class="dv">0</span>)</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        val_accuracy <span class="op">=</span> correct_val <span class="op">/</span> total_val  <span class="co"># Compute validation accuracy</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Store metrics for analysis</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        history[<span class="st">'train_loss'</span>].append(epoch_train_loss <span class="op">/</span> <span class="bu">len</span>(train_loader))</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        history[<span class="st">'val_loss'</span>].append(epoch_val_loss <span class="op">/</span> <span class="bu">len</span>(val_loader))</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>        history[<span class="st">'train_acc'</span>].append(train_accuracy)</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>        history[<span class="st">'val_acc'</span>].append(val_accuracy)</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>epochs<span class="sc">}</span><span class="ss">, Validation Loss: </span><span class="sc">{</span>epoch_val_loss <span class="op">/</span> <span class="bu">len</span>(val_loader)<span class="sc">:.4f}</span><span class="ss">, Validation Accuracy: </span><span class="sc">{</span>val_accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong><code>CrossEntropyLoss()</code></strong> is standard for multi-class/binary classification.<br>
-</li>
-<li>We track both <strong>loss</strong> and <strong>accuracy</strong> each epoch.</li>
+<li><strong>Binary Cross-Entropy Loss (<code>nn.BCELoss()</code>)</strong>:
+<ul>
+<li>Suitable for <strong>binary classification</strong>, where the target labels are <code>0</code> or <code>1</code>.</li>
+</ul></li>
+<li><strong>Adam Optimizer (<code>optim.Adam()</code>)</strong>:
+<ul>
+<li>Adaptive learning rate for better convergence.</li>
+</ul></li>
+<li><strong>Accuracy Tracking</strong>:
+<ul>
+<li>Uses <strong>thresholding (<code>outputs &gt; 0.5</code>)</strong> to determine class predictions.</li>
+<li>Compares predictions to true labels (<code>targets</code>) to compute accuracy.</li>
+</ul></li>
+<li><strong>Training &amp; Validation Loss History</strong>:
+<ul>
+<li>Logs <strong>loss and accuracy</strong> at each epoch for performance monitoring.</li>
+</ul></li>
 </ul>
 <hr>
 </section>
 </section>
-<section id="putting-it-all-together-in-main.py" class="level2">
-<h2 class="anchored" data-anchor-id="putting-it-all-together-in-main.py">4. Putting It All Together in <code>main.py</code></h2>
+<section id="putting-it-all-together" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-all-together">4. Putting It All Together</h2>
 <p>Finally, in <code>src/main.py</code> we orchestrate the entire workflow: 1. <strong>Data Ingestion &amp; Labeling</strong><br>
 2. <strong>Feature Engineering</strong> (Downsampling, Rolling Mean, StandardScaler)<br>
 3. <strong>Splitting</strong> (Time-series split into train/val/test sets)<br>
@@ -566,46 +623,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li><strong>Precision</strong>: Among predicted positives, how many are truly positive?<br>
 </li>
-<li><strong>Recall</strong>: Among all actual positives, how many did we predict correctly?<br>
-</li>
-<li><strong>AUC-ROC</strong>: Area under the Receiver Operating Characteristic curve (only if you have more than one class present).</li>
+<li><strong>Recall</strong>: Among all actual positives, how many did we predict correctly?</li>
 </ul>
-<p>Here’s how it’s done in <code>main.py</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate_model(model, test_loader, threshold<span class="op">=</span><span class="fl">0.5</span>):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    all_preds <span class="op">=</span> []</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    all_labels <span class="op">=</span> []</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> inputs, labels <span class="kw">in</span> test_loader:</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            outputs <span class="op">=</span> model(inputs).squeeze()</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            preds <span class="op">=</span> (outputs <span class="op">&gt;</span> threshold).<span class="bu">float</span>()</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            all_preds.extend(preds.cpu().numpy())</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>            all_labels.extend(labels.cpu().numpy())</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    accuracy <span class="op">=</span> accuracy_score(all_labels, all_preds)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    f1 <span class="op">=</span> f1_score(all_labels, all_preds, zero_division<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> precision_score(all_labels, all_preds, zero_division<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    recall <span class="op">=</span> recall_score(all_labels, all_preds, zero_division<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    auc_roc <span class="op">=</span> roc_auc_score(all_labels, all_preds) <span class="cf">if</span> <span class="bu">len</span>(np.unique(all_labels)) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> <span class="va">None</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    metrics <span class="op">=</span> {</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Accuracy"</span>: accuracy,</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"F1-score"</span>: f1,</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Precision"</span>: precision,</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Recall"</span>: recall,</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"AUC-ROC"</span>: auc_roc</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> metric, value <span class="kw">in</span> metrics.items():</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> value <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>metric<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/evaluation_plot.png" class="img-fluid figure-img"></p>
-<figcaption>ts-normal</figcaption>
+<figcaption>Evaluation of MLP</figcaption>
 </figure>
 </div>
 <p>Excellent performance, which suggests that even a relatively straightforward MLP can separate normal vs.&nbsp;imbalance classes well, thanks to feature engineering (downsampling + rolling mean).</p>
@@ -638,28 +661,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>We’ve walked through a <strong>complete pipeline</strong> for classifying mechanical faults using time-series data. The key lessons include:</p>
+<p>We’ve walked through the basic steps to a <strong>complete pipeline</strong> for classifying mechanical faults using time-series data. The key lessons include:</p>
 <ul>
 <li><strong>EDA</strong> is indispensable for quickly assessing data quality and distributions.<br>
 </li>
-<li><strong>Feature Engineering</strong> (downsampling, rolling means) can drastically reduce data size and highlight meaningful trends.<br>
-</li>
+<li><strong>Feature Engineering</strong> (downsampling, rolling means) can convert raw time series into useful representations to train deep learning models that does not include temporal dependencies inherently.</li>
 <li>Even a <strong>basic MLP</strong> can achieve high accuracy if the features reflect the underlying process well.<br>
 </li>
-<li><strong>Evaluation metrics</strong> (Accuracy, F1, Precision, Recall, AUC-ROC) are critical to understand true performance.</li>
+<li><strong>Evaluation metrics</strong> (Accuracy, F1, Precision, Recall) are critical to understand true performance.</li>
 </ul>
 <p>If you’re looking to adapt this pipeline to your own fault classification tasks—whether it’s rotating machinery, bearings, or other mechanical equipment—these concepts should be straightforward to customize. Feel free to explore the <a href="https://www.kaggle.com/datasets/uysalserkan/fault-induction-motor-dataset/data">MAFAULDA dataset</a> for your own experiments or extend it with advanced deep learning architectures.</p>
 <p>Thanks for reading, and happy fault detecting!</p>
-<hr>
-<section id="additional-resources" class="level3">
-<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
-<ul>
-<li><strong><a href="https://pytorch.org/docs/stable/index.html">PyTorch Documentation</a></strong><br>
-</li>
-<li><strong><a href="https://towardsdatascience.com/understanding-time-series-data-eda-d8f4ef19372e">Time-series EDA Techniques</a></strong><br>
-</li>
-<li><strong><a href="https://towardsdatascience.com/feature-engineering-for-time-series-data-7f61455766ab">Advanced Feature Engineering for Vibration Data</a></strong></li>
-</ul>
 
 
 </section>
