@@ -2,38 +2,26 @@
 title: "Classify Time-Series Faults with Pytorch"
 author: Yuri Marca
 date: 2025-02-16
-description: "Preprocessing and MLP training to binary classification"
-categories: [pytorch, MLP, Neural Networks, preprocessing, python]
+description: "Preprocessing and MLP training to time-series data classification"
+categories: [PyTorch, Multilayer Perceptron, Neural Networks, Preprocessing, Deep Learning, python]
 ---
 
-**Classifying Machinery Faults with PyTorch: A Complete End-to-End Workflow**
+# Classifying Time-Series Faults with PyTorch
 
-Predictive maintenance and fault detection are critical in industrial applications to avoid costly downtime and ensure worker safety. This blog post walks you through an entire pipeline for classifying mechanical faults using multivariate time-series data from the [MAFAULDA dataset](https://www.kaggle.com/datasets/uysalserkan/fault-induction-motor-dataset/data). We’ll cover every step in the workflow:
+Predictive maintenance and fault detection are critical in industrial applications to prevent severe equipment damage, reduce costly downtime, and ensure worker safety. This blog post explores how to preprocess time-series data and train a Multilayer Perceptron (MLP) using PyTorch to classify faults efficiently. For this project, we used the [MAFAULDA dataset](https://www.kaggle.com/datasets/uysalserkan/fault-induction-motor-dataset/data), which is composed of multivariate time-series acquired by sensors on a Machinery Fault Simulator (MFS). All the code presented in this post is accessible in [my github repository](https://github.com/yurimarca/machinery-fault-classification/). 
+
+![Multilayer Perceptron (MLP) illustration](figures/mlp.png)
+
+These are the steps covered in the project:
 
 1. **Exploratory Data Analysis (EDA)**
-2. **Feature Engineering**  
-   - Downsampling & Rolling Mean  
-   - Data Transformation & Visualization (t-SNE)  
-3. **Building a Multi-Layer Perceptron (MLP) with PyTorch**  
-   - Custom Dataset Class  
-   - Model Architecture & Training  
+2. **Preprocessing/Feature Engineering**
+   - Downsampling & Rolling Mean
+   - Data Transformation & Visualization (t-SNE)
+3. **Building a Multi-Layer Perceptron (MLP) with PyTorch**
+   - Custom Dataset Class
+   - Model Architecture & Training
 4. **Evaluation Metrics** (Accuracy, F1-score, Precision, Recall, AUC-ROC)
-
-Throughout this tutorial, you’ll see real code snippets (in Python) drawn from the repository structure below:
-
-```
-yurimarca-machinery-fault-classification/
-├── README.md
-├── environment.yml
-├── figures/
-├── notebooks/
-│   ├── EDA.ipynb
-│   ├── FeatureEngineering.ipynb
-│   ├── MLP_Training.ipynb
-│   └── normal_data_report.html
-└── src/
-    └── main.py
-```
 
 Let’s dive in!
 
@@ -47,7 +35,24 @@ We are dealing with vibration and microphone signals recorded from a motor simul
 1. **Normal**  
 2. **Imbalance (faulty)**  
 
-Each recording is ~5 seconds at a 50 kHz sampling rate, resulting in 250,000 samples per sensor. The dataset includes eight features:
+There are other types of faulty data present in the [MAFAULDA's website](https://www02.smt.ufrj.br/~offshore/mfs/page_01.html), but we only consider normal and imbalance (6g) datasets. After donwloading the data, we have this folder structure:
+
+```
+data
+├── imbalance
+│   └── imbalance
+│       ├── 10g
+│       ├── 15g
+│       ├── 20g
+│       ├── 25g
+│       ├── 30g
+│       ├── 35g
+│       └── 6g
+└── normal
+    └── normal
+```
+
+At each labeled folder presented above, there are multiple recordings stored in CSV files. Each recording is about 5 seconds at a 50 kHz sampling rate, resulting in 250,000 samples per sensor. The dataset includes eight features:
 
 - `tachometer`
 - `underhang_axial`
@@ -58,7 +63,7 @@ Each recording is ~5 seconds at a 50 kHz sampling rate, resulting in 250,000 sam
 - `overhang_tangential`
 - `microphone`
 
-The first step is to get a sense of data distributions, missing values, basic statistics, etc. In `EDA.ipynb`, you’ll see code like:
+The first step is to get a sense of data distributions, missing values, basic statistics, etc. In `EDA.ipynb`, we use `ydata-profiling` package for a quickly review of how data looklike:
 
 ```python
 import pandas as pd
@@ -78,7 +83,7 @@ profile = ProfileReport(normal_df, title="Normal Data")
 profile.to_file("normal_data_report.html")
 ```
 
-The generated report [`normal_data_report.html`](normal_data_report.html) quickly reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that `microphone` and `underhang_radiale` have high correlation, which could inform feature selection later.
+The generated report [`normal_data_report.html`](normal_data_report.html) reveals distributions and correlations. This helps us spot which features might be redundant or highly correlated. For instance, you might notice that `microphone` and `underhang_radiale` have high correlation, which could inform feature selection later. Also, we noticed how the features are normally distributed, which could be lead to a smoother convergence when training models using Gradient descent. Besides being normally distributed, standardizing features (zero mean, unit variance) remains an important aspect of preprocessing.
 
 ### Visualizing Time-Series
 
@@ -97,9 +102,8 @@ def plot_timeseries(df, columns, n_samples=50000):
 plot_timeseries(normal_df, columns=normal_df.columns)
 ```
 
-![ts-normal](figures/ts-normal.png)
+![Normal machinery dataset](figures/ts-normal.png)
 
-Observing a few thousand samples reveals distinct behaviors between normal and imbalance signals—often manifested in amplitude changes or new frequency components.
 
 ---
 
@@ -136,11 +140,13 @@ normal_df = downSampler(normal_df, 2500)
 normal_df = rolling_mean_data(normal_df, window_size=100)
 ```
 
-![ts-normal](figures/ts-normal-rollingwindow.png)
+After applying both transformation, the behaviour of each feature across the time is presented below:
+
+![Normal data after feature engineering transformations](figures/ts-normal-rollingwindow.png)
 
 ### t-SNE Visualization for Feature Separability
 
-After feature transformations, we often test whether the classes (normal vs. imbalance) are more distinguishable in a compressed 2D space using **t-SNE**. If t-SNE shows two visually separate clusters, it’s a good sign that your features are linearly or nonlinearly separable:
+After feature transformations, we often test whether the classes (normal vs. imbalance) are more distinguishable, and we can visually check this using dimensionality reduction methods such as [Principal component analysis](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) for linear transformation or [t-distributed Stochastic Neighbor Embedding](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) for non-linear transformation. In this case, we apply t-SNE as it is capable of dealing with non-linear transformation.
 
 ```python
 from sklearn.manifold import TSNE
@@ -149,7 +155,7 @@ from sklearn.preprocessing import StandardScaler
 def plot_tsne(df, label_column='label'):
     features = df.select_dtypes(include=[np.number]).drop(columns=[label_column], errors='ignore')
     features_scaled = StandardScaler().fit_transform(features)
-    
+   
     tsne = TSNE(n_components=2, perplexity=30, random_state=42)
     tsne_results = tsne.fit_transform(features_scaled)
 
@@ -160,13 +166,15 @@ def plot_tsne(df, label_column='label'):
     plt.show()
 ```
 
-![ts-normal](figures/t-sne.png)
+The following t-SNE plot clearly shows how both classes can be distinguished visually. This visualization gives us confidence that there is a non-linear transformation capable of producing a rule that will correctly classify the binary time-series dataset.
+
+![t-SNE for visualizing distribution of binary classes](figures/t-sne.png)
 
 ---
 
 ## 3. Building & Training a Multi-Layer Perceptron (MLP) in PyTorch
 
-While more sophisticated sequence models (e.g., LSTM, 1D CNNs) can be used for time-series data, a **Multi-Layer Perceptron** often suffices when you’ve already introduced basic temporal smoothing in your features.
+While more sophisticated sequence models (e.g., LSTM, 1D CNNs) are more relevant for time-series data, a **Multi-Layer Perceptron** is a basic architecture that does not intrinsically include temporal dependencies. Since we have applied feature engineering capable of introducing basic temporal effects to features, the MLP might be sufficient for correctly classify this dataset. In general, if sequential dependencies matter, alternatives like **RNN, LSTM, 1-D CNN, or Transformers** may perform better, whereas MLP is effective for feature-based classification when raw time series is converted into useful representations through feature engineering.
 
 ### 3.1 The Dataset & DataLoader
 
@@ -178,12 +186,12 @@ from torch.utils.data import Dataset, DataLoader
 
 class MachineryDataset(Dataset):
     def __init__(self, data, label_column='label'):
-        self.labels = data[label_column].values
-        self.features = data.drop(columns=[label_column, 'time'], errors='ignore').values.astype('float32')
-        
+        self.labels = data[label_column].values.astype(np.float32)
+        self.features = data.drop(columns=[label_column, 'time'], errors='ignore').values.astype(np.float32)
+       
     def __len__(self):
         return len(self.features)
-    
+   
     def __getitem__(self, idx):
         x = self.features[idx]
         y = self.labels[idx]
@@ -208,71 +216,118 @@ A simple feed-forward neural network can be built using fully connected layers (
 import torch.nn as nn
 
 class TimeSeriesMLP(nn.Module):
-    def __init__(self, input_dim, hidden_dim=64, num_classes=2):
+    def __init__(self, input_dim, hidden_dim, n_layers, dropout_prob=0.3):
         super(TimeSeriesMLP, self).__init__()
-        self.net = nn.Sequential(
-            nn.Linear(input_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Linear(hidden_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Linear(hidden_dim, num_classes)
-        )
-        
+        layers = []
+        layers.append(nn.Linear(input_dim, hidden_dim))
+        layers.append(nn.ReLU())
+        layers.append(nn.Dropout(dropout_prob))
+
+        for _ in range(n_layers - 1):
+            layers.append(nn.Linear(hidden_dim, hidden_dim))
+            layers.append(nn.ReLU())
+            layers.append(nn.Dropout(dropout_prob))
+
+        layers.append(nn.Linear(hidden_dim, 1))
+        layers.append(nn.Sigmoid())
+
+        self.net = nn.Sequential(*layers)
+
     def forward(self, x):
         return self.net(x)
 ```
 
-- We accept `input_dim` as the number of features (after downsampling & rolling mean).  
-- We use two hidden layers with ReLU activation.  
-- The final layer maps to `num_classes=2` (binary classification: normal vs. imbalance).
+- **Hidden Layers and Activation**:
+- The model consists of `n_layers` hidden layers, each applying a linear transformation (`nn.Linear`), followed by ReLU activation (`nn.ReLU()`).
+- ReLU (Rectified Linear Unit) is used because it helps mitigate the vanishing gradient problem and accelerates training.
+
+- **Dropout Regularization**:
+- A dropout layer (`nn.Dropout(dropout_prob)`) is applied after each hidden layer to reduce overfitting.
+- Dropout randomly disables a fraction of neurons during training, forcing the model to learn more robust features.
+
+- **Output Layer and Activation**:
+- The final layer maps the last hidden representation to a single output neuron using `nn.Linear(hidden_dim, 1)`.
+- Sigmoid activation (`nn.Sigmoid()`) is applied to ensure the output is in the range [0, 1], making it suitable for binary classification.
+
 
 ### 3.3 Training Loop
 
-PyTorch training typically involves:
-1. **Forward Pass**: Pass input through the model to get predictions.  
-2. **Loss Calculation**: Compute the discrepancy between predictions and labels (e.g., `CrossEntropyLoss` for classification).  
-3. **Backward Pass & Optimization**: Update weights using gradient descent (e.g., `optimizer.step()`).
-
-In `MLP_Training.ipynb`, a training loop might look like:
+The `train_model` function in `src/main.py` file trains the MLP using a **binary classification approach**, tracking both **loss** and **accuracy**.
 
 ```python
-def train_model(model, train_loader, criterion, optimizer, epochs=10, device='cpu'):
-    model.to(device)
-    
+import torch.optim as optim
+import torch
+
+def train_model(model, train_loader, val_loader, epochs=50, lr=0.0005):
+    criterion = nn.BCELoss()
+    optimizer = optim.Adam(model.parameters(), lr=lr)
+   
+    history = {
+        'train_loss': [], 'val_loss': [], 'train_acc': [], 'val_acc': []
+    }
+   
     for epoch in range(epochs):
-        model.train()
-        running_loss = 0.0
-        correct = 0
-        total = 0
-        
-        for X, y in train_loader:
-            X, y = X.to(device), y.long().to(device)
-            
+        model.train()  # Enable training mode
+        epoch_train_loss = 0
+        correct_train = 0
+        total_train = 0
+       
+        for inputs, targets in train_loader:
             optimizer.zero_grad()
-            outputs = model(X)
-            loss = criterion(outputs, y)
-            loss.backward()
-            optimizer.step()
-            
-            running_loss += loss.item() * X.size(0)
-            
-            # Calculate training accuracy
-            _, predicted = torch.max(outputs, 1)
-            correct += (predicted == y).sum().item()
-            total += y.size(0)
-        
-        epoch_loss = running_loss / len(train_loader.dataset)
-        epoch_acc = correct / total
-        
-        print(f"Epoch [{epoch+1}/{epochs}], Loss: {epoch_loss:.4f}, Accuracy: {epoch_acc:.2f}")
+            outputs = model(inputs).squeeze()  # Forward pass
+            loss = criterion(outputs, targets)  # Compute loss
+            loss.backward()  # Backpropagation
+            optimizer.step()  # Update weights
+           
+            epoch_train_loss += loss.item()
+            preds = (outputs > 0.5).float()  # Convert probabilities to binary predictions
+            correct_train += (preds == targets).sum().item()
+            total_train += targets.size(0)
+       
+        train_accuracy = correct_train / total_train  # Compute training accuracy
+       
+        model.eval()  # Enable evaluation mode
+        epoch_val_loss = 0
+        correct_val = 0
+        total_val = 0
+       
+        with torch.no_grad():
+            for inputs, targets in val_loader:
+                outputs = model(inputs).squeeze()
+                val_loss = criterion(outputs, targets)
+                epoch_val_loss += val_loss.item()
+               
+                preds = (outputs > 0.5).float()
+                correct_val += (preds == targets).sum().item()
+                total_val += targets.size(0)
+       
+        val_accuracy = correct_val / total_val  # Compute validation accuracy
+       
+        # Store metrics for analysis
+        history['train_loss'].append(epoch_train_loss / len(train_loader))
+        history['val_loss'].append(epoch_val_loss / len(val_loader))
+        history['train_acc'].append(train_accuracy)
+        history['val_acc'].append(val_accuracy)
+       
+        print(f"Epoch {epoch+1}/{epochs}, Validation Loss: {epoch_val_loss / len(val_loader):.4f}, Validation Accuracy: {val_accuracy:.4f}")
+   
+    return history
 ```
 
-- **`CrossEntropyLoss()`** is standard for multi-class/binary classification.  
-- We track both **loss** and **accuracy** each epoch.
+- **Binary Cross-Entropy Loss (`nn.BCELoss()`)**:  
+  - Suitable for **binary classification**, where the target labels are `0` or `1`.
+- **Adam Optimizer (`optim.Adam()`)**:  
+  - Adaptive learning rate for better convergence.
+- **Accuracy Tracking**:  
+  - Uses **thresholding (`outputs > 0.5`)** to determine class predictions.
+  - Compares predictions to true labels (`targets`) to compute accuracy.
+- **Training & Validation Loss History**:  
+  - Logs **loss and accuracy** at each epoch for performance monitoring.
+
 
 ---
 
-## 4. Putting It All Together in `main.py`
+## 4. Putting It All Together
 
 Finally, in `src/main.py` we orchestrate the entire workflow:
 1. **Data Ingestion & Labeling**  
@@ -343,45 +398,9 @@ After training, we apply the model to the **test set**. For binary classificatio
 - **F1-score**: Harmonic mean of precision & recall.  
 - **Precision**: Among predicted positives, how many are truly positive?  
 - **Recall**: Among all actual positives, how many did we predict correctly?  
-- **AUC-ROC**: Area under the Receiver Operating Characteristic curve (only if you have more than one class present).
 
-Here’s how it’s done in `main.py`:
 
-```python
-def evaluate_model(model, test_loader, threshold=0.5):
-    model.eval()
-    all_preds = []
-    all_labels = []
-    
-    with torch.no_grad():
-        for inputs, labels in test_loader:
-            outputs = model(inputs).squeeze()
-            preds = (outputs > threshold).float()
-            all_preds.extend(preds.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
-
-    accuracy = accuracy_score(all_labels, all_preds)
-    f1 = f1_score(all_labels, all_preds, zero_division=0)
-    precision = precision_score(all_labels, all_preds, zero_division=0)
-    recall = recall_score(all_labels, all_preds, zero_division=0)
-    auc_roc = roc_auc_score(all_labels, all_preds) if len(np.unique(all_labels)) > 1 else None
-
-    metrics = {
-        "Accuracy": accuracy,
-        "F1-score": f1,
-        "Precision": precision,
-        "Recall": recall,
-        "AUC-ROC": auc_roc
-    }
-    
-    for metric, value in metrics.items():
-        if value is not None:
-            print(f"{metric}: {value:.4f}")
-
-    return metrics
-```
-
-![ts-normal](figures/evaluation_plot.png)
+![Evaluation of MLP](figures/evaluation_plot.png)
 
 Excellent performance, which suggests that even a relatively straightforward MLP can separate normal vs. imbalance classes well, thanks to feature engineering (downsampling + rolling mean).
 
@@ -406,21 +425,13 @@ Excellent performance, which suggests that even a relatively straightforward MLP
 
 ## Conclusion
 
-We’ve walked through a **complete pipeline** for classifying mechanical faults using time-series data. The key lessons include:
+We’ve walked through the basic steps to a **complete pipeline** for classifying mechanical faults using time-series data. The key lessons include:
 
 - **EDA** is indispensable for quickly assessing data quality and distributions.  
-- **Feature Engineering** (downsampling, rolling means) can drastically reduce data size and highlight meaningful trends.  
+- **Feature Engineering** (downsampling, rolling means) can convert raw time series into useful representations to train deep learning models that does not include temporal dependencies inherently.
 - Even a **basic MLP** can achieve high accuracy if the features reflect the underlying process well.  
-- **Evaluation metrics** (Accuracy, F1, Precision, Recall, AUC-ROC) are critical to understand true performance.  
+- **Evaluation metrics** (Accuracy, F1, Precision, Recall) are critical to understand true performance.  
 
 If you’re looking to adapt this pipeline to your own fault classification tasks—whether it’s rotating machinery, bearings, or other mechanical equipment—these concepts should be straightforward to customize. Feel free to explore the [MAFAULDA dataset](https://www.kaggle.com/datasets/uysalserkan/fault-induction-motor-dataset/data) for your own experiments or extend it with advanced deep learning architectures.
 
 Thanks for reading, and happy fault detecting! 
-
----
-
-### Additional Resources
-
-- **[PyTorch Documentation](https://pytorch.org/docs/stable/index.html)**  
-- **[Time-series EDA Techniques](https://towardsdatascience.com/understanding-time-series-data-eda-d8f4ef19372e)**  
-- **[Advanced Feature Engineering for Vibration Data](https://towardsdatascience.com/feature-engineering-for-time-series-data-7f61455766ab)**  
