@@ -14,20 +14,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # Cache TinyTeX
-      - name: Cache TinyTeX
-        uses: actions/cache@v3
-        with:
-          path: ~/.TinyTeX
-          key: ${{ runner.os }}-tinytex
-          restore-keys: |
-            ${{ runner.os }}-tinytex
-
-      # Set up Quarto
+      # Set up Quarto (HTML-only site — no LaTeX toolchain needed)
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
 
       # Publish to GitHub Pages (and render)
       - name: Publish to GitHub Pages (and render)

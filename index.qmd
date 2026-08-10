@@ -22,6 +22,8 @@ twitter-card:
 [<i class="bi bi-github"></i> GitHub](https://github.com/yurimarca){.btn .btn-outline-secondary .btn-sm}
 [<i class="bi bi-mortarboard"></i> Scholar](https://scholar.google.com/citations?user=YBoCAToAAAAJ&hl=en){.btn .btn-outline-secondary .btn-sm}
 [<i class="bi bi-envelope"></i> Email](mailto:yurimarca@gmail.com){.btn .btn-outline-secondary .btn-sm}
+
+[yurimarca@gmail.com · linkedin.com/in/yurimarca · github.com/yurimarca]{.print-contact}
 :::
 ::::
 

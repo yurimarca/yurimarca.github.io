@@ -8,6 +8,15 @@
   --ym-surface: #f7f9fa;
 }
 
+/* Quarto stamps .quarto-dark on <body> when the dark theme is active. */
+body.quarto-dark {
+  --ym-accent: #3fd9b8;
+  --ym-ink: #e9ecef;
+  --ym-muted: #9aa7b4;
+  --ym-rule: #3d4650;
+  --ym-surface: #2b333c;
+}
+
 /* Readable measure for a long single-page CV */
 main.content {
   max-width: 54rem;
@@ -59,8 +68,26 @@ main.content {
   margin: 0 0.35rem 0.4rem 0;
 }
 
+/* darkly renders btn-outline-secondary as dark grey on dark — unreadable. */
+body.quarto-dark .hero-text .btn-outline-secondary {
+  color: var(--ym-ink);
+  border-color: #525d69;
+}
+
+body.quarto-dark .hero-text .btn-outline-secondary:hover,
+body.quarto-dark .hero-text .btn-outline-secondary:focus {
+  color: #fff;
+  background-color: #525d69;
+  border-color: #525d69;
+}
+
 .hero-text p:last-child {
   margin-bottom: 0;
+}
+
+/* Screen-hidden; the print block above reveals it. */
+.print-contact {
+  display: none;
 }
 
 @media (max-width: 640px) {
@@ -203,5 +230,85 @@ main.content h2 {
   }
   main.content h2 {
     margin-top: 2.25rem;
+  }
+}
+
+/* ── Print: the page is a CV, so Ctrl+P should produce one ────────── */
+
+@media print {
+  /* Chrome/Firefox drop backgrounds by default; force readable ink. */
+  :root {
+    --ym-ink: #000;
+    --ym-muted: #444;
+    --ym-rule: #bbb;
+    --ym-surface: #fff;
+  }
+
+  .navbar,
+  .hero-text .btn,
+  #contact,
+  footer,
+  .quarto-search {
+    display: none !important;
+  }
+
+  body,
+  main.content {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    font-size: 10.5pt;
+    color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  /* The button row is hidden in print, so surface contact details as text. */
+  .print-contact {
+    display: block !important;
+    font-size: 9.5pt;
+    color: #333;
+  }
+
+  .hero {
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-photo {
+    width: 6rem;
+    height: 6rem;
+    box-shadow: none;
+  }
+
+  main.content h2 {
+    margin-top: 1.4rem;
+    font-size: 1.15rem;
+    break-after: avoid;
+  }
+
+  /* Never split an entry or card across a page boundary. */
+  .role,
+  .work-card,
+  .awards {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .work-grid {
+    display: block;
+  }
+
+  .work-card {
+    margin-bottom: 0.6rem;
+    border: 1px solid #ccc;
+  }
+
+  .tag {
+    border: 1px solid #ccc;
+    background: #fff;
   }
 }
