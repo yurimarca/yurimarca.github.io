@@ -1,13 +1,20 @@
 
 project:
   type: website
+  resources:
+    - CV-en.pdf
 
 website:
-  title: "Yuri's Personal Website"
+  title: "Yuri Marca"
   site-url: "https://yurimarca.github.io"
-  description: "A personal website showcasing projects and studies posts."
-  twitter-card: true
-  open-graph: true
+  description: "Data Scientist and ML Engineer working across machine learning, optimization, and MLOps — from research to production."
+  favicon: favicon.png
+  image: og-card.png
+  twitter-card:
+    image: og-card.png
+    card-style: summary_large_image
+  open-graph:
+    image: og-card.png
   navbar:
     left:
       - href: index.qmd
