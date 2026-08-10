@@ -2,23 +2,65 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "👋 Hi there, I’m Yuri Marca",
+    "title": "Yuri Marca",
     "section": "",
-    "text": "I am a Data Scientist with a strong background in machine learning, optimization, and MLOps, focused on developing scalable AI solutions and deploying models into production. I hold a Bachelor’s in Electronic Engineering and a Master’s in Information Systems, with international academic experience across Japan, the United Kingdom, and Canada. This diverse background has equipped me with strong analytical skills, the ability to quickly understand and implement state-of-the-art research, and a scientific approach to solving complex industry challenges.\nIn my industry experience, I have worked extensively with machine learning and deep learning frameworks to train and fine-tune models for predictive modeling, anomaly detection, and computer vision. My expertise in MLOps enables me to design and implement end-to-end pipelines that ensure reproducibility and scalability. Leveraging tools like MLflow, Docker, and cloud platforms like AWS and DigitalOcean, I have successfully deployed machine learning models and integrated them into production via API services.\nWith a strong statistical analysis and optimization foundation, I am particularly interested in Generative AI and LLMs, actively exploring their potential in real-world applications. I am eager to contribute to cutting-edge AI solutions and look forward to collaborating with professionals and organizations driving AI innovation in production environments."
+    "text": "Data Scientist & AI/ML Engineer\n Florianópolis, Brazil\n Download CV  LinkedIn  GitHub  Scholar  Email\nI build agentic AI systems and the production infrastructure around them — compressing the cycle from research prototype to deployed service. Recent work spans multi-agent workflows with Google ADK and LangGraph, retrieval-augmented generation on Vertex AI, and low-latency voice agents, all backed by automated LLM-as-Judge evaluation harnesses.\nBefore moving into applied AI engineering, I spent six years in academic research on Bayesian optimization, Monte Carlo Tree Search, and multi-objective evolutionary algorithms, producing internationally recognized results including a Best Student Paper Award at EMO 2019.\nI hold a Master’s in Engineering from Shinshu University as a MEXT Government Scholar, with international academic experience across Japan, the United Kingdom, and Canada."
   },
   {
-    "objectID": "index.html#technical-expertise",
-    "href": "index.html#technical-expertise",
-    "title": "👋 Hi there, I’m Yuri Marca",
-    "section": "🛠️ Technical Expertise",
-    "text": "🛠️ Technical Expertise\n\nOperating Systems:  Linux (Fedora, Ubuntu),  Windows.\nProgramming Languages:  Python,  C,  C++,  Bash (Unix Shell).\nMachine Learning Frameworks:  PyTorch,  scikit-learn,  XGBoost, FastAI.\nMLOps & Deployment Tools:  Docker, MLflow, Hydra,  Git,  CI/CD (GitLab, GitHub Actions),  FastAPI.\nData Engineering & Pipelines:  NumPy,  Pandas, Dask,  PostgreSQL, Redshift, InfluxDB.\nCloud Platforms:  AWS,  DigitalOcean.\nOptimization: Bayesian Optimization, Multi-objective Evolutionary Algorithms."
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Yuri Marca",
+    "section": "Experience",
+    "text": "Experience\n\nZazmic Inc\nAI/ML Engineer United States (Remote) · Dec 2025 – Present\n\nAgentic AI systems — Architected production multi-agent workflows with Google ADK and LangGraph, including ReAct agents for NL2SQL, Human-in-the-Loop state management, and autonomous generators ingesting multimodal unstructured data.\nReal-time voice AI — Engineered a low-latency bidirectional voice agent on WebSockets, FastAPI, and the Gemini Live API, with asynchronous tool definitions for hands-free interaction.\nRetrieval-augmented generation — Built production RAG systems on GCP Vertex AI, grounding enterprise knowledge retrieval in live document corpora with citation-traceable outputs.\nEvaluation & agentic CI/CD — Implemented LLM-as-Judge evaluation harnesses with dual tracing (LangSmith/Langfuse + OpenTelemetry); shipped containerized agentic services to Cloud Run via GitHub Actions.\n\n\n\nDry Ground AI\nAI Engineer United States (Remote) · Mar 2025 – Nov 2025\n\nDeveloped and deployed AI voice agents handling real estate calls, integrating tools to retrieve live information, send messages and email, and automate client interactions.\nBuilt a data science workflow for user profile classification and lead identification, supporting strategic sales initiatives.\n\n\n\nWEG\nData Scientist Jaraguá do Sul, Brazil · Jun 2024 – Mar 2025\n\nWind turbine anomaly detection — Deployed a production system on AWS SageMaker anticipating failures up to two weeks ahead and flagging ~70% of maintenance interventions, with a companion explainability API for root-cause diagnostics.\nEnd-to-end MLOps — Built a reproducible pipeline (MLflow, Docker, Kubernetes, AWS) covering automated training, versioning, deployment, and live Grafana/InfluxDB monitoring with full experiment lineage.\nDeep generative modeling — Initiated PyTorch VAE research for turbine fault classification using latent-space health indicators and reconstruction-error thresholding over SCADA signals.\nLLM fine-tuning research — Led technical scoping to domain-adapt an open-weights LLM via SFT for NL-to-structured IoT workflow compilation; proposal approved by corporate leadership.\n\n\n\nMacnica DHW\nData Scientist Florianópolis, Brazil · Nov 2022 – Oct 2023\n\nSmart sensors — Developed an SVM classification pipeline for vibration sensor data, applying NSGA-II to optimize the accuracy/compute trade-off for edge deployment.\nComputer vision APIs — Built a dual-layer video anonymization API (OpenCV + DBSCAN for motion-based person detection, ResNet-50-FPN as verification layer) tuned for low frame-rate surveillance footage.\nIoT development — Led end-to-end product development with full Docker containerization of the edge-to-cloud stack (MQTT, PostgreSQL, InfluxDB, Grafana), including on-device FFT computation.\n\n\n\nSSE Gridtech\nR&D Engineer · Internship Curitiba, Brazil · Oct 2014 – Aug 2016\n\nDeveloped a long-range LoRaWAN communication system to optimize smart metering infrastructure and reduce GSM dependency."
   },
   {
-    "objectID": "index.html#projects",
-    "href": "index.html#projects",
-    "title": "👋 Hi there, I’m Yuri Marca",
-    "section": "🌟 Projects",
-    "text": "🌟 Projects\n\nMusic Genre Classification: Built a machine learning model to classify music genres based on audio features.\nML Pipeline for Short-Term Rental Prices: Designed and implemented a full ML pipeline to predict short-term rental prices, integrating data ingestion, preprocessing, model training, and deployment using industry best practices.\nImage Description using OpenAI: Developed an image captioning model leveraging OpenAI’s API to generate meaningful descriptions for images.\nOCBA-MCTS: Reproduced results from the OCBA-MCTS paper, focusing on optimization in Monte Carlo Tree Search through Optimal Computing Budget Allocation algorithm."
+    "objectID": "index.html#work",
+    "href": "index.html#work",
+    "title": "Yuri Marca",
+    "section": "Selected Work",
+    "text": "Selected Work\nTechnical write-ups and code from projects I’ve built.\n\n\nClassifying Time-Series Faults with PyTorch\nPreprocessing multivariate vibration and acoustic sensor data from a machinery fault simulator, then training an MLP to classify faults — covering downsampling, rolling-window features, t-SNE visualization, and full evaluation metrics.\nCode on GitHub\n\n\nBuilding an End-to-End ML Pipeline\nA reproducible pipeline for short-term rental price prediction, orchestrated with MLflow, configured with Hydra, and tracked in Weights & Biases — data ingestion through validation, training, and deployment.\nCode on GitHub\n\n\nOCBA-MCTS\nReproduction of the OCBA-MCTS paper — improving Monte Carlo Tree Search through Optimal Computing Budget Allocation, connecting directly to my ranking-and-selection research at Warwick.\n\n\nMore on GitHub, including music genre classification and image description with OpenAI."
+  },
+  {
+    "objectID": "index.html#skills",
+    "href": "index.html#skills",
+    "title": "Yuri Marca",
+    "section": "Technical Expertise",
+    "text": "Technical Expertise\n\nLanguages Python C C++ Bash\nML & Deep Learning PyTorch Hugging Face scikit-learn XGBoost\nLLM & Agentic Frameworks LangGraph LangChain Google ADK Gemini Live API OpenAI API Anthropic Claude\nLLM Training & Alignment SFT QLoRA Unsloth\nObservability & Evaluation LangSmith Langfuse OpenTelemetry Grafana\nMLOps & Deployment Docker Kubernetes MLflow FastAPI CI/CD Git\nCloud AWS — SageMaker, ECR, Lambda GCP — Cloud Run, Vertex AI\nData & Pipelines PostgreSQL Redshift InfluxDB\nEmbedded ARM Cortex-M Jetson Nano Arduino FreeRTOS MQTT\nOptimization Bayesian Optimization Multi-objective Evolutionary Algorithms"
+  },
+  {
+    "objectID": "index.html#research",
+    "href": "index.html#research",
+    "title": "Yuri Marca",
+    "section": "Research",
+    "text": "Research\n\nUniversity of Warwick, Warwick Business School\nDoctoral Research Coventry, United Kingdom · Oct 2019 – Apr 2022\nRanking & selection, Bayesian optimization, and reinforcement learning. Investigated sample-efficient policy learning for constrained supply chain scheduling of biopharmaceutical products, developing Multi-Objective MCTS using marginal hypervolume as the selection criterion. Under Prof. Juergen Branke, collaborated with Prof. Chun-Hung Chen on two-stage ranking-and-selection, extending OCBA and Expected Value of Information algorithms.\n\n\nShinshu University\nMSc Research Nagano, Japan · Apr 2017 – Mar 2019\nDeveloped a predictive model approximating complex decision space geometries caused by difficult Pareto set topologies, significantly improving MOEA solution distribution and convergence. Collaborated across the International Associated Laboratory LIA-MODO (Shinshu, Inria France, UAM Mexico), culminating in multiple publications and the Best Student Paper Award at EMO 2019."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Yuri Marca",
+    "section": "Education",
+    "text": "Education\n\nShinshu University\nMEng, Electronics and Information Systems Nagano, Japan · 2017 – 2019\nMEXT Monbukagakusho Scholarship (Japanese Government)\n\n\nConcordia University\nExchange Student, Electrical Engineering Montreal, Canada · 2012 – 2013\nScience Without Borders Scholarship (Brazilian Government)\n\n\nFederal University of Technology — Paraná\nBEng, Electronics Curitiba, Brazil · 2010 – 2016"
+  },
+  {
+    "objectID": "index.html#publications",
+    "href": "index.html#publications",
+    "title": "Yuri Marca",
+    "section": "Publications & Awards",
+    "text": "Publications & Awards\n🏆 Best Student Paper Award — EMO 2019 · Young Researcher Award — JPNSEC 2018 · Young Research Paper Award — IEICE Shin-etsu 2018\n\nY. Marca, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, K. Tanaka. Approximating Pareto set topology by cubic interpolation on bi-objective problems. EMO 2019, LNCS, Michigan, USA. (Best Student Paper Award)\nY. Marca et al. MOEA with Cubic Interpolation on Bi-objective Problems with Difficult Pareto Set Topology. JPNSEC Journal, 2019. doi:10.11394/tjpnsec.10.12\nY. Marca et al. NSGA-II with Spline Interpolation on Bi-objective Problems with Difficult Pareto Set Topology. JPNSEC Symposium on Evolutionary Computation, Fukuoka, 2018. (Young Research Award)\nY. Marca et al. MOEAs on Problems with Difficult Pareto Set Topologies. IEICE Shin-etsu Branch IEEE Session, Niigata University, 2018. (Young Research Award)\nY. Marca et al. Pareto dominance-based MOEAs on problems with difficult Pareto set topologies. GECCO ’18 Companion, ACM, 189–190. doi:10.1145/3205651.3205746\n\nFull list on Google Scholar and Lattes."
+  },
+  {
+    "objectID": "index.html#languages",
+    "href": "index.html#languages",
+    "title": "Yuri Marca",
+    "section": "Languages",
+    "text": "Languages\nPortuguese — Native English — Fluent Japanese — Conversational"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Yuri Marca",
+    "section": "Get in touch",
+    "text": "Get in touch\nThe fastest way to reach me is email or LinkedIn. My full CV is available as a PDF."
   },
   {
     "objectID": "posts/classify-time-series-faults-pytorch/classify-time-series-faults-pytorch.html",
@@ -68,13 +110,6 @@
     "title": "Classify Time-Series Faults with Pytorch",
     "section": "",
     "text": "We’ve walked through the basic steps to a complete pipeline for classifying mechanical faults using time-series data. The key lessons include:\n\nEDA is indispensable for quickly assessing data quality and distributions.\n\nFeature Engineering (downsampling, rolling means) can convert raw time series into useful representations to train deep learning models that does not include temporal dependencies inherently.\nEven a basic MLP can achieve high accuracy if the features reflect the underlying process well.\n\nEvaluation metrics (Accuracy, F1, Precision, Recall) are critical to understand true performance.\n\nIf you’re looking to adapt this pipeline to your own fault classification tasks—whether it’s rotating machinery, bearings, or other mechanical equipment—these concepts should be straightforward to customize. Feel free to explore the MAFAULDA dataset for your own experiments or extend it with advanced deep learning architectures.\nThanks for reading, and happy fault detecting!"
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Classify Time-Series Faults with Pytorch\n\n\n\nPyTorch\n\nMultilayer Perceptron\n\nNeural Networks\n\nPreprocessing\n\nDeep Learning\n\npython\n\n\n\nPreprocessing and MLP training to time-series data classification\n\n\n\n\n\nFeb 16, 2025\n\n\nYuri Marca\n\n\n\n\n\n\n\n\n\n\n\n\nBuilding an End-to-End ML Pipeline\n\n\n\nml pipelines\n\nreproducible experiments\n\nmlflow\n\nwandb\n\nhydra\n\npython\n\n\n\nProject development is part of the MLOps course from Udacity\n\n\n\n\n\nFeb 9, 2025\n\n\nYuri Marca\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/end-to-end-ml-pipeline/end-to-end-ml-pipeline.html",
