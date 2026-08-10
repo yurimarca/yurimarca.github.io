@@ -1,0 +1,4 @@
+# Applies to every post in this directory.
+# The landing page sets toc: false globally; long-form posts want one.
+toc: true
+toc-depth: 3

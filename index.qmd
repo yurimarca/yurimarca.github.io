@@ -1,86 +1,191 @@
 ---
-title: "👋 Hi there, I'm Yuri Marca"
-pagetitle: "Yuri Marca — Data Scientist & ML Engineer"
-image: profile.jpg
+pagetitle: "Yuri Marca — Data Scientist & AI/ML Engineer"
+description-meta: "Data Scientist and AI/ML Engineer building agentic AI systems, optimization, and MLOps — from research prototype to production."
 open-graph:
   image: og-card.png
 twitter-card:
   image: og-card.png
-about:
-  template: marquee
-  image-width: 20em
-  image-shape: round
-  links:
-    - icon: file-earmark-pdf
-      text: Download CV
-      href: CV-en.pdf
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/yurimarca/
-    - icon: github
-      text: Github
-      href: https://github.com/yurimarca
-    - icon: envelope
-      text: Email
-      href: mailto:yurimarca@gmail.com
 ---
 
-I am a Data Scientist with a strong background in machine learning, optimization, and MLOps, focused on developing scalable AI solutions and deploying models into production. I hold a Bachelor’s in Electronic Engineering and a Master’s in Information Systems, with international academic experience across Japan, the United Kingdom, and Canada. This diverse background has equipped me with strong analytical skills, the ability to quickly understand and implement state-of-the-art research, and a scientific approach to solving complex industry challenges.
+:::: {.hero}
+![](profile.jpg){.hero-photo fig-alt="Yuri Marca"}
 
-In my industry experience, I have worked extensively with machine learning and deep learning frameworks to train and fine-tune models for predictive modeling, anomaly detection, and computer vision. My expertise in MLOps enables me to design and implement end-to-end pipelines that ensure reproducibility and scalability. Leveraging tools like MLflow, Docker, and cloud platforms like AWS and DigitalOcean, I have successfully deployed machine learning models and integrated them into production via API services.
+::: {.hero-text}
+# Yuri Marca
 
-With a strong statistical analysis and optimization foundation, I am particularly interested in Generative AI and LLMs, actively exploring their potential in real-world applications. I am eager to contribute to cutting-edge AI solutions and look forward to collaborating with professionals and organizations driving AI innovation in production environments.
+[Data Scientist & AI/ML Engineer]{.hero-role}
 
----
+[<i class="bi bi-geo-alt"></i> Florianópolis, Brazil]{.hero-loc}
 
-::: {.content style="margin-left: 0; margin-right: auto;"}
+[<i class="bi bi-file-earmark-pdf"></i> Download CV](CV-en.pdf){.btn .btn-primary .btn-sm}
+[<i class="bi bi-linkedin"></i> LinkedIn](https://www.linkedin.com/in/yurimarca/){.btn .btn-outline-secondary .btn-sm}
+[<i class="bi bi-github"></i> GitHub](https://github.com/yurimarca){.btn .btn-outline-secondary .btn-sm}
+[<i class="bi bi-mortarboard"></i> Scholar](https://scholar.google.com/citations?user=YBoCAToAAAAJ&hl=en){.btn .btn-outline-secondary .btn-sm}
+[<i class="bi bi-envelope"></i> Email](mailto:yurimarca@gmail.com){.btn .btn-outline-secondary .btn-sm}
+:::
+::::
 
-## 🛠️ Technical Expertise
+I build **agentic AI systems** and the production infrastructure around them — compressing the cycle from research prototype to deployed service. Recent work spans multi-agent workflows with Google ADK and LangGraph, retrieval-augmented generation on Vertex AI, and low-latency voice agents, all backed by automated LLM-as-Judge evaluation harnesses.
 
+Before moving into applied AI engineering, I spent six years in academic research on **Bayesian optimization, Monte Carlo Tree Search, and multi-objective evolutionary algorithms**, producing internationally recognized results including a Best Student Paper Award at EMO 2019.
 
-- **Operating Systems:**
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="20px"> Linux (Fedora, Ubuntu),
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" height="20px"> Windows.
+I hold a Master's in Engineering from Shinshu University as a MEXT Government Scholar, with international academic experience across Japan, the United Kingdom, and Canada.
 
+## Experience {#experience}
 
-- **Programming Languages**:
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="20px"> Python,
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" height="20px"> C,
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" height="20px"> C++,
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-plain.svg" height="20px"> Bash (Unix Shell).
+::: {.role}
+### Zazmic Inc {.role-title}
+[AI/ML Engineer]{.role-sub} [United States (Remote) · Dec 2025 – Present]{.role-meta}
 
-- **Machine Learning Frameworks:**
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" height="20px"> PyTorch,
-  <img src="https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/doc/logos/scikit-learn-logo-small.png" height="20px"> scikit-learn,
-  <img src="https://raw.githubusercontent.com/dmlc/dmlc.github.io/master/img/logo-m/xgboost.png" height="20px"> XGBoost, FastAI.
+- **Agentic AI systems** — Architected production multi-agent workflows with Google ADK and LangGraph, including ReAct agents for NL2SQL, Human-in-the-Loop state management, and autonomous generators ingesting multimodal unstructured data.
+- **Real-time voice AI** — Engineered a low-latency bidirectional voice agent on WebSockets, FastAPI, and the Gemini Live API, with asynchronous tool definitions for hands-free interaction.
+- **Retrieval-augmented generation** — Built production RAG systems on GCP Vertex AI, grounding enterprise knowledge retrieval in live document corpora with citation-traceable outputs.
+- **Evaluation & agentic CI/CD** — Implemented LLM-as-Judge evaluation harnesses with dual tracing (LangSmith/Langfuse + OpenTelemetry); shipped containerized agentic services to Cloud Run via GitHub Actions.
+:::
 
-- **MLOps & Deployment Tools:**
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" height="20px"> Docker,
-  MLflow, Hydra,
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="20px"> Git,
-  <img src="https://cdn-icons-png.flaticon.com/512/6062/6062646.png" height="20px"> CI/CD (GitLab, GitHub Actions), 
-  <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" height="20px"> **FastAPI**.
+::: {.role}
+### Dry Ground AI {.role-title}
+[AI Engineer]{.role-sub} [United States (Remote) · Mar 2025 – Nov 2025]{.role-meta}
 
-- **Data Engineering & Pipelines:**
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" height="20px"> NumPy,
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" height="20px"> Pandas,<img src="https://docs.dask.org/en/stable/_images/dask_horizontal.svg" height="20px"> Dask, 
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="20px"> PostgreSQL, Redshift, InfluxDB.
+- Developed and deployed AI voice agents handling real estate calls, integrating tools to retrieve live information, send messages and email, and automate client interactions.
+- Built a data science workflow for user profile classification and lead identification, supporting strategic sales initiatives.
+:::
 
-- **Cloud Platforms:**
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="20px"> **AWS**,
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" height="20px"> DigitalOcean.
+::: {.role}
+### WEG {.role-title}
+[Data Scientist]{.role-sub} [Jaraguá do Sul, Brazil · Jun 2024 – Mar 2025]{.role-meta}
 
-- **Optimization:**
-  Bayesian Optimization,  Multi-objective Evolutionary Algorithms.
+- **Wind turbine anomaly detection** — Deployed a production system on AWS SageMaker anticipating failures up to two weeks ahead and flagging ~70% of maintenance interventions, with a companion explainability API for root-cause diagnostics.
+- **End-to-end MLOps** — Built a reproducible pipeline (MLflow, Docker, Kubernetes, AWS) covering automated training, versioning, deployment, and live Grafana/InfluxDB monitoring with full experiment lineage.
+- **Deep generative modeling** — Initiated PyTorch VAE research for turbine fault classification using latent-space health indicators and reconstruction-error thresholding over SCADA signals.
+- **LLM fine-tuning research** — Led technical scoping to domain-adapt an open-weights LLM via SFT for NL-to-structured IoT workflow compilation; proposal approved by corporate leadership.
+:::
 
----
+::: {.role}
+### Macnica DHW {.role-title}
+[Data Scientist]{.role-sub} [Florianópolis, Brazil · Nov 2022 – Oct 2023]{.role-meta}
 
+- **Smart sensors** — Developed an SVM classification pipeline for vibration sensor data, applying NSGA-II to optimize the accuracy/compute trade-off for edge deployment.
+- **Computer vision APIs** — Built a dual-layer video anonymization API (OpenCV + DBSCAN for motion-based person detection, ResNet-50-FPN as verification layer) tuned for low frame-rate surveillance footage.
+- **IoT development** — Led end-to-end product development with full Docker containerization of the edge-to-cloud stack (MQTT, PostgreSQL, InfluxDB, Grafana), including on-device FFT computation.
+:::
 
-## 🌟 Projects
+::: {.role}
+### SSE Gridtech {.role-title}
+[R&D Engineer · Internship]{.role-sub} [Curitiba, Brazil · Oct 2014 – Aug 2016]{.role-meta}
 
-- **[Music Genre Classification](https://github.com/yurimarca/music_genre_classification)**: Built a machine learning model to classify music genres based on audio features.
-- **[ML Pipeline for Short-Term Rental Prices](https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices)**: Designed and implemented a full ML pipeline to predict short-term rental prices, integrating data ingestion, preprocessing, model training, and deployment using industry best practices.
-- **[Image Description using OpenAI](https://github.com/yurimarca/image-description-openai)**: Developed an image captioning model leveraging OpenAI's API to generate meaningful descriptions for images.
-- **[OCBA-MCTS](https://github.com/yurimarca/ocba-mcts)**: Reproduced results from the OCBA-MCTS paper, focusing on optimization in Monte Carlo Tree Search through Optimal Computing Budget Allocation algorithm.
+- Developed a long-range LoRaWAN communication system to optimize smart metering infrastructure and reduce GSM dependency.
+:::
+
+## Selected Work {#work}
+
+Technical write-ups and code from projects I've built.
+
+::: {.work-grid}
+
+::: {.work-card}
+**[Classifying Time-Series Faults with PyTorch](posts/classify-time-series-faults-pytorch/classify-time-series-faults-pytorch.qmd)**
+
+Preprocessing multivariate vibration and acoustic sensor data from a machinery fault simulator, then training an MLP to classify faults — covering downsampling, rolling-window features, t-SNE visualization, and full evaluation metrics.
+
+[Code on GitHub](https://github.com/yurimarca/machinery-fault-classification/){.work-link}
+:::
+
+::: {.work-card}
+**[Building an End-to-End ML Pipeline](posts/end-to-end-ml-pipeline/end-to-end-ml-pipeline.qmd)**
+
+A reproducible pipeline for short-term rental price prediction, orchestrated with MLflow, configured with Hydra, and tracked in Weights & Biases — data ingestion through validation, training, and deployment.
+
+[Code on GitHub](https://github.com/yurimarca/build-ml-pipeline-for-short-term-rental-prices){.work-link}
+:::
+
+::: {.work-card}
+**[OCBA-MCTS](https://github.com/yurimarca/ocba-mcts)**
+
+Reproduction of the OCBA-MCTS paper — improving Monte Carlo Tree Search through Optimal Computing Budget Allocation, connecting directly to my ranking-and-selection research at Warwick.
+:::
 
 :::
+
+More on [GitHub](https://github.com/yurimarca), including [music genre classification](https://github.com/yurimarca/music_genre_classification) and [image description with OpenAI](https://github.com/yurimarca/image-description-openai).
+
+## Technical Expertise {#skills}
+
+::: {.skills}
+**Languages** [Python]{.tag} [C]{.tag} [C++]{.tag} [Bash]{.tag}
+
+**ML & Deep Learning** [PyTorch]{.tag} [Hugging Face]{.tag} [scikit-learn]{.tag} [XGBoost]{.tag}
+
+**LLM & Agentic Frameworks** [LangGraph]{.tag} [LangChain]{.tag} [Google ADK]{.tag} [Gemini Live API]{.tag} [OpenAI API]{.tag} [Anthropic Claude]{.tag}
+
+**LLM Training & Alignment** [SFT]{.tag} [QLoRA]{.tag} [Unsloth]{.tag}
+
+**Observability & Evaluation** [LangSmith]{.tag} [Langfuse]{.tag} [OpenTelemetry]{.tag} [Grafana]{.tag}
+
+**MLOps & Deployment** [Docker]{.tag} [Kubernetes]{.tag} [MLflow]{.tag} [FastAPI]{.tag} [CI/CD]{.tag} [Git]{.tag}
+
+**Cloud** [AWS — SageMaker, ECR, Lambda]{.tag} [GCP — Cloud Run, Vertex AI]{.tag}
+
+**Data & Pipelines** [PostgreSQL]{.tag} [Redshift]{.tag} [InfluxDB]{.tag}
+
+**Embedded** [ARM Cortex-M]{.tag} [Jetson Nano]{.tag} [Arduino]{.tag} [FreeRTOS]{.tag} [MQTT]{.tag}
+
+**Optimization** [Bayesian Optimization]{.tag} [Multi-objective Evolutionary Algorithms]{.tag}
+:::
+
+## Research {#research}
+
+::: {.role}
+### University of Warwick, Warwick Business School {.role-title}
+[Doctoral Research]{.role-sub} [Coventry, United Kingdom · Oct 2019 – Apr 2022]{.role-meta}
+
+Ranking & selection, Bayesian optimization, and reinforcement learning. Investigated sample-efficient policy learning for constrained supply chain scheduling of biopharmaceutical products, developing Multi-Objective MCTS using marginal hypervolume as the selection criterion. Under Prof. Juergen Branke, collaborated with Prof. Chun-Hung Chen on two-stage ranking-and-selection, extending OCBA and Expected Value of Information algorithms.
+:::
+
+::: {.role}
+### Shinshu University {.role-title}
+[MSc Research]{.role-sub} [Nagano, Japan · Apr 2017 – Mar 2019]{.role-meta}
+
+Developed a predictive model approximating complex decision space geometries caused by difficult Pareto set topologies, significantly improving MOEA solution distribution and convergence. Collaborated across the International Associated Laboratory LIA-MODO (Shinshu, Inria France, UAM Mexico), culminating in multiple publications and the Best Student Paper Award at EMO 2019.
+:::
+
+## Education {#education}
+
+::: {.role}
+### Shinshu University {.role-title}
+[MEng, Electronics and Information Systems]{.role-sub} [Nagano, Japan · 2017 – 2019]{.role-meta}
+
+MEXT Monbukagakusho Scholarship (Japanese Government)
+:::
+
+::: {.role}
+### Concordia University {.role-title}
+[Exchange Student, Electrical Engineering]{.role-sub} [Montreal, Canada · 2012 – 2013]{.role-meta}
+
+Science Without Borders Scholarship (Brazilian Government)
+:::
+
+::: {.role}
+### Federal University of Technology — Paraná {.role-title}
+[BEng, Electronics]{.role-sub} [Curitiba, Brazil · 2010 – 2016]{.role-meta}
+:::
+
+## Publications & Awards {#publications}
+
+[🏆 **Best Student Paper Award** — EMO 2019 · **Young Researcher Award** — JPNSEC 2018 · **Young Research Paper Award** — IEICE Shin-etsu 2018]{.awards}
+
+- **Y. Marca**, H. Aguirre, S. Zapotecas, A. Liefooghe, B. Derbel, S. Verel, K. Tanaka. *Approximating Pareto set topology by cubic interpolation on bi-objective problems.* EMO 2019, LNCS, Michigan, USA. **(Best Student Paper Award)**
+- **Y. Marca** et al. *MOEA with Cubic Interpolation on Bi-objective Problems with Difficult Pareto Set Topology.* JPNSEC Journal, 2019. [doi:10.11394/tjpnsec.10.12](https://doi.org/10.11394/tjpnsec.10.12)
+- **Y. Marca** et al. *NSGA-II with Spline Interpolation on Bi-objective Problems with Difficult Pareto Set Topology.* JPNSEC Symposium on Evolutionary Computation, Fukuoka, 2018. **(Young Research Award)**
+- **Y. Marca** et al. *MOEAs on Problems with Difficult Pareto Set Topologies.* IEICE Shin-etsu Branch IEEE Session, Niigata University, 2018. **(Young Research Award)**
+- **Y. Marca** et al. *Pareto dominance-based MOEAs on problems with difficult Pareto set topologies.* GECCO '18 Companion, ACM, 189–190. [doi:10.1145/3205651.3205746](https://doi.org/10.1145/3205651.3205746)
+
+Full list on [Google Scholar](https://scholar.google.com/citations?user=YBoCAToAAAAJ&hl=en) and [Lattes](http://lattes.cnpq.br/3992305361737583).
+
+## Languages {#languages}
+
+[Portuguese — Native]{.tag} [English — Fluent]{.tag} [Japanese — Conversational]{.tag}
+
+## Get in touch {#contact}
+
+The fastest way to reach me is [email](mailto:yurimarca@gmail.com) or [LinkedIn](https://www.linkedin.com/in/yurimarca/). My full CV is [available as a PDF](CV-en.pdf).

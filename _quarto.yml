@@ -7,7 +7,7 @@ project:
 website:
   title: "Yuri Marca"
   site-url: "https://yurimarca.github.io"
-  description: "Data Scientist and ML Engineer working across machine learning, optimization, and MLOps — from research to production."
+  description: "Data Scientist and AI/ML Engineer building agentic AI systems, optimization, and MLOps — from research prototype to production."
   favicon: favicon.png
   image: og-card.png
   twitter-card:
@@ -17,10 +17,14 @@ website:
     image: og-card.png
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - href: blog.qmd
-        text: Blog
+      - href: index.qmd#experience
+        text: Experience
+      - href: index.qmd#work
+        text: Work
+      - href: index.qmd#publications
+        text: Publications
+      - href: CV-en.pdf
+        text: CV
 
     right:
       - icon: github
@@ -31,4 +35,5 @@ website:
 format:
   html:
     theme: flatly
-    toc: true
+    css: styles.css
+    toc: false

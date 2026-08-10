@@ -1,0 +1,207 @@
+/* ── Yuri Marca — CV site ─────────────────────────────────────────── */
+
+:root {
+  --ym-accent: #18bc9c;
+  --ym-ink: #2c3e50;
+  --ym-muted: #7b8a99;
+  --ym-rule: #e4e8ec;
+  --ym-surface: #f7f9fa;
+}
+
+/* Readable measure for a long single-page CV */
+main.content {
+  max-width: 54rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--ym-rule);
+}
+
+.hero-photo {
+  width: 9.5rem;
+  height: 9.5rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--ym-surface);
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+}
+
+.hero-text h1 {
+  margin: 0 0 0.2rem;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-role {
+  display: block;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--ym-accent);
+}
+
+.hero-loc {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ym-muted);
+  margin-bottom: 0.9rem;
+}
+
+.hero-text .btn {
+  margin: 0 0.35rem 0.4rem 0;
+}
+
+.hero-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.2rem;
+  }
+  .hero-text h1 {
+    font-size: 1.9rem;
+  }
+}
+
+/* ── Section headings ─────────────────────────────────────────────── */
+
+main.content h2 {
+  margin-top: 3rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--ym-rule);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ── Experience / research / education entries ────────────────────── */
+
+.role {
+  margin: 1.75rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--ym-rule);
+  transition: border-color 0.15s ease;
+}
+
+.role:hover {
+  border-left-color: var(--ym-accent);
+}
+
+.role h3.role-title {
+  margin: 0 0 0.15rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ym-ink);
+}
+
+.role-sub {
+  font-weight: 600;
+  color: var(--ym-accent);
+}
+
+.role-meta {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ym-muted);
+  margin-bottom: 0.6rem;
+}
+
+.role ul {
+  margin-bottom: 0;
+}
+
+.role li {
+  margin-bottom: 0.35rem;
+}
+
+/* ── Skill / language tags ────────────────────────────────────────── */
+
+.skills p {
+  margin-bottom: 0.9rem;
+  line-height: 2.1;
+}
+
+.skills strong {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ym-muted);
+  margin-bottom: 0.3rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.16rem 0.6rem;
+  margin: 0 0.3rem 0.35rem 0;
+  border: 1px solid var(--ym-rule);
+  border-radius: 999px;
+  background: var(--ym-surface);
+  font-size: 0.85rem;
+  color: var(--ym-ink);
+  white-space: nowrap;
+}
+
+/* ── Selected work cards ──────────────────────────────────────────── */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.work-card {
+  padding: 1.1rem;
+  border: 1px solid var(--ym-rule);
+  border-radius: 8px;
+  background: var(--ym-surface);
+}
+
+.work-card p {
+  margin-bottom: 0.6rem;
+  font-size: 0.93rem;
+}
+
+.work-card p:last-child {
+  margin-bottom: 0;
+}
+
+.work-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ── Publications ─────────────────────────────────────────────────── */
+
+.awards {
+  display: block;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--ym-accent);
+  border-radius: 0 6px 6px 0;
+  background: var(--ym-surface);
+  font-size: 0.93rem;
+}
+
+/* ── Small screens ────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .tag {
+    white-space: normal;
+  }
+  main.content h2 {
+    margin-top: 2.25rem;
+  }
+}
