@@ -1,6 +1,6 @@
 ---
-pagetitle: "Yuri Marca — Data Scientist & AI/ML Engineer"
-description-meta: "Data Scientist and AI/ML Engineer building agentic AI systems, optimization, and MLOps — from research prototype to production."
+pagetitle: "Yuri Marca — AI Engineer & Solution Architect"
+description-meta: "AI Engineer and solution architect who designs, builds, and ships production LLM systems end to end — evaluation, retrieval and data design, and compliance."
 open-graph:
   image: og-card.png
 twitter-card:
@@ -13,7 +13,7 @@ twitter-card:
 ::: {.hero-text}
 # Yuri Marca
 
-[Data Scientist & AI/ML Engineer]{.hero-role}
+[AI Engineer & Solution Architect]{.hero-role}
 
 [<i class="bi bi-geo-alt"></i> Florianópolis, Brazil]{.hero-loc}
 
@@ -27,11 +27,11 @@ twitter-card:
 :::
 ::::
 
-I build **agentic AI systems** and the production infrastructure around them — compressing the cycle from research prototype to deployed service. Recent work spans multi-agent workflows with Google ADK and LangGraph, retrieval-augmented generation on Vertex AI, and low-latency voice agents, all backed by automated LLM-as-Judge evaluation harnesses.
+I design, build, and ship **production LLM systems** end to end — from shaping the solution with clients in pre-sales through architecture, implementation, cloud deployment, and knowledge transfer. My focus is the layers that decide whether an LLM system works in production: **evaluation, retrieval and data design, and compliance**. I build evaluation harnesses that show where accuracy is lost, use them to drive architecture and roadmap decisions, and benchmark model, cost, and latency trade-offs up front.
 
-Before moving into applied AI engineering, I spent six years in academic research on **Bayesian optimization, Monte Carlo Tree Search, and multi-objective evolutionary algorithms**, producing internationally recognized results including a Best Student Paper Award at EMO 2019.
+I have worked remotely with US companies delivering agentic AI to clients in healthcare, travel, media, and real estate: HIPAA-compliant document pipelines, multimodal document automation integrated with ERPs, NL2SQL and RAG assistants, and real-time voice agents that handle calls and operate web applications. Before that, I spent years in industrial AI in Brazil taking ML from prototype to production — predictive maintenance and MLOps on AWS for wind turbines, and edge ML, computer vision, and IoT products. Earlier still, I did academic research on **Bayesian optimization, Monte Carlo Tree Search, and multi-objective evolutionary algorithms** (Best Student Paper Award, EMO 2019), and hold a Master's in Engineering from Shinshu University as a MEXT Government Scholar.
 
-I hold a Master's in Engineering from Shinshu University as a MEXT Government Scholar, with international academic experience across Japan, the United Kingdom, and Canada.
+I am looking to lead AI engineering and system architecture: setting technical direction, making trade-offs explicit, working closely with clients and stakeholders, and raising the engineering bar of the teams I work with.
 
 ## Experience {#experience}
 
@@ -39,10 +39,12 @@ I hold a Master's in Engineering from Shinshu University as a MEXT Government Sc
 ### Zazmic Inc {.role-title}
 [AI/ML Engineer]{.role-sub} [United States (Remote) · Dec 2025 – Present]{.role-meta}
 
-- **Agentic AI systems** — Architected production multi-agent workflows with Google ADK and LangGraph, including ReAct agents for NL2SQL, Human-in-the-Loop state management, and autonomous generators ingesting multimodal unstructured data.
-- **Real-time voice AI** — Engineered a low-latency bidirectional voice agent on WebSockets, FastAPI, and the Gemini Live API, with asynchronous tool definitions for hands-free interaction.
-- **Retrieval-augmented generation** — Built production RAG systems on GCP Vertex AI, grounding enterprise knowledge retrieval in live document corpora with citation-traceable outputs.
-- **Evaluation & agentic CI/CD** — Implemented LLM-as-Judge evaluation harnesses with dual tracing (LangSmith/Langfuse + OpenTelemetry); shipped containerized agentic services to Cloud Run via GitHub Actions.
+- **Solution architecture & technical ownership** — Technical owner of generative-AI engagements on GCP across healthcare, travel, and media, from pre-sales demos and estimates through architecture, delivery, and handover.
+- **Evaluation-driven engineering** — Built evaluation harnesses, LLM-as-Judge suites, and trace-based root-cause analysis that pinpoint where accuracy is lost and steer architecture and roadmap decisions.
+- **Retrieval & data architecture for agents** — Designed data models, retrieval strategies, and NL2SQL agents with abstention policies, and built RAG pipelines with incremental ingestion and citation-grounded answers.
+- **Regulated (HIPAA) AI systems** — Architected event-driven document pipelines processing PHI (Document AI, Gemini, Pub/Sub, Cloud Run) with compliance by design, architecture decision records, and full monitoring.
+- **Real-time multimodal agents** — Shipped voice agents that operate web applications through live native-audio models and function calling (Gemini Live, ADK, FastAPI WebSockets, React).
+- **Multi-agent pre-sales automation** — Built a LangGraph multi-agent tool with human-in-the-loop review that turns discovery calls into cloud proposals, backlogs, and SOWs.
 :::
 
 ::: {.role}
@@ -58,10 +60,7 @@ I hold a Master's in Engineering from Shinshu University as a MEXT Government Sc
 [Data Scientist]{.role-sub} [Jaraguá do Sul, Brazil · Jun 2024 – Mar 2025]{.role-meta}
 
 - **Wind turbine anomaly detection** — Deployed a production system on AWS SageMaker anticipating failures up to two weeks ahead and flagging ~70% of maintenance interventions, with a companion explainability API for root-cause diagnostics.
-- **End-to-end MLOps** — Built a reproducible pipeline (MLflow, Docker, Kubernetes, AWS) covering automated training, versioning, deployment, and live Grafana/InfluxDB monitoring with full experiment lineage.
-- **Deep generative modeling** — Initiated PyTorch VAE research for turbine fault classification using latent-space health indicators and reconstruction-error thresholding over SCADA signals.
-- **LLM fine-tuning research** — Led technical scoping to domain-adapt an open-weights LLM via SFT for NL-to-structured IoT workflow compilation; proposal approved by corporate leadership.
-:::
+- **End-to-end MLOps** — Built a reproducible pipeline (MLflow, Docker, Kubernetes, AWS) covering automated training, versioning, deployment, and live Grafana/InfluxDB monitoring with full experiment lineage.:::
 
 ::: {.role}
 ### Macnica DHW {.role-title}
@@ -70,13 +69,6 @@ I hold a Master's in Engineering from Shinshu University as a MEXT Government Sc
 - **Smart sensors** — Developed an SVM classification pipeline for vibration sensor data, applying NSGA-II to optimize the accuracy/compute trade-off for edge deployment.
 - **Computer vision APIs** — Built a dual-layer video anonymization API (OpenCV + DBSCAN for motion-based person detection, ResNet-50-FPN as verification layer) tuned for low frame-rate surveillance footage.
 - **IoT development** — Led end-to-end product development with full Docker containerization of the edge-to-cloud stack (MQTT, PostgreSQL, InfluxDB, Grafana), including on-device FFT computation.
-:::
-
-::: {.role}
-### SSE Gridtech {.role-title}
-[R&D Engineer · Internship]{.role-sub} [Curitiba, Brazil · Oct 2014 – Aug 2016]{.role-meta}
-
-- Developed a long-range LoRaWAN communication system to optimize smart metering infrastructure and reduce GSM dependency.
 :::
 
 ## Selected Work {#work}
@@ -114,25 +106,34 @@ More on [GitHub](https://github.com/yurimarca), including [music genre classific
 ## Technical Expertise {#skills}
 
 ::: {.skills}
+**Architecture & Practices** [Solution architecture]{.tag} [ADRs]{.tag} [Event-driven design]{.tag} [HIPAA compliance]{.tag}
+
 **Languages** [Python]{.tag} [C]{.tag} [C++]{.tag} [Bash]{.tag}
+
+**LLM & Agentic Frameworks** [Google ADK]{.tag} [LangGraph]{.tag} [LangChain]{.tag} [Gemini Live]{.tag} [Vertex AI RAG]{.tag} [Claude]{.tag}
+
+**Evaluation & Tracing** [LLM-as-Judge]{.tag} [Langfuse]{.tag} [LangSmith]{.tag} [OpenTelemetry]{.tag} [Grafana]{.tag}
 
 **ML & Deep Learning** [PyTorch]{.tag} [Hugging Face]{.tag} [scikit-learn]{.tag} [XGBoost]{.tag}
 
-**LLM & Agentic Frameworks** [LangGraph]{.tag} [LangChain]{.tag} [Google ADK]{.tag} [Gemini Live API]{.tag} [OpenAI API]{.tag} [Anthropic Claude]{.tag}
+**Cloud** [GCP — Vertex AI, Document AI, Cloud Run, Pub/Sub]{.tag} [AWS — SageMaker]{.tag}
 
-**LLM Training & Alignment** [SFT]{.tag} [QLoRA]{.tag} [Unsloth]{.tag}
+**MLOps & Deployment** [Docker]{.tag} [Kubernetes]{.tag} [MLflow]{.tag} [Git]{.tag} [GitHub Actions CI/CD]{.tag}
 
-**Observability & Evaluation** [LangSmith]{.tag} [Langfuse]{.tag} [OpenTelemetry]{.tag} [Grafana]{.tag}
+**Full-Stack** [React]{.tag} [TypeScript]{.tag} [FastAPI]{.tag} [WebSockets]{.tag} [SSE streaming]{.tag}
 
-**MLOps & Deployment** [Docker]{.tag} [Kubernetes]{.tag} [MLflow]{.tag} [FastAPI]{.tag} [CI/CD]{.tag} [Git]{.tag}
-
-**Cloud** [AWS — SageMaker, ECR, Lambda]{.tag} [GCP — Cloud Run, Vertex AI]{.tag}
-
-**Data & Pipelines** [PostgreSQL]{.tag} [Redshift]{.tag} [InfluxDB]{.tag}
+**Data Engineering** [PostgreSQL]{.tag} [Cloud SQL]{.tag} [Firestore]{.tag} [BigQuery]{.tag} [Redshift]{.tag} [InfluxDB]{.tag}
 
 **Embedded** [ARM Cortex-M]{.tag} [Jetson Nano]{.tag} [Arduino]{.tag} [FreeRTOS]{.tag} [MQTT]{.tag}
 
 **Optimization** [Bayesian Optimization]{.tag} [Multi-objective Evolutionary Algorithms]{.tag}
+:::
+
+## Certifications {#certifications}
+
+::: {.role}
+### Claude Certified Architect – Foundations {.role-title}
+[Anthropic]{.role-sub} [Jul 2026]{.role-meta}
 :::
 
 ## Research {#research}

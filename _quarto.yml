@@ -7,7 +7,7 @@ project:
 website:
   title: "Yuri Marca"
   site-url: "https://yurimarca.github.io"
-  description: "Data Scientist and AI/ML Engineer building agentic AI systems, optimization, and MLOps — from research prototype to production."
+  description: "AI Engineer and solution architect who designs, builds, and ships production LLM systems end to end — evaluation, retrieval and data design, and compliance."
   favicon: favicon.png
   image: og-card.png
   twitter-card:
