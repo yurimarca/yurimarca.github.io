@@ -60,7 +60,8 @@ I am looking to lead AI engineering and system architecture: setting technical d
 [Data Scientist]{.role-sub} [Jaraguá do Sul, Brazil · Jun 2024 – Mar 2025]{.role-meta}
 
 - **Wind turbine anomaly detection** — Deployed a production system on AWS SageMaker anticipating failures up to two weeks ahead and flagging ~70% of maintenance interventions, with a companion explainability API for root-cause diagnostics.
-- **End-to-end MLOps** — Built a reproducible pipeline (MLflow, Docker, Kubernetes, AWS) covering automated training, versioning, deployment, and live Grafana/InfluxDB monitoring with full experiment lineage.:::
+- **End-to-end MLOps** — Built a reproducible pipeline (MLflow, Docker, Kubernetes, AWS) covering automated training, versioning, deployment, and live Grafana/InfluxDB monitoring with full experiment lineage.
+:::
 
 ::: {.role}
 ### Macnica DHW {.role-title}
